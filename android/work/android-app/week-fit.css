@@ -1,0 +1,55 @@
+/* Common controls stay available in both classic and glass appearances. */
+[hidden] { display:none!important; }
+.lg-filter-definitions { position:absolute; width:0; height:0; pointer-events:none; overflow:hidden; }
+html[data-glass="off"] .lg-nav-lens,
+html[data-glass="off"] .lg-optical-sheen,
+html[data-glass="off"] .lg-scroll-edge { display:none!important; }
+.appearance-option { display:flex; align-items:center; position:relative; min-height:48px; gap:12px; cursor:pointer; }
+.appearance-copy { flex:1; min-width:0; }
+.appearance-copy strong { display:block; font-size:12px; font-weight:600; }
+.appearance-copy small { display:block; font-size:11px; color:var(--ink-2); margin-top:4px; }
+.appearance-option input { position:absolute; right:0; width:48px; height:44px; margin:0; opacity:0; cursor:pointer; }
+.appearance-switch { flex:none; width:44px; height:26px; border:1px solid var(--line); border-radius:14px; background:var(--line); pointer-events:none; }
+.appearance-switch::after { content:""; display:block; width:20px; height:20px; margin:2px; border-radius:50%; background:var(--card); }
+.appearance-option input:checked + .appearance-switch { background:var(--ink); border-color:var(--ink); }
+.appearance-option input:checked + .appearance-switch::after { transform:translateX(18px); background:var(--paper); }
+.appearance-option input:focus-visible + .appearance-switch { outline:2px solid var(--ink); outline-offset:3px; }
+.appearance-status { color:var(--ink-3); font-size:11px; margin-top:-4px; }
+
+/* Claude's tab symbols belong to navigation, independently of the optical effect. */
+.bottom-nav .nav-item { display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:50px; padding:6px 0 5px; }
+.bottom-nav .lg-tab-icon { display:block; width:22px; height:22px; margin-bottom:2px; }
+.bottom-nav .lg-tab-icon svg { display:block; width:22px; height:22px; stroke-width:1.7; }
+.bottom-nav .lg-tab-fill { fill:currentColor; fill-opacity:0; stroke:none; }
+.bottom-nav .nav-item.active .lg-tab-icon svg { stroke-width:2; }
+.bottom-nav .nav-item.active .lg-tab-fill { fill-opacity:.16; }
+.bottom-nav .nav-pips { display:none; }
+
+/* Seven fixed columns, with generous vertical rows and normal page scrolling. */
+.week-grid-wrap { overflow-x:hidden; -webkit-overflow-scrolling:auto; }
+.week-grid { grid-template-columns:32px repeat(7,minmax(0,1fr)); min-width:0; width:100%; }
+.week-grid > * { min-width:0; }
+.grid-day { padding:8px 0 6px; }
+.grid-day span { letter-spacing:0; }
+.grid-time { padding-top:2px; }
+.period-number { font-size:10px; line-height:1.2; }
+.period-time { font-size:8px; line-height:1.4; margin-top:4px; }
+.week-course { margin:2px 1px; padding:8px 2px; align-items:stretch; }
+.week-course .course-name { font-size:11px; line-height:1.3; display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:8; overflow:hidden; overflow-wrap:anywhere; }
+.week-course .course-room { font-size:10px; line-height:1.25; overflow:hidden; display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:4; margin-top:8px; }
+.week-course .course-teacher,.week-course .course-weeks { display:none; }
+.week-conflict-group .course-room { -webkit-line-clamp:2; }
+.week-conflict-dialog .dialog-heading h2 { font-size:14px; }
+.week-conflict-list { display:flex; flex-direction:column; gap:8px; }
+.week-conflict-list > button { min-height:44px; white-space:normal; text-align:left; justify-content:flex-start; }
+.week-hint { letter-spacing:0; text-transform:none; }
+@media(min-width:600px) {
+  .week-grid { grid-template-columns:40px repeat(7,minmax(0,1fr)); }
+  .week-course { padding:4px 6px; }
+  .week-course .course-name { font-size:12px; }
+  .period-time { font-size:8px; }
+}
+@media(max-width:360px) {
+  .week-grid { grid-template-columns:24px repeat(7,minmax(0,1fr)); }
+  .grid-corner { font-size:8px; letter-spacing:0; }
+}

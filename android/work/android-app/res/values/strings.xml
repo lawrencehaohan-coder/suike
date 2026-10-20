@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">随课</string>
+    <string name="widget_description">下一节课程、时间与教室，放大可查看后续安排。</string>
+    <string name="widget_wide_name">随课 · 4×2</string>
+    <string name="widget_compact_name">随课 · 2×2</string>
+    <string name="widget_compact_description">紧凑的下一节课、状态灯和像素进度。</string>
+</resources>

@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#F5F5F4">
+  <meta name="description" content="随课，你的私人课表。查看每日课程与周课表，支持周次、编辑和本地备份。">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>随课 · 私人课表</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="seed-data.js" defer></script>
+  <script src="model.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">跳转到课表</a>
+  <div id="app" class="app-shell">
+    <header class="app-header">
+      <div class="inst-topline">
+        <h1 id="headerTitle" class="micro" aria-label="随课">SUIKE · TIMETABLE</h1>
+        <span id="headWeek" class="micro">W-- · ---</span>
+      </div>
+      <div class="inst-clockrow">
+        <p id="clock" class="inst-clock" aria-label="当前时间">--:--</p>
+        <div class="inst-side"><span id="headPeriod" class="micro">PERIOD --</span><span id="headPhase" class="micro">&nbsp;</span></div>
+      </div>
+      <p class="micro inst-dateline"><span id="headDate">----.--.-- ---</span><span aria-hidden="true"> · </span><span id="termLabel">示例课表</span></p>
+    </header>
+
+    <main id="mainContent">
+      <section class="week-toolbar" aria-label="选择课表周">
+        <div class="week-heading">
+          <div class="week-title-row"><h2 id="weekLabel">本周课表</h2><span class="week-select-wrap"><select id="weekSelect" aria-label="选择课表周"><option value="1">第 1 周</option></select><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg></span></div>
+          <p id="weekRange" class="week-range">载入学期日期…</p>
+        </div>
+        <div class="week-controls">
+          <button id="prevWeek" type="button" class="inst-btn" aria-label="上一周">‹ PREV</button>
+          <button id="thisWeek" type="button" class="inst-btn">本周</button>
+          <button id="nextWeek" type="button" class="inst-btn" aria-label="下一周">NEXT ›</button>
+        </div>
+      </section>
+
+      <section id="todayView" class="view today-view" aria-label="每日课程">
+        <nav id="dayStrip" class="day-strip" aria-label="选择星期"></nav>
+        <div id="nextCourse" class="next-course" aria-live="polite"></div>
+        <div class="section-heading"><h2 id="selectedDayLabel">今天</h2><span id="agendaCount" class="subtle-label"></span><button id="addCourse" type="button" class="inst-add"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>添加课程</button></div>
+        <div id="agenda" class="agenda"><div class="empty-state"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="10" y="12" width="28" height="28" rx="3"/><path d="M16 8v8M32 8v8M10 22h28M18 29h12M18 34h7"/></svg><p>正在载入课表…</p></div></div>
+        <section id="agendaPendingSection" class="pending-section" aria-labelledby="agendaPendingTitle" hidden>
+          <div class="section-heading"><h3 id="agendaPendingTitle">时间待确认</h3></div>
+          <div id="agendaPending" class="pending-list"></div>
+        </section>
+        <div id="weekLoad" class="week-load" aria-label="本周课程负载"></div>
+        <p class="view-hint">点开课程可查看详情或调整安排</p>
+      </section>
+
+      <section id="weekView" class="view week-view" aria-label="整周课表" hidden>
+        <div class="section-heading"><h2>一周安排</h2><button id="addCourseWeek" type="button" class="text-button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>添加</button></div>
+        <div class="week-grid-wrap" tabindex="0" aria-label="可左右滑动的周课表"><div id="weekGrid" class="week-grid" role="grid" aria-label="周课表"></div></div>
+        <p class="view-hint week-hint"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16m-4-4 4 4-4 4M8 8l-4 4 4 4"/></svg>左右滑动查看整周，点课程查看详情</p>
+        <section id="weekPendingSection" class="pending-section" aria-labelledby="weekPendingTitle" hidden>
+          <div class="section-heading"><h3 id="weekPendingTitle">时间待确认</h3></div>
+          <div id="weekPending" class="pending-list"></div>
+        </section>
+      </section>
+
+      <section id="settingsView" class="view settings-view" aria-label="课表设置" hidden>
+        <div class="section-heading"><h2>课表设置</h2></div>
+        <form id="settingsForm" class="settings-card">
+          <div class="card-heading"><span class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M8 3v4M16 3v4M4 11h16M8 15h3"/></svg></span><div><h3>学期与显示</h3><p>周次由开学第一周的周一计算</p></div></div>
+          <div class="form-grid">
+            <label class="field"><span>第一周周一（选填）</span><input type="date" name="startMonday" id="startMonday"><small>未知时留空，按具体上课日期显示</small></label>
+            <label class="field"><span>学期总周数</span><input type="number" name="totalWeeks" id="totalWeeks" min="1" max="52" value="24" required inputmode="numeric"></label>
+            <label class="field field-full"><span>外观</span><select name="theme" id="theme"><option value="auto">跟随系统</option><option value="light">浅色</option><option value="dark">深色</option></select></label>
+          </div>
+          <div class="card-actions"><button type="submit" class="button button-primary">保存设置</button></div>
+        </form>
+
+        <section class="settings-card" aria-labelledby="backupTitle">
+          <div class="card-heading"><span class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 7h14v14H5zM8 3h8M3 7h18M9 11h6"/></svg></span><div><h3 id="backupTitle">备份课表</h3><p>课程和修改保存在当前设备</p></div></div>
+          <p class="settings-description">导出备份后，可在另一台设备上导入。清理浏览器数据前记得备份。</p>
+          <div class="backup-actions"><button id="exportData" type="button" class="button button-outline"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M5 16v5h14v-5"/></svg>导出备份</button><button id="restoreData" type="button" class="button button-outline"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m-4 4 4-4 4 4M5 16v5h14v-5"/></svg>导入备份</button></div>
+          <input id="importFile" type="file" accept="application/json,.json" hidden>
+          <button id="resetData" type="button" class="text-button danger-text">恢复初始课表</button>
+        </section>
+
+        <section class="settings-card" aria-labelledby="installTitle">
+          <div class="card-heading"><span class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M10 18h4M10 6h4M12 6v7m-3-3 3 3 3-3"/></svg></span><div><h3 id="installTitle">添加到手机桌面</h3><p>下次像打开应用一样打开课表</p></div></div>
+          <button id="installApp" type="button" class="button button-primary">添加到桌面</button>
+          <details id="installHelp" class="help-details"><summary>安卓手机怎么打开？</summary><div><p>用 Chrome 或 Edge 打开课表链接，进入浏览器菜单，选择“添加到主屏幕”或“安装应用”。</p><p>如果你打开的是本地文件，建议保留原文件和课表备份。桌面安装需要通过网址访问。</p></div></details>
+        </section>
+
+        <section class="settings-card period-card" aria-labelledby="periodTitle">
+          <h3 id="periodTitle">上课时间</h3>
+          <div class="period-list"><div><span>第 1 节</span><strong>08:00–08:45</strong></div><div><span>第 2 节</span><strong>08:55–09:40</strong></div><div><span>第 3 节</span><strong>10:00–10:45</strong></div><div><span>第 4 节</span><strong>10:55–11:40</strong></div><div><span>第 5 节</span><strong>14:00–14:45</strong></div><div><span>第 6 节</span><strong>14:55–15:40</strong></div><div><span>第 7 节</span><strong>16:00–16:45</strong></div><div><span>第 8 节</span><strong>16:55–17:40</strong></div></div>
+        </section>
+        <p class="settings-footer">随课 · 每一节，都安排清楚</p>
+      </section>
+      <p id="statusLine" class="status-line" role="status">课程保存在当前设备</p>
+    </main>
+
+    <nav class="bottom-nav" aria-label="主要导航">
+      <button type="button" data-view="today" class="nav-item active" aria-current="page" aria-label="今日"><span class="nav-label">TODAY</span><span class="nav-pips" aria-hidden="true"><i></i><i></i><i></i></span></button>
+      <button type="button" data-view="week" class="nav-item" aria-label="周课表"><span class="nav-label">WEEK</span><span class="nav-pips" aria-hidden="true"><i></i><i></i><i></i></span></button>
+      <button type="button" data-view="settings" class="nav-item" aria-label="设置"><span class="nav-label">SETTINGS</span><span class="nav-pips" aria-hidden="true"><i></i><i></i><i></i></span></button>
+    </nav>
+  </div>
+
+  <dialog id="courseDialog" class="course-dialog" aria-labelledby="detailDialogTitle">
+    <div class="dialog-heading"><span class="eyebrow" id="detailDialogTitle">课程详情</span><button id="closeDetail" type="button" class="icon-button" aria-label="关闭课程详情"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+    <div id="courseDetail" class="course-detail"></div>
+    <div class="dialog-actions"><button id="deleteCourse" type="button" class="button button-danger">删除课程</button><button id="editCourse" type="button" class="button button-primary"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 4 5 5M4 20l5-1L20 8a2 2 0 0 0-5-5L4 14z"/></svg>编辑课程</button></div>
+  </dialog>
+
+  <dialog id="editDialog" class="edit-dialog" aria-labelledby="formTitle">
+    <form id="courseForm">
+      <div class="dialog-heading"><h2 id="formTitle">编辑课程</h2><span class="eyebrow">课程安排</span></div>
+      <input type="hidden" name="id">
+      <div class="form-grid">
+        <label class="field field-full"><span>课程名称 <span class="required" aria-hidden="true">*</span></span><input name="name" type="text" maxlength="80" required placeholder="例如：示例力学" autocomplete="off"></label>
+        <label class="field field-full"><span>星期</span><select name="day" required><option value="1">星期一</option><option value="2">星期二</option><option value="3">星期三</option><option value="4">星期四</option><option value="5">星期五</option><option value="6">星期六</option><option value="7">星期日</option></select></label>
+        <label class="field checkbox-field field-full"><input id="pendingTime" name="pendingTime" type="checkbox"><span>时间待确认</span></label>
+        <label id="timeNoteField" class="field field-full" hidden><span>时间说明</span><input id="timeNote" name="timeNote" type="text" maxlength="160" placeholder="例如：19:00开始，结束时间待确认" autocomplete="off" disabled><small>填写已知时间和仍待确认的部分。</small></label>
+        <label id="confirmedStartField" class="field"><span>开始节次</span><select name="start" required><option value="" disabled>请选择节次</option><option value="1">第 1 节 · 08:00</option><option value="2">第 2 节 · 08:55</option><option value="3">第 3 节 · 10:00</option><option value="4">第 4 节 · 10:55</option><option value="5">第 5 节 · 14:00</option><option value="6">第 6 节 · 14:55</option><option value="7">第 7 节 · 16:00</option><option value="8">第 8 节 · 16:55</option><option value="9">第 9 节 · 晚课</option><option value="10">第 10 节 · 晚课</option></select></label>
+        <label id="confirmedEndField" class="field"><span>结束节次</span><select name="end" required><option value="" disabled>请选择节次</option><option value="1">第 1 节 · 08:45</option><option value="2">第 2 节 · 09:40</option><option value="3">第 3 节 · 10:45</option><option value="4">第 4 节 · 11:40</option><option value="5">第 5 节 · 14:45</option><option value="6">第 6 节 · 15:40</option><option value="7">第 7 节 · 16:45</option><option value="8">第 8 节 · 17:40</option><option value="9">第 9 节 · 晚课</option><option value="10">第 10 节 · 晚课</option></select></label>
+        <label class="field"><span>教室 / 地点</span><input name="room" type="text" maxlength="80" placeholder="例如：教学楼 201" autocomplete="off"></label>
+        <label class="field"><span>教师</span><input name="teacher" type="text" maxlength="40" placeholder="选填" autocomplete="off"></label>
+        <label class="field field-full"><span>上课日期 / 周次 <span class="required" aria-hidden="true">*</span></span><input name="weeks" type="text" required placeholder="例如：2026-10-12, 2026-10-19" autocomplete="off"><small>具体日期用逗号分隔；设置第一周周一后，也可填写 1-16、1,3,5 或 1-16 单周。单双周限制应用于整段周次。</small></label>
+        <label id="sourceTimeField" class="field field-full"><span>晚课实际时间（第 9–10 节）</span><input name="sourceTime" type="text" placeholder="例如：18:30-20:05" autocomplete="off"><small>白天使用你提供的八节时间；晚课按实际完整时段填写，暂不推测单节时间。</small></label>
+        <label class="field color-field"><span>课程颜色</span><input name="color" type="color" value="#087f75" aria-label="课程颜色"></label>
+      </div>
+      <p id="formError" class="form-error" role="alert" hidden></p>
+      <div class="dialog-actions"><button id="cancelEdit" type="button" class="button button-outline">取消</button><button type="submit" class="button button-primary">保存课程</button></div>
+    </form>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

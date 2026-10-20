@@ -1,0 +1,53 @@
+/* Reuses Claude's settings cards, fields, controls, and glass tokens. */
+.icon-button.ai-entry { width:32px; height:32px; border-radius:4px; color:var(--ink-2); margin-left:auto; padding:5px; position:relative; }
+.ai-entry::after { content:""; position:absolute; inset:-6px; }
+.ai-entry svg { width:22px; height:22px; stroke:none; fill:currentColor; }
+dialog.product-dialog.ai-dialog { width:calc(100% - 24px); max-width:600px; height:calc(100vh - 32px); max-height:calc(100vh - 32px); padding:18px; box-sizing:border-box; background:var(--paper); }
+.ai-head { align-items:center; }
+.ai-head .icon-button { font-size:22px; line-height:1; }
+.ai-file-hint { display:inline-block; margin-left:10px; font-size:11px; color:var(--ink-2); }
+.ai-actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+.ai-actions .button { min-height:44px; }
+.ai-message { font-size:12px; line-height:1.65; color:var(--ink-2); margin:12px 0; overflow-wrap:anywhere; }
+.ai-message.is-error { color:var(--danger); }
+.ai-key-row { display:flex; align-items:stretch; gap:8px; }
+.ai-key-row input { min-width:0; flex:1; }
+.ai-key-row button { flex:none; min-height:44px; }
+.ai-field { display:flex; flex-direction:column; gap:6px; margin-top:14px; font-size:12px; color:var(--ink-2); }
+.ai-field input,.ai-field textarea,.ai-field select { width:100%; min-width:0; box-sizing:border-box; }
+.ai-field textarea { min-height:118px; resize:vertical; font:inherit; line-height:1.65; border:1px solid var(--line); border-radius:8px; background:var(--card); color:var(--ink); padding:10px 12px; }
+.ai-field textarea:focus { border-color:var(--ink); outline:none; }
+.ai-field textarea::placeholder { color:var(--ink-2); opacity:1; }
+.ai-questions { margin-top:18px; }
+.ai-preview { margin-top:18px; }
+.ai-preview-list { max-height:310px; overflow-y:auto; overscroll-behavior:contain; }
+.ai-course-row { display:flex; align-items:flex-start; gap:10px; padding:14px 0; border-top:1px solid var(--line); font-size:13px; }
+.ai-course-row input { flex:none; width:20px; height:20px; margin:2px 0; accent-color:var(--ink); }
+.ai-course-row strong { display:block; font-size:14px; color:var(--ink); }
+.ai-course-row p { margin:5px 0 0; line-height:1.6; color:var(--ink-2); overflow-wrap:anywhere; }
+.ai-question-label { font-weight:600; color:var(--ink); }
+.ai-questions>.button { margin-top:12px; }
+.ai-state { font-size:11px; color:var(--ink-2); }
+.ai-scope-summary { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:14px; font-size:12px; color:var(--ink-2); }
+.ai-scope-summary[hidden] { display:none; }
+.ai-scope-summary .text-button { flex:none; min-height:44px; }
+.ai-remember { display:flex; gap:8px; align-items:center; font-size:12px; min-height:44px; color:var(--ink-2); }
+.ai-remember input { width:18px; height:18px; accent-color:var(--ink); }
+.ai-source { margin-top:8px; font-size:11px; color:var(--ink-2); }
+.ai-source summary { cursor:pointer; min-height:28px; display:list-item; }
+@media(max-width:360px){.ai-actions>.button{flex:1 1 auto;padding-left:12px;padding-right:12px;}}
+
+.ai-head .text-button{margin-left:auto;min-height:44px;font-size:12px}.ai-config{border-bottom:1px solid var(--line);padding:8px 0 14px}.ai-config>summary{min-height:44px;display:flex;align-items:center;cursor:pointer;font-size:12px;color:var(--ink-2)}
+.ai-chat-log{min-height:210px;padding:14px 0;display:flex;flex-direction:column;gap:14px}.ai-bubble{max-width:94%;padding:12px 14px;border-radius:12px;background:var(--card);align-self:flex-start;overflow-wrap:anywhere}.ai-bubble-user{align-self:flex-end;background:var(--ink);color:var(--paper)}.ai-bubble small{font-size:10px;opacity:.8}.ai-bubble p{white-space:pre-wrap;font-size:13px;line-height:1.65;margin:6px 0 0}
+.ai-composer{position:sticky;bottom:-18px;padding:12px 0 16px;background:var(--paper);border-top:1px solid var(--line);z-index:2}.ai-compose-field{margin-top:0}.ai-compose-field>span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}.ai-compose-field textarea{min-height:76px;max-height:160px;resize:none}.ai-attachments{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}.ai-attachments .ai-file-hint{margin:0;overflow-wrap:anywhere}.ai-composer>.ai-actions{justify-content:flex-end;margin-top:8px}
+.ai-questions .ai-field>span{font-size:12px}.ai-chat-log .ai-preview{width:100%;margin:0}.ai-chat-log .ai-questions{margin:0;width:100%}.ai-chat-log .ai-questions[hidden],.ai-chat-log .ai-preview[hidden]{display:none}
+html[data-glass="on"] .ai-composer{background:var(--lg-glass-thick);-webkit-backdrop-filter:blur(var(--lg-sheet-blur));backdrop-filter:blur(var(--lg-sheet-blur));border-radius:12px;padding:12px}
+@media(max-width:360px){dialog.product-dialog.ai-dialog{padding:14px}.ai-bubble{max-width:100%}.ai-head{gap:8px}}
+
+dialog.product-dialog.ai-dialog[open]{display:flex;flex-direction:column;overflow:hidden}
+.ai-dialog>.ai-head,.ai-dialog>.pd-sub{flex:none}
+#deepSeekSettings{display:flex;flex-direction:column;flex:1;min-height:0;margin-top:10px}
+.ai-scroll-content{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:0 2px 12px}
+.ai-dialog .ai-composer{position:relative;bottom:auto;flex:none;margin-top:6px}
+.ai-dialog .ai-chat-log{min-height:100px}
+@media(max-height:540px){.ai-dialog .ai-compose-field textarea{min-height:44px;max-height:80px}.ai-dialog .ai-composer{padding-top:8px;padding-bottom:8px}.ai-dialog .ai-attachments{margin-top:6px}}

@@ -1,0 +1,20 @@
+{
+  "string": [
+    {
+      "name": "app_name",
+      "value": "随课"
+    },
+    {
+      "name": "module_desc",
+      "value": "离线课表"
+    },
+    {
+      "name": "reminder_reason",
+      "value": "按你设置的时间提醒上课"
+    },
+    {
+      "name": "card_description",
+      "value": "课程、时间和教室"
+    }
+  ]
+}

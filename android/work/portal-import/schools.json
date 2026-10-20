@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "defaultSchool": "just",
+  "schools": [
+    {
+      "id": "just",
+      "name": "江苏科技大学",
+      "status": "verified",
+      "protocol": "jwglxt",
+      "entryUrl": "https://ids.v.just.edu.cn/",
+      "vpnUrl": "https://ids.v.just.edu.cn/",
+      "allowedHosts": [
+        "my.just.edu.cn",
+        "ids2.just.edu.cn",
+        "ids.v.just.edu.cn",
+        "client.v.just.edu.cn",
+        "jwxt.just.edu.cn"
+      ],
+      "capturePages": [
+        {
+          "host": "jwxt.just.edu.cn",
+          "path": "/jwglxt/kbcx/xskbcx_cxXskbcxIndex.html",
+          "webVpn": false
+        },
+        {
+          "host": "client.v.just.edu.cn",
+          "path": "/jwglxt/kbcx/xskbcx_cxXskbcxIndex.html",
+          "webVpn": true
+        }
+      ],
+      "collectorAsset": "teaching-collector.js",
+      "captureSource": "just-jwglxt-table",
+      "adapterVersion": 1,
+      "system": "just-jwglxt",
+      "maxSections": 10,
+      "help": "登录校园 VPN → 进入教务系统 → 打开“个人课表”。等课表显示完整后，点下方“读取课表”，返回随课核对并确认导入。",
+      "collectorLayout": "jwglxt"
+    },
+    {
+      "id": "hhu",
+      "name": "河海大学",
+      "status": "trial",
+      "protocol": "jsxsd",
+      "entryUrl": "https://my.hhu.edu.cn/portal-web/",
+      "vpnUrl": null,
+      "allowedHosts": [
+        "my.hhu.edu.cn",
+        "authserver.hhu.edu.cn",
+        "jwxt.hhu.edu.cn"
+      ],
+      "capturePages": [
+        {
+          "host": "jwxt.hhu.edu.cn",
+          "path": "/jsxsd/xskb/xskb_list.do",
+          "webVpn": false
+        }
+      ],
+      "collectorAsset": "hhu-teaching-collector.js",
+      "captureSource": "hhu-jsxsd-table",
+      "adapterVersion": 1,
+      "system": "hhu-jsxsd",
+      "maxSections": 12,
+      "help": "登录河海大学教务系统，打开“学期理论课表 / 本学期课表”，周次选择“全部”，再点“读取课表”。试适配仅导入已排时段的理论课，请核对周次、教室和作息。",
+      "collectorLayout": "hhu-groups"
+    },
+    {
+      "id": "njust",
+      "name": "南京理工大学（本科）",
+      "status": "trial",
+      "protocol": "jsxsd",
+      "entryUrl": "https://webvpn.njust.edu.cn/",
+      "vpnUrl": null,
+      "allowedHosts": [
+        "webvpn.njust.edu.cn",
+        "ids.njust.edu.cn",
+        "portal.njust.edu.cn"
+      ],
+      "capturePages": [
+        {
+          "host": "webvpn.njust.edu.cn",
+          "path": "/njlgdx/xskb/xskb_list.do",
+          "webVpn": true
+        }
+      ],
+      "collectorAsset": "njust-teaching-collector.js",
+      "captureSource": "njust-jsxsd-table",
+      "adapterVersion": 1,
+      "system": "njust-jsxsd",
+      "maxSections": 12,
+      "collectorLayout": "jsxsd-grid",
+      "help": "自行登录学校 WebVPN，进入“本科综合教务管理系统 → 我的课表 → 学期理论课表”，选择全部周次后读取。此为试适配；若未读到作息，请先核对上课时间，勿直接沿用其他学校的设置。"
+    }
+  ]
+}

@@ -1,0 +1,4181 @@
+{
+  "meta": {
+    "title": "江苏科技大学 · 张家港校区",
+    "layoutBasis": "User-provided campus plan board, perspective rectified",
+    "heightBasis": "Visual relative-height estimate from 23 official images and official library floor-use notice, 2026-10-20. Some views are repeated, and ref17 is a published planning rendering, not a measured aerial survey. Unverified buildings remain low-confidence estimates. Refined using a public 2017 alumni drone video at 16 timestamps; old low-resolution footage is evidence for broad massing only.",
+    "libraryShape": "Regular symmetric ellipse, following user correction to the photographed plan board",
+    "photoSha256": "65b9adc17bfc72832bf623d08eeff64be652d3e6a560e02d12dbb55009fe185d",
+    "regularization": "Axis-aligned rectangles and orthogonal L/C masses; symmetric ellipses; gym symmetric trapezoid",
+    "heightUnits": "approximate metres; schematic plan units are not surveyed metres",
+    "massingBasis": "Library bands and regular ellipse; gym barrel roof; administration open roof frame; dorm six-floor rhythm and roof racks. Ground footprints stay aligned with the user plan.",
+    "userCorrections": "2026-10-20: two commercial ground zones, road clearance east of library, left-attached auditorium, ship-civil imported room aliases."
+  },
+  "site": [
+    [
+      0,
+      800
+    ],
+    [
+      960,
+      800
+    ],
+    [
+      960,
+      0
+    ],
+    [
+      0,
+      0
+    ]
+  ],
+  "frame": [
+    [
+      -155,
+      -30
+    ],
+    [
+      1010,
+      -30
+    ],
+    [
+      1010,
+      835
+    ],
+    [
+      -155,
+      835
+    ]
+  ],
+  "overview": {
+    "x": 427,
+    "y": 400,
+    "elev": 35.264389682754654,
+    "zoom": 1,
+    "yaw": 45
+  },
+  "buildings": [
+    {
+      "id": "plan-teaching-E",
+      "name": "教学楼 E",
+      "pts": [
+        [
+          199.85,
+          368.18
+        ],
+        [
+          310.97,
+          368.18
+        ],
+        [
+          310.97,
+          393.32
+        ],
+        [
+          199.85,
+          393.32
+        ]
+      ],
+      "height": 20,
+      "type": "teaching",
+      "shape": {
+        "type": "rectangle"
+      },
+      "estimatedFloors": 5,
+      "heightEstimate": {
+        "metres": 20,
+        "confidence": "low",
+        "references": [
+          "ref03",
+          "ref06",
+          "ref07",
+          "ref14"
+        ],
+        "note": "教学组团四至五层主楼；不能把照片中的楼名直接绑定字母",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "teaching-block",
+        "floorBands": true,
+        "source": [
+          "aerial-112s",
+          "aerial-137s"
+        ]
+      }
+    },
+    {
+      "id": "plan-teaching-F",
+      "name": "教学楼 F",
+      "pts": [
+        [
+          320.21,
+          402.75
+        ],
+        [
+          407.17,
+          402.75
+        ],
+        [
+          407.17,
+          435.83
+        ],
+        [
+          320.21,
+          435.83
+        ]
+      ],
+      "height": 17,
+      "type": "teaching",
+      "shape": {
+        "type": "rectangle"
+      },
+      "estimatedFloors": 4,
+      "heightEstimate": {
+        "metres": 17,
+        "confidence": "low",
+        "references": [
+          "ref03",
+          "ref06",
+          "ref07",
+          "ref14"
+        ],
+        "note": "按同组团四层翼楼估计，字母楼层未独立核实",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "teaching-block",
+        "floorBands": true,
+        "source": [
+          "aerial-112s",
+          "aerial-137s"
+        ]
+      }
+    },
+    {
+      "id": "plan-teaching-G",
+      "name": "教学楼 G",
+      "pts": [
+        [
+          199.29,
+          335.06
+        ],
+        [
+          311.85,
+          335.06
+        ],
+        [
+          311.85,
+          361.1
+        ],
+        [
+          199.29,
+          361.1
+        ]
+      ],
+      "height": 17,
+      "type": "teaching",
+      "shape": {
+        "type": "rectangle"
+      },
+      "estimatedFloors": 4,
+      "heightEstimate": {
+        "metres": 17,
+        "confidence": "low",
+        "references": [
+          "ref03",
+          "ref06",
+          "ref07",
+          "ref14"
+        ],
+        "note": "按同组团四层翼楼估计，字母楼层未独立核实",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "teaching-block",
+        "floorBands": true,
+        "source": [
+          "aerial-112s",
+          "aerial-137s"
+        ]
+      }
+    },
+    {
+      "id": "plan-teaching-H",
+      "name": "教学楼 H",
+      "pts": [
+        [
+          321.28,
+          343.46
+        ],
+        [
+          419.66,
+          343.46
+        ],
+        [
+          419.66,
+          386.29
+        ],
+        [
+          395.06,
+          386.29
+        ],
+        [
+          395.06,
+          367.02
+        ],
+        [
+          321.28,
+          367.02
+        ]
+      ],
+      "height": 17,
+      "type": "teaching",
+      "shape": {
+        "type": "L"
+      },
+      "estimatedFloors": 4,
+      "heightEstimate": {
+        "metres": 17,
+        "confidence": "low",
+        "references": [
+          "ref03",
+          "ref06",
+          "ref07",
+          "ref14"
+        ],
+        "note": "按同组团四层翼楼估计，字母楼层未独立核实",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "teaching-block",
+        "floorBands": true,
+        "source": [
+          "aerial-112s",
+          "aerial-137s"
+        ]
+      }
+    },
+    {
+      "id": "osm-262554891",
+      "name": "教学楼 B",
+      "pts": [
+        [
+          573.28,
+          412.24
+        ],
+        [
+          683.78,
+          412.24
+        ],
+        [
+          683.78,
+          448.59
+        ],
+        [
+          573.28,
+          448.59
+        ]
+      ],
+      "height": 17,
+      "type": "teaching",
+      "shape": {
+        "type": "rectangle"
+      },
+      "estimatedFloors": 4,
+      "heightEstimate": {
+        "metres": 17,
+        "confidence": "low",
+        "references": [
+          "ref03",
+          "ref06",
+          "ref14"
+        ],
+        "note": "同校区教学/学院楼多数为四层级翼楼，未确认字母与楼名一一对应",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "teaching-block",
+        "floorBands": true,
+        "source": [
+          "aerial-112s",
+          "aerial-137s"
+        ]
+      }
+    },
+    {
+      "id": "osm-262554957",
+      "name": "教学楼 A",
+      "pts": [
+        [
+          600,
+          347.3
+        ],
+        [
+          677.66,
+          347.3
+        ],
+        [
+          677.66,
+          375.54
+        ],
+        [
+          618.4,
+          375.54
+        ],
+        [
+          618.4,
+          390.75
+        ],
+        [
+          600,
+          390.75
+        ]
+      ],
+      "height": 17,
+      "type": "teaching",
+      "shape": {
+        "type": "L",
+        "basis": "User correction: orthogonal teaching wing set back east of the library ring road; never merged with the library."
+      },
+      "estimatedFloors": 4,
+      "heightEstimate": {
+        "metres": 17,
+        "confidence": "low",
+        "references": [
+          "ref03",
+          "ref06",
+          "ref14"
+        ],
+        "note": "同校区教学/学院楼多数为四层级翼楼，未确认字母与楼名一一对应",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "teaching-block",
+        "floorBands": true,
+        "source": [
+          "aerial-112s",
+          "aerial-137s"
+        ]
+      }
+    },
+    {
+      "id": "osm-262555111",
+      "name": "教学楼 C",
+      "pts": [
+        [
+          690.7,
+          377.85
+        ],
+        [
+          782.93,
+          377.85
+        ],
+        [
+          782.93,
+          407.09
+        ],
+        [
+          690.7,
+          407.09
+        ]
+      ],
+      "height": 17,
+      "type": "teaching",
+      "shape": {
+        "type": "rectangle"
+      },
+      "estimatedFloors": 4,
+      "heightEstimate": {
+        "metres": 17,
+        "confidence": "low",
+        "references": [
+          "ref03",
+          "ref06",
+          "ref14"
+        ],
+        "note": "同校区教学/学院楼多数为四层级翼楼，未确认字母与楼名一一对应",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "teaching-block",
+        "floorBands": true,
+        "source": [
+          "aerial-112s",
+          "aerial-137s"
+        ]
+      }
+    },
+    {
+      "id": "osm-262555479",
+      "name": "教学楼 D",
+      "pts": [
+        [
+          693.24,
+          344.06
+        ],
+        [
+          785.91,
+          344.06
+        ],
+        [
+          785.91,
+          374.23
+        ],
+        [
+          693.24,
+          374.23
+        ]
+      ],
+      "height": 17,
+      "type": "teaching",
+      "shape": {
+        "type": "rectangle"
+      },
+      "estimatedFloors": 4,
+      "heightEstimate": {
+        "metres": 17,
+        "confidence": "low",
+        "references": [
+          "ref03",
+          "ref06",
+          "ref14"
+        ],
+        "note": "同校区教学/学院楼多数为四层级翼楼，未确认字母与楼名一一对应",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "teaching-block",
+        "floorBands": true,
+        "source": [
+          "aerial-112s",
+          "aerial-137s"
+        ]
+      }
+    },
+    {
+      "id": "osm-262555503",
+      "name": "外语楼",
+      "pts": [
+        [
+          794.83,
+          379.52
+        ],
+        [
+          886.64,
+          379.52
+        ],
+        [
+          886.64,
+          437.56
+        ],
+        [
+          794.83,
+          437.56
+        ],
+        [
+          794.83,
+          418.99
+        ],
+        [
+          861.85,
+          418.99
+        ],
+        [
+          861.85,
+          398.09
+        ],
+        [
+          794.83,
+          398.09
+        ]
+      ],
+      "height": 17,
+      "type": "teaching",
+      "shape": {
+        "type": "C"
+      },
+      "estimatedFloors": 4,
+      "heightEstimate": {
+        "metres": 17,
+        "confidence": "low",
+        "references": [
+          "ref03",
+          "ref06",
+          "ref14"
+        ],
+        "note": "同校区教学/学院楼多数为四层级翼楼，未确认字母与楼名一一对应",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "teaching-block",
+        "floorBands": true,
+        "source": [
+          "aerial-112s",
+          "aerial-137s"
+        ]
+      }
+    },
+    {
+      "id": "library",
+      "name": "图书馆",
+      "pts": [
+        [
+          580.0,
+          312.0
+        ],
+        [
+          579.92,
+          314.36
+        ],
+        [
+          579.68,
+          316.7
+        ],
+        [
+          579.29,
+          319.04
+        ],
+        [
+          578.73,
+          321.36
+        ],
+        [
+          578.02,
+          323.66
+        ],
+        [
+          577.16,
+          325.93
+        ],
+        [
+          576.14,
+          328.17
+        ],
+        [
+          574.98,
+          330.37
+        ],
+        [
+          573.66,
+          332.52
+        ],
+        [
+          572.21,
+          334.63
+        ],
+        [
+          570.61,
+          336.68
+        ],
+        [
+          568.88,
+          338.67
+        ],
+        [
+          567.01,
+          340.59
+        ],
+        [
+          565.02,
+          342.45
+        ],
+        [
+          562.9,
+          344.23
+        ],
+        [
+          560.67,
+          345.94
+        ],
+        [
+          558.32,
+          347.57
+        ],
+        [
+          555.87,
+          349.1
+        ],
+        [
+          553.32,
+          350.55
+        ],
+        [
+          550.67,
+          351.91
+        ],
+        [
+          547.93,
+          353.17
+        ],
+        [
+          545.11,
+          354.33
+        ],
+        [
+          542.22,
+          355.39
+        ],
+        [
+          539.26,
+          356.35
+        ],
+        [
+          536.23,
+          357.19
+        ],
+        [
+          533.16,
+          357.93
+        ],
+        [
+          530.04,
+          358.56
+        ],
+        [
+          526.88,
+          359.08
+        ],
+        [
+          523.68,
+          359.48
+        ],
+        [
+          520.47,
+          359.77
+        ],
+        [
+          517.24,
+          359.94
+        ],
+        [
+          514.0,
+          360.0
+        ],
+        [
+          510.76,
+          359.94
+        ],
+        [
+          507.53,
+          359.77
+        ],
+        [
+          504.32,
+          359.48
+        ],
+        [
+          501.12,
+          359.08
+        ],
+        [
+          497.96,
+          358.56
+        ],
+        [
+          494.84,
+          357.93
+        ],
+        [
+          491.77,
+          357.19
+        ],
+        [
+          488.74,
+          356.35
+        ],
+        [
+          485.78,
+          355.39
+        ],
+        [
+          482.89,
+          354.33
+        ],
+        [
+          480.07,
+          353.17
+        ],
+        [
+          477.33,
+          351.91
+        ],
+        [
+          474.68,
+          350.55
+        ],
+        [
+          472.13,
+          349.1
+        ],
+        [
+          469.68,
+          347.57
+        ],
+        [
+          467.33,
+          345.94
+        ],
+        [
+          465.1,
+          344.23
+        ],
+        [
+          462.98,
+          342.45
+        ],
+        [
+          460.99,
+          340.59
+        ],
+        [
+          459.12,
+          338.67
+        ],
+        [
+          457.39,
+          336.68
+        ],
+        [
+          455.79,
+          334.63
+        ],
+        [
+          454.34,
+          332.52
+        ],
+        [
+          453.02,
+          330.37
+        ],
+        [
+          451.86,
+          328.17
+        ],
+        [
+          450.84,
+          325.93
+        ],
+        [
+          449.98,
+          323.66
+        ],
+        [
+          449.27,
+          321.36
+        ],
+        [
+          448.71,
+          319.04
+        ],
+        [
+          448.32,
+          316.7
+        ],
+        [
+          448.08,
+          314.36
+        ],
+        [
+          448.0,
+          312.0
+        ],
+        [
+          448.08,
+          309.64
+        ],
+        [
+          448.32,
+          307.3
+        ],
+        [
+          448.71,
+          304.96
+        ],
+        [
+          449.27,
+          302.64
+        ],
+        [
+          449.98,
+          300.34
+        ],
+        [
+          450.84,
+          298.07
+        ],
+        [
+          451.86,
+          295.83
+        ],
+        [
+          453.02,
+          293.63
+        ],
+        [
+          454.34,
+          291.48
+        ],
+        [
+          455.79,
+          289.37
+        ],
+        [
+          457.39,
+          287.32
+        ],
+        [
+          459.12,
+          285.33
+        ],
+        [
+          460.99,
+          283.41
+        ],
+        [
+          462.98,
+          281.55
+        ],
+        [
+          465.1,
+          279.77
+        ],
+        [
+          467.33,
+          278.06
+        ],
+        [
+          469.68,
+          276.43
+        ],
+        [
+          472.13,
+          274.9
+        ],
+        [
+          474.68,
+          273.45
+        ],
+        [
+          477.33,
+          272.09
+        ],
+        [
+          480.07,
+          270.83
+        ],
+        [
+          482.89,
+          269.67
+        ],
+        [
+          485.78,
+          268.61
+        ],
+        [
+          488.74,
+          267.65
+        ],
+        [
+          491.77,
+          266.81
+        ],
+        [
+          494.84,
+          266.07
+        ],
+        [
+          497.96,
+          265.44
+        ],
+        [
+          501.12,
+          264.92
+        ],
+        [
+          504.32,
+          264.52
+        ],
+        [
+          507.53,
+          264.23
+        ],
+        [
+          510.76,
+          264.06
+        ],
+        [
+          514.0,
+          264.0
+        ],
+        [
+          517.24,
+          264.06
+        ],
+        [
+          520.47,
+          264.23
+        ],
+        [
+          523.68,
+          264.52
+        ],
+        [
+          526.88,
+          264.92
+        ],
+        [
+          530.04,
+          265.44
+        ],
+        [
+          533.16,
+          266.07
+        ],
+        [
+          536.23,
+          266.81
+        ],
+        [
+          539.26,
+          267.65
+        ],
+        [
+          542.22,
+          268.61
+        ],
+        [
+          545.11,
+          269.67
+        ],
+        [
+          547.93,
+          270.83
+        ],
+        [
+          550.67,
+          272.09
+        ],
+        [
+          553.32,
+          273.45
+        ],
+        [
+          555.87,
+          274.9
+        ],
+        [
+          558.32,
+          276.43
+        ],
+        [
+          560.67,
+          278.06
+        ],
+        [
+          562.9,
+          279.77
+        ],
+        [
+          565.02,
+          281.55
+        ],
+        [
+          567.01,
+          283.41
+        ],
+        [
+          568.88,
+          285.33
+        ],
+        [
+          570.61,
+          287.32
+        ],
+        [
+          572.21,
+          289.37
+        ],
+        [
+          573.66,
+          291.48
+        ],
+        [
+          574.98,
+          293.63
+        ],
+        [
+          576.14,
+          295.83
+        ],
+        [
+          577.16,
+          298.07
+        ],
+        [
+          578.02,
+          300.34
+        ],
+        [
+          578.73,
+          302.64
+        ],
+        [
+          579.29,
+          304.96
+        ],
+        [
+          579.68,
+          307.3
+        ],
+        [
+          579.92,
+          309.64
+        ]
+      ],
+      "height": 24,
+      "type": "library",
+      "shapeBasis": "Original supplied rounded-triangular footprint; plan-board location",
+      "shape": {
+        "type": "ellipse",
+        "center": [
+          514,
+          312
+        ],
+        "radii": [
+          66,
+          48
+        ],
+        "symmetryAxes": [
+          "x",
+          "y"
+        ]
+      },
+      "estimatedFloors": 5,
+      "heightEstimate": {
+        "metres": 24,
+        "confidence": "medium-high",
+        "references": [
+          "ref01",
+          "ref08",
+          "ref13",
+          "ref16",
+          "aerial-070s",
+          "aerial-080s"
+        ],
+        "note": "图书馆外观与官方五楼使用信息；屋面包含檐口，米数为估计",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "elliptical-library",
+        "floorBands": true,
+        "roofCap": 0.8,
+        "capScale": 1.025,
+        "bandProjection": 0.7,
+        "bandLevels": [
+          4.8,
+          9.6,
+          14.4,
+          19.2
+        ],
+        "source": [
+          "aerial-070s",
+          "aerial-080s",
+          "ref16"
+        ]
+      }
+    },
+    {
+      "id": "osm-260623895",
+      "name": "体育馆",
+      "pts": [
+        [
+          461.57,
+          600.64
+        ],
+        [
+          562.74,
+          600.64
+        ],
+        [
+          549.59,
+          675.48
+        ],
+        [
+          474.72,
+          675.48
+        ]
+      ],
+      "height": 19,
+      "type": "gym",
+      "shape": {
+        "type": "symmetric-trapezoid",
+        "symmetryAxes": [
+          "y"
+        ]
+      },
+      "estimatedFloors": 2,
+      "heightEstimate": {
+        "metres": 19,
+        "confidence": "medium",
+        "references": [
+          "aerial-043s",
+          "aerial-046s",
+          "aerial-050s",
+          "aerial-056s",
+          "ref22"
+        ],
+        "note": "实拍正门和运动场侧面共同校正：屋顶中段低曲率、两侧弯曲下包至近地面；南面独立柱廊雨棚、架空入口平台和宽阶梯。约19米总高及各构件尺寸仍为估算，不是9米直墙上加半圆屋顶。",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "wrapped-shell-gym",
+        "profile": "broad shallow crown with curved haunches descending near ground",
+        "roofSegments": 40,
+        "shellFootHeight": 2.2,
+        "shoulderFraction": 0.22,
+        "crownDrop": 0.6,
+        "front": "south",
+        "platformHeight": 3.5,
+        "canopyHeight": 8.8,
+        "canopyWidthRatio": 0.66,
+        "stairs": 12,
+        "source": [
+          "aerial-043s",
+          "aerial-046s",
+          "aerial-050s",
+          "aerial-056s",
+          "ref22"
+        ]
+      }
+    },
+    {
+      "id": "osm-260621106",
+      "name": "一食堂",
+      "pts": [
+        [
+          332.29,
+          492.62
+        ],
+        [
+          421.59,
+          492.62
+        ],
+        [
+          421.59,
+          536.95
+        ],
+        [
+          332.29,
+          536.95
+        ]
+      ],
+      "height": 12,
+      "type": "canteen",
+      "shape": {
+        "type": "rectangle"
+      },
+      "estimatedFloors": 3,
+      "heightEstimate": {
+        "metres": 12,
+        "confidence": "low",
+        "references": [
+          "ref17",
+          "ref24"
+        ],
+        "note": "食堂三层级体量估计；改造照片仅用于外立面尺度参考",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "plain",
+        "floorBands": true
+      }
+    },
+    {
+      "id": "osm-260621060",
+      "name": "华诚餐饮",
+      "pts": [
+        [
+          80.97,
+          343.34
+        ],
+        [
+          131.45,
+          343.34
+        ],
+        [
+          131.45,
+          454.12
+        ],
+        [
+          80.97,
+          454.12
+        ]
+      ],
+      "height": 12,
+      "type": "canteen",
+      "shape": {
+        "type": "rectangle"
+      },
+      "estimatedFloors": 3,
+      "heightEstimate": {
+        "metres": 12,
+        "confidence": "low",
+        "references": [
+          "ref17",
+          "ref24"
+        ],
+        "note": "食堂三层级体量估计；改造照片仅用于外立面尺度参考",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "plain",
+        "floorBands": true
+      }
+    },
+    {
+      "id": "plan-dorm-1",
+      "name": "1 号宿舍",
+      "pts": [
+        [
+          192.63,
+          506.74
+        ],
+        [
+          277.52,
+          506.74
+        ],
+        [
+          277.52,
+          538.74
+        ],
+        [
+          192.63,
+          538.74
+        ]
+      ],
+      "height": 22,
+      "type": "dorm",
+      "shape": {
+        "type": "rectangle"
+      },
+      "estimatedFloors": 6,
+      "heightEstimate": {
+        "metres": 22,
+        "confidence": "low",
+        "references": [
+          "ref05",
+          "ref17",
+          "aerial-187s",
+          "aerial-200s"
+        ],
+        "note": "航拍生活区可读六层及屋顶构架；同组宿舍统一采用约20米主体加2米构架，未逐栋核实编号与屋顶设备数量",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "dorm-roof-racks",
+        "floorBands": true,
+        "wallHeight": 20,
+        "rackTop": 22,
+        "wallFloors": 6,
+        "racks": 5,
+        "source": [
+          "aerial-187s",
+          "aerial-200s"
+        ]
+      }
+    },
+    {
+      "id": "plan-dorm-2",
+      "name": "2 号宿舍",
+      "pts": [
+        [
+          192.59,
+          544.12
+        ],
+        [
+          278.72,
+          544.12
+        ],
+        [
+          278.72,
+          574.37
+        ],
+        [
+          192.59,
+          574.37
+        ]
+      ],
+      "height": 22,
+      "type": "dorm",
+      "shape": {
+        "type": "rectangle"
+      },
+      "estimatedFloors": 6,
+      "heightEstimate": {
+        "metres": 22,
+        "confidence": "low",
+        "references": [
+          "ref05",
+          "ref17",
+          "aerial-187s",
+          "aerial-200s"
+        ],
+        "note": "航拍生活区可读六层及屋顶构架；同组宿舍统一采用约20米主体加2米构架，未逐栋核实编号与屋顶设备数量",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "dorm-roof-racks",
+        "floorBands": true,
+        "wallHeight": 20,
+        "rackTop": 22,
+        "wallFloors": 6,
+        "racks": 5,
+        "source": [
+          "aerial-187s",
+          "aerial-200s"
+        ]
+      }
+    },
+    {
+      "id": "plan-dorm-3",
+      "name": "3 号宿舍",
+      "pts": [
+        [
+          39.44,
+          507.78
+        ],
+        [
+          122.79,
+          507.78
+        ],
+        [
+          122.79,
+          537.47
+        ],
+        [
+          39.44,
+          537.47
+        ]
+      ],
+      "height": 22,
+      "type": "dorm",
+      "shape": {
+        "type": "rectangle"
+      },
+      "estimatedFloors": 6,
+      "heightEstimate": {
+        "metres": 22,
+        "confidence": "low",
+        "references": [
+          "ref05",
+          "ref17",
+          "aerial-187s",
+          "aerial-200s"
+        ],
+        "note": "航拍生活区可读六层及屋顶构架；同组宿舍统一采用约20米主体加2米构架，未逐栋核实编号与屋顶设备数量",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "dorm-roof-racks",
+        "floorBands": true,
+        "wallHeight": 20,
+        "rackTop": 22,
+        "wallFloors": 6,
+        "racks": 5,
+        "source": [
+          "aerial-187s",
+          "aerial-200s"
+        ]
+      }
+    },
+    {
+      "id": "plan-dorm-4",
+      "name": "4 号宿舍",
+      "pts": [
+        [
+          38.71,
+          549.76
+        ],
+        [
+          121.53,
+          549.76
+        ],
+        [
+          121.53,
+          578.47
+        ],
+        [
+          38.71,
+          578.47
+        ]
+      ],
+      "height": 22,
+      "type": "dorm",
+      "shape": {
+        "type": "rectangle"
+      },
+      "estimatedFloors": 6,
+      "heightEstimate": {
+        "metres": 22,
+        "confidence": "low",
+        "references": [
+          "ref05",
+          "ref17",
+          "aerial-187s",
+          "aerial-200s"
+        ],
+        "note": "航拍生活区可读六层及屋顶构架；同组宿舍统一采用约20米主体加2米构架，未逐栋核实编号与屋顶设备数量",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "dorm-roof-racks",
+        "floorBands": true,
+        "wallHeight": 20,
+        "rackTop": 22,
+        "wallFloors": 6,
+        "racks": 5,
+        "source": [
+          "aerial-187s",
+          "aerial-200s"
+        ]
+      }
+    },
+    {
+      "id": "plan-dorm-5",
+      "name": "5 号宿舍",
+      "pts": [
+        [
+          35.46,
+          619.14
+        ],
+        [
+          121.03,
+          619.14
+        ],
+        [
+          121.03,
+          647.73
+        ],
+        [
+          35.46,
+          647.73
+        ]
+      ],
+      "height": 22,
+      "type": "dorm",
+      "shape": {
+        "type": "rectangle"
+      },
+      "estimatedFloors": 6,
+      "heightEstimate": {
+        "metres": 22,
+        "confidence": "low",
+        "references": [
+          "ref05",
+          "ref17",
+          "aerial-187s",
+          "aerial-200s"
+        ],
+        "note": "航拍生活区可读六层及屋顶构架；同组宿舍统一采用约20米主体加2米构架，未逐栋核实编号与屋顶设备数量",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "dorm-roof-racks",
+        "floorBands": true,
+        "wallHeight": 20,
+        "rackTop": 22,
+        "wallFloors": 6,
+        "racks": 5,
+        "source": [
+          "aerial-187s",
+          "aerial-200s"
+        ]
+      }
+    },
+    {
+      "id": "plan-dorm-6",
+      "name": "6 号宿舍",
+      "pts": [
+        [
+          36.64,
+          661.36
+        ],
+        [
+          122.6,
+          661.36
+        ],
+        [
+          122.6,
+          690.65
+        ],
+        [
+          36.64,
+          690.65
+        ]
+      ],
+      "height": 22,
+      "type": "dorm",
+      "shape": {
+        "type": "rectangle"
+      },
+      "estimatedFloors": 6,
+      "heightEstimate": {
+        "metres": 22,
+        "confidence": "low",
+        "references": [
+          "ref05",
+          "ref17",
+          "aerial-187s",
+          "aerial-200s"
+        ],
+        "note": "航拍生活区可读六层及屋顶构架；同组宿舍统一采用约20米主体加2米构架，未逐栋核实编号与屋顶设备数量",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "dorm-roof-racks",
+        "floorBands": true,
+        "wallHeight": 20,
+        "rackTop": 22,
+        "wallFloors": 6,
+        "racks": 5,
+        "source": [
+          "aerial-187s",
+          "aerial-200s"
+        ]
+      }
+    },
+    {
+      "id": "plan-dorm-7",
+      "name": "7 号宿舍",
+      "pts": [
+        [
+          36.28,
+          706.34
+        ],
+        [
+          121.69,
+          706.34
+        ],
+        [
+          121.69,
+          735.48
+        ],
+        [
+          36.28,
+          735.48
+        ]
+      ],
+      "height": 22,
+      "type": "dorm",
+      "shape": {
+        "type": "rectangle"
+      },
+      "estimatedFloors": 6,
+      "heightEstimate": {
+        "metres": 22,
+        "confidence": "low",
+        "references": [
+          "ref05",
+          "ref17",
+          "aerial-187s",
+          "aerial-200s"
+        ],
+        "note": "航拍生活区可读六层及屋顶构架；同组宿舍统一采用约20米主体加2米构架，未逐栋核实编号与屋顶设备数量",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "dorm-roof-racks",
+        "floorBands": true,
+        "wallHeight": 20,
+        "rackTop": 22,
+        "wallFloors": 6,
+        "racks": 5,
+        "source": [
+          "aerial-187s",
+          "aerial-200s"
+        ]
+      }
+    },
+    {
+      "id": "plan-dorm-8",
+      "name": "8 号宿舍",
+      "pts": [
+        [
+          190.61,
+          670.17
+        ],
+        [
+          273.56,
+          670.17
+        ],
+        [
+          273.56,
+          700.72
+        ],
+        [
+          190.61,
+          700.72
+        ]
+      ],
+      "height": 22,
+      "type": "dorm",
+      "shape": {
+        "type": "rectangle"
+      },
+      "estimatedFloors": 6,
+      "heightEstimate": {
+        "metres": 22,
+        "confidence": "low",
+        "references": [
+          "ref05",
+          "ref17",
+          "aerial-187s",
+          "aerial-200s"
+        ],
+        "note": "航拍生活区可读六层及屋顶构架；同组宿舍统一采用约20米主体加2米构架，未逐栋核实编号与屋顶设备数量",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "dorm-roof-racks",
+        "floorBands": true,
+        "wallHeight": 20,
+        "rackTop": 22,
+        "wallFloors": 6,
+        "racks": 5,
+        "source": [
+          "aerial-187s",
+          "aerial-200s"
+        ]
+      }
+    },
+    {
+      "id": "plan-dorm-9",
+      "name": "9 号宿舍",
+      "pts": [
+        [
+          190.77,
+          709.87
+        ],
+        [
+          272.39,
+          709.87
+        ],
+        [
+          272.39,
+          740.23
+        ],
+        [
+          190.77,
+          740.23
+        ]
+      ],
+      "height": 22,
+      "type": "dorm",
+      "shape": {
+        "type": "rectangle"
+      },
+      "estimatedFloors": 6,
+      "heightEstimate": {
+        "metres": 22,
+        "confidence": "low",
+        "references": [
+          "ref05",
+          "ref17",
+          "aerial-187s",
+          "aerial-200s"
+        ],
+        "note": "航拍生活区可读六层及屋顶构架；同组宿舍统一采用约20米主体加2米构架，未逐栋核实编号与屋顶设备数量",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "dorm-roof-racks",
+        "floorBands": true,
+        "wallHeight": 20,
+        "rackTop": 22,
+        "wallFloors": 6,
+        "racks": 5,
+        "source": [
+          "aerial-187s",
+          "aerial-200s"
+        ]
+      }
+    },
+    {
+      "id": "plan-dorm-10",
+      "name": "10 号宿舍",
+      "pts": [
+        [
+          337.77,
+          671.68
+        ],
+        [
+          422.01,
+          671.68
+        ],
+        [
+          422.01,
+          699.69
+        ],
+        [
+          337.77,
+          699.69
+        ]
+      ],
+      "height": 22,
+      "type": "dorm",
+      "shape": {
+        "type": "rectangle"
+      },
+      "estimatedFloors": 6,
+      "heightEstimate": {
+        "metres": 22,
+        "confidence": "low",
+        "references": [
+          "ref05",
+          "ref17",
+          "aerial-187s",
+          "aerial-200s"
+        ],
+        "note": "航拍生活区可读六层及屋顶构架；同组宿舍统一采用约20米主体加2米构架，未逐栋核实编号与屋顶设备数量",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "dorm-roof-racks",
+        "floorBands": true,
+        "wallHeight": 20,
+        "rackTop": 22,
+        "wallFloors": 6,
+        "racks": 5,
+        "source": [
+          "aerial-187s",
+          "aerial-200s"
+        ]
+      }
+    },
+    {
+      "id": "plan-dorm-11",
+      "name": "11 号宿舍",
+      "pts": [
+        [
+          339.58,
+          709.32
+        ],
+        [
+          423.34,
+          709.32
+        ],
+        [
+          423.34,
+          737.22
+        ],
+        [
+          339.58,
+          737.22
+        ]
+      ],
+      "height": 22,
+      "type": "dorm",
+      "shape": {
+        "type": "rectangle"
+      },
+      "estimatedFloors": 6,
+      "heightEstimate": {
+        "metres": 22,
+        "confidence": "low",
+        "references": [
+          "ref05",
+          "ref17",
+          "aerial-187s",
+          "aerial-200s"
+        ],
+        "note": "航拍生活区可读六层及屋顶构架；同组宿舍统一采用约20米主体加2米构架，未逐栋核实编号与屋顶设备数量",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "dorm-roof-racks",
+        "floorBands": true,
+        "wallHeight": 20,
+        "rackTop": 22,
+        "wallFloors": 6,
+        "racks": 5,
+        "source": [
+          "aerial-187s",
+          "aerial-200s"
+        ]
+      }
+    },
+    {
+      "id": "plan-dorm-12",
+      "name": "12 号宿舍",
+      "pts": [
+        [
+          -141.08,
+          473.34
+        ],
+        [
+          -56.08,
+          473.34
+        ],
+        [
+          -56.08,
+          511.14
+        ],
+        [
+          -141.08,
+          511.14
+        ]
+      ],
+      "height": 22,
+      "type": "dorm",
+      "shape": {
+        "type": "rectangle"
+      },
+      "estimatedFloors": 6,
+      "heightEstimate": {
+        "metres": 22,
+        "confidence": "low",
+        "references": [
+          "ref05",
+          "ref17",
+          "aerial-187s",
+          "aerial-200s"
+        ],
+        "note": "航拍生活区可读六层及屋顶构架；同组宿舍统一采用约20米主体加2米构架，未逐栋核实编号与屋顶设备数量",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "dorm-roof-racks",
+        "floorBands": true,
+        "wallHeight": 20,
+        "rackTop": 22,
+        "wallFloors": 6,
+        "racks": 5,
+        "source": [
+          "aerial-187s",
+          "aerial-200s"
+        ]
+      }
+    },
+    {
+      "id": "plan-dorm-13",
+      "name": "13 号宿舍",
+      "pts": [
+        [
+          -142.07,
+          570.3
+        ],
+        [
+          -57.84,
+          570.3
+        ],
+        [
+          -57.84,
+          611.69
+        ],
+        [
+          -142.07,
+          611.69
+        ]
+      ],
+      "height": 22,
+      "type": "dorm",
+      "shape": {
+        "type": "rectangle"
+      },
+      "estimatedFloors": 6,
+      "heightEstimate": {
+        "metres": 22,
+        "confidence": "low",
+        "references": [
+          "ref05",
+          "ref17",
+          "aerial-187s",
+          "aerial-200s"
+        ],
+        "note": "航拍生活区可读六层及屋顶构架；同组宿舍统一采用约20米主体加2米构架，未逐栋核实编号与屋顶设备数量",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "dorm-roof-racks",
+        "floorBands": true,
+        "wallHeight": 20,
+        "rackTop": 22,
+        "wallFloors": 6,
+        "racks": 5,
+        "source": [
+          "aerial-187s",
+          "aerial-200s"
+        ]
+      }
+    },
+    {
+      "id": "plan-teachers",
+      "name": "教师公寓",
+      "pts": [
+        [
+          -139.76,
+          517.02
+        ],
+        [
+          -55.99,
+          517.02
+        ],
+        [
+          -55.99,
+          557.07
+        ],
+        [
+          -139.76,
+          557.07
+        ]
+      ],
+      "height": 22,
+      "type": "dorm",
+      "shape": {
+        "type": "rectangle"
+      },
+      "estimatedFloors": 6,
+      "heightEstimate": {
+        "metres": 22,
+        "confidence": "low",
+        "references": [
+          "ref05",
+          "ref17",
+          "aerial-187s",
+          "aerial-200s"
+        ],
+        "note": "教师公寓缺少独立对应实景；暂采用生活区同类六层级模型，编号和高度仍待确认",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "dorm-roof-racks",
+        "floorBands": true,
+        "wallHeight": 20,
+        "rackTop": 22,
+        "wallFloors": 6,
+        "racks": 5,
+        "source": [
+          "aerial-187s",
+          "aerial-200s"
+        ]
+      }
+    },
+    {
+      "id": "plan-service-1",
+      "name": "电信服务",
+      "pts": [
+        [
+          335.62,
+          621.56
+        ],
+        [
+          422.19,
+          621.56
+        ],
+        [
+          422.19,
+          648.98
+        ],
+        [
+          335.62,
+          648.98
+        ]
+      ],
+      "height": 4,
+      "type": "service",
+      "shape": {
+        "type": "rectangle"
+      },
+      "estimatedFloors": 1,
+      "heightEstimate": {
+        "metres": 4,
+        "confidence": "low",
+        "references": [
+          "ref17"
+        ],
+        "note": "生活服务低层体量估计",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "plain",
+        "floorBands": true
+      }
+    },
+    {
+      "id": "plan-service-2",
+      "name": "联通营业厅",
+      "pts": [
+        [
+          335.72,
+          591.8
+        ],
+        [
+          421.82,
+          591.8
+        ],
+        [
+          421.82,
+          620.89
+        ],
+        [
+          335.72,
+          620.89
+        ]
+      ],
+      "height": 4,
+      "type": "service",
+      "shape": {
+        "type": "rectangle"
+      },
+      "estimatedFloors": 1,
+      "heightEstimate": {
+        "metres": 4,
+        "confidence": "low",
+        "references": [
+          "ref17"
+        ],
+        "note": "生活服务低层体量估计",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "plain",
+        "floorBands": true
+      }
+    },
+    {
+      "id": "plan-service-3",
+      "name": "移动营业厅",
+      "pts": [
+        [
+          334.97,
+          562.57
+        ],
+        [
+          422.28,
+          562.57
+        ],
+        [
+          422.28,
+          590.15
+        ],
+        [
+          334.97,
+          590.15
+        ]
+      ],
+      "height": 4,
+      "type": "service",
+      "shape": {
+        "type": "rectangle"
+      },
+      "estimatedFloors": 1,
+      "heightEstimate": {
+        "metres": 4,
+        "confidence": "low",
+        "references": [
+          "ref17"
+        ],
+        "note": "生活服务低层体量估计",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "plain",
+        "floorBands": true
+      }
+    },
+    {
+      "id": "business",
+      "name": "商学院",
+      "pts": [
+        [
+          199.57,
+          258.14
+        ],
+        [
+          309.05,
+          258.14
+        ],
+        [
+          309.05,
+          293.11
+        ],
+        [
+          199.57,
+          293.11
+        ]
+      ],
+      "height": 17,
+      "type": "teaching",
+      "shape": {
+        "type": "rectangle"
+      },
+      "estimatedFloors": 4,
+      "heightEstimate": {
+        "metres": 17,
+        "confidence": "low",
+        "references": [
+          "ref03",
+          "ref06",
+          "ref14"
+        ],
+        "note": "同校区教学/学院楼多数为四层级翼楼，未确认字母与楼名一一对应",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "teaching-block",
+        "floorBands": true,
+        "source": [
+          "aerial-112s",
+          "aerial-137s"
+        ]
+      }
+    },
+    {
+      "id": "career",
+      "name": "招生就业指导中心",
+      "pts": [
+        [
+          391.51,
+          237.56
+        ],
+        [
+          418.99,
+          237.56
+        ],
+        [
+          418.99,
+          287.42
+        ],
+        [
+          317.21,
+          287.42
+        ],
+        [
+          317.21,
+          261.49
+        ],
+        [
+          391.51,
+          261.49
+        ]
+      ],
+      "height": 9,
+      "type": "admin",
+      "shape": {
+        "type": "L"
+      },
+      "estimatedFloors": 2,
+      "heightEstimate": {
+        "metres": 9,
+        "confidence": "low",
+        "references": [
+          "ref17"
+        ],
+        "note": "低层附属楼，延用模型相对层级并降低不必要高差",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "plain",
+        "floorBands": true
+      }
+    },
+    {
+      "id": "backup-b",
+      "name": "备用教学楼 B",
+      "pts": [
+        [
+          227.44,
+          221.3
+        ],
+        [
+          307.87,
+          221.3
+        ],
+        [
+          307.87,
+          250.75
+        ],
+        [
+          227.44,
+          250.75
+        ]
+      ],
+      "height": 13,
+      "type": "teaching",
+      "shape": {
+        "type": "rectangle"
+      },
+      "estimatedFloors": 3,
+      "heightEstimate": {
+        "metres": 13,
+        "confidence": "low",
+        "references": [
+          "ref17"
+        ],
+        "note": "低层教学体量估计",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "teaching-block",
+        "floorBands": true,
+        "source": [
+          "aerial-112s",
+          "aerial-137s"
+        ]
+      }
+    },
+    {
+      "id": "backup-c",
+      "name": "备用教学楼 C",
+      "pts": [
+        [
+          314.54,
+          194.5
+        ],
+        [
+          405.9,
+          194.5
+        ],
+        [
+          405.9,
+          227.56
+        ],
+        [
+          314.54,
+          227.56
+        ]
+      ],
+      "height": 13,
+      "type": "teaching",
+      "shape": {
+        "type": "rectangle"
+      },
+      "estimatedFloors": 3,
+      "heightEstimate": {
+        "metres": 13,
+        "confidence": "low",
+        "references": [
+          "ref17"
+        ],
+        "note": "低层教学体量估计",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "teaching-block",
+        "floorBands": true,
+        "source": [
+          "aerial-112s",
+          "aerial-137s"
+        ]
+      }
+    },
+    {
+      "id": "telecom-college",
+      "name": "电信学院",
+      "pts": [
+        [
+          691.89,
+          256.8
+        ],
+        [
+          849.87,
+          256.8
+        ],
+        [
+          849.87,
+          292.14
+        ],
+        [
+          691.89,
+          292.14
+        ]
+      ],
+      "height": 17,
+      "type": "teaching",
+      "shape": {
+        "type": "rectangle"
+      },
+      "estimatedFloors": 4,
+      "heightEstimate": {
+        "metres": 17,
+        "confidence": "low",
+        "references": [
+          "ref03",
+          "ref06",
+          "ref14"
+        ],
+        "note": "同校区教学/学院楼多数为四层级翼楼，未确认字母与楼名一一对应",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "teaching-block",
+        "floorBands": true,
+        "source": [
+          "aerial-112s",
+          "aerial-137s"
+        ]
+      }
+    },
+    {
+      "id": "power-institute",
+      "name": "智能电力研究院",
+      "pts": [
+        [
+          572.31,
+          231.1
+        ],
+        [
+          684.72,
+          231.1
+        ],
+        [
+          684.72,
+          259.32
+        ],
+        [
+          572.31,
+          259.32
+        ]
+      ],
+      "height": 16,
+      "type": "research",
+      "shape": {
+        "type": "rectangle"
+      },
+      "estimatedFloors": 4,
+      "heightEstimate": {
+        "metres": 16,
+        "confidence": "low",
+        "references": [
+          "ref17"
+        ],
+        "note": "同片区研究用楼估计",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "plain",
+        "floorBands": true
+      }
+    },
+    {
+      "id": "server-room",
+      "name": "机房",
+      "pts": [
+        [
+          691.66,
+          200.33
+        ],
+        [
+          806.98,
+          200.33
+        ],
+        [
+          806.98,
+          231.93
+        ],
+        [
+          691.66,
+          231.93
+        ]
+      ],
+      "height": 9,
+      "type": "teaching",
+      "shape": {
+        "type": "rectangle"
+      },
+      "estimatedFloors": 2,
+      "heightEstimate": {
+        "metres": 9,
+        "confidence": "low",
+        "references": [
+          "ref17"
+        ],
+        "note": "低层机房估计",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "teaching-block",
+        "floorBands": true,
+        "source": [
+          "aerial-112s",
+          "aerial-137s"
+        ]
+      }
+    },
+    {
+      "id": "metallurgy",
+      "name": "冶金材料楼",
+      "pts": [
+        [
+          808.62,
+          166.34
+        ],
+        [
+          895.35,
+          166.34
+        ],
+        [
+          895.35,
+          244.13
+        ],
+        [
+          808.62,
+          244.13
+        ],
+        [
+          808.62,
+          219.24
+        ],
+        [
+          871.93,
+          219.24
+        ],
+        [
+          871.93,
+          191.23
+        ],
+        [
+          808.62,
+          191.23
+        ]
+      ],
+      "height": 13,
+      "type": "teaching",
+      "shape": {
+        "type": "C"
+      },
+      "estimatedFloors": 3,
+      "heightEstimate": {
+        "metres": 13,
+        "confidence": "low",
+        "references": [
+          "ref17"
+        ],
+        "note": "学院实验楼估计",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "teaching-block",
+        "floorBands": true,
+        "source": [
+          "aerial-112s",
+          "aerial-137s"
+        ]
+      }
+    },
+    {
+      "id": "ship-civil",
+      "name": "船海土木楼",
+      "pts": [
+        [
+          792.1,
+          105.61
+        ],
+        [
+          905.45,
+          105.61
+        ],
+        [
+          905.45,
+          138.1
+        ],
+        [
+          792.1,
+          138.1
+        ]
+      ],
+      "height": 17,
+      "type": "teaching",
+      "shape": {
+        "type": "rectangle"
+      },
+      "estimatedFloors": 4,
+      "heightEstimate": {
+        "metres": 17,
+        "confidence": "low",
+        "references": [
+          "ref03",
+          "ref06",
+          "ref14"
+        ],
+        "note": "同校区教学/学院楼多数为四层级翼楼，未确认字母与楼名一一对应",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "teaching-block",
+        "floorBands": true,
+        "source": [
+          "aerial-112s",
+          "aerial-137s"
+        ]
+      },
+      "aliases": [
+        "船海土木楼",
+        "船海楼",
+        "海纳楼",
+        "航海楼",
+        "机动院办公室"
+      ]
+    },
+    {
+      "id": "mechanical",
+      "name": "机动学院",
+      "pts": [
+        [
+          792.98,
+          37.04
+        ],
+        [
+          910.84,
+          37.04
+        ],
+        [
+          910.84,
+          103.81
+        ],
+        [
+          877.84,
+          103.81
+        ],
+        [
+          877.84,
+          65.08
+        ],
+        [
+          792.98,
+          65.08
+        ]
+      ],
+      "height": 21,
+      "type": "teaching",
+      "shape": {
+        "type": "L"
+      },
+      "estimatedFloors": 5,
+      "heightEstimate": {
+        "metres": 21,
+        "confidence": "low",
+        "references": [
+          "ref17"
+        ],
+        "note": "相对较高学院楼估计",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "teaching-block",
+        "floorBands": true,
+        "source": [
+          "aerial-112s",
+          "aerial-137s"
+        ]
+      }
+    },
+    {
+      "id": "training-center",
+      "name": "工程实训中心",
+      "pts": [
+        [
+          653.62,
+          5.65
+        ],
+        [
+          738.44,
+          5.65
+        ],
+        [
+          738.44,
+          87.41
+        ],
+        [
+          653.62,
+          87.41
+        ],
+        [
+          653.62,
+          61.25
+        ],
+        [
+          715.54,
+          61.25
+        ],
+        [
+          715.54,
+          31.81
+        ],
+        [
+          653.62,
+          31.81
+        ]
+      ],
+      "height": 11,
+      "type": "workshop",
+      "shape": {
+        "type": "C"
+      },
+      "estimatedFloors": 2,
+      "heightEstimate": {
+        "metres": 11,
+        "confidence": "low",
+        "references": [
+          "ref17"
+        ],
+        "note": "实训厂房高层高、低层数体量估计",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "plain",
+        "floorBands": true
+      }
+    },
+    {
+      "id": "osm-260623023",
+      "name": "行政楼",
+      "pts": [
+        [
+          351.42,
+          88.0
+        ],
+        [
+          478.08,
+          88.0
+        ],
+        [
+          478.08,
+          136.25
+        ],
+        [
+          351.42,
+          136.25
+        ]
+      ],
+      "height": 34,
+      "type": "admin",
+      "shape": {
+        "type": "rectangle"
+      },
+      "estimatedFloors": 8,
+      "heightEstimate": {
+        "metres": 34,
+        "confidence": "medium",
+        "references": [
+          "ref18",
+          "ref20",
+          "aerial-025s"
+        ],
+        "note": "航拍可见主体约8–9层级，顶部有开敞框架；总高约34米为估算，主体27米加顶部7米仅为造型分段",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "open-roof-frame",
+        "floorBands": true,
+        "wallHeight": 27,
+        "frameTop": 34,
+        "columns": 9,
+        "wallFloors": 6,
+        "source": [
+          "aerial-025s",
+          "ref18"
+        ]
+      }
+    },
+    {
+      "id": "osm-260623230",
+      "name": "报告厅",
+      "pts": [
+        [
+          352.0,
+          112.0
+        ],
+        [
+          351.96,
+          113.08
+        ],
+        [
+          351.84,
+          114.16
+        ],
+        [
+          351.63,
+          115.23
+        ],
+        [
+          351.35,
+          116.29
+        ],
+        [
+          350.98,
+          117.35
+        ],
+        [
+          350.54,
+          118.39
+        ],
+        [
+          350.01,
+          119.41
+        ],
+        [
+          349.41,
+          120.42
+        ],
+        [
+          348.74,
+          121.41
+        ],
+        [
+          347.99,
+          122.37
+        ],
+        [
+          347.16,
+          123.31
+        ],
+        [
+          346.27,
+          124.22
+        ],
+        [
+          345.31,
+          125.11
+        ],
+        [
+          344.28,
+          125.96
+        ],
+        [
+          343.19,
+          126.77
+        ],
+        [
+          342.04,
+          127.56
+        ],
+        [
+          340.83,
+          128.3
+        ],
+        [
+          339.57,
+          129.01
+        ],
+        [
+          338.25,
+          129.67
+        ],
+        [
+          336.89,
+          130.29
+        ],
+        [
+          335.48,
+          130.87
+        ],
+        [
+          334.03,
+          131.4
+        ],
+        [
+          332.54,
+          131.89
+        ],
+        [
+          331.01,
+          132.33
+        ],
+        [
+          329.45,
+          132.71
+        ],
+        [
+          327.87,
+          133.05
+        ],
+        [
+          326.26,
+          133.34
+        ],
+        [
+          324.63,
+          133.58
+        ],
+        [
+          322.99,
+          133.76
+        ],
+        [
+          321.33,
+          133.89
+        ],
+        [
+          319.67,
+          133.97
+        ],
+        [
+          318.0,
+          134.0
+        ],
+        [
+          316.33,
+          133.97
+        ],
+        [
+          314.67,
+          133.89
+        ],
+        [
+          313.01,
+          133.76
+        ],
+        [
+          311.37,
+          133.58
+        ],
+        [
+          309.74,
+          133.34
+        ],
+        [
+          308.13,
+          133.05
+        ],
+        [
+          306.55,
+          132.71
+        ],
+        [
+          304.99,
+          132.33
+        ],
+        [
+          303.46,
+          131.89
+        ],
+        [
+          301.97,
+          131.4
+        ],
+        [
+          300.52,
+          130.87
+        ],
+        [
+          299.11,
+          130.29
+        ],
+        [
+          297.75,
+          129.67
+        ],
+        [
+          296.43,
+          129.01
+        ],
+        [
+          295.17,
+          128.3
+        ],
+        [
+          293.96,
+          127.56
+        ],
+        [
+          292.81,
+          126.77
+        ],
+        [
+          291.72,
+          125.96
+        ],
+        [
+          290.69,
+          125.11
+        ],
+        [
+          289.73,
+          124.22
+        ],
+        [
+          288.84,
+          123.31
+        ],
+        [
+          288.01,
+          122.37
+        ],
+        [
+          287.26,
+          121.41
+        ],
+        [
+          286.59,
+          120.42
+        ],
+        [
+          285.99,
+          119.41
+        ],
+        [
+          285.46,
+          118.39
+        ],
+        [
+          285.02,
+          117.35
+        ],
+        [
+          284.65,
+          116.29
+        ],
+        [
+          284.37,
+          115.23
+        ],
+        [
+          284.16,
+          114.16
+        ],
+        [
+          284.04,
+          113.08
+        ],
+        [
+          284.0,
+          112.0
+        ],
+        [
+          284.04,
+          110.92
+        ],
+        [
+          284.16,
+          109.84
+        ],
+        [
+          284.37,
+          108.77
+        ],
+        [
+          284.65,
+          107.71
+        ],
+        [
+          285.02,
+          106.65
+        ],
+        [
+          285.46,
+          105.61
+        ],
+        [
+          285.99,
+          104.59
+        ],
+        [
+          286.59,
+          103.58
+        ],
+        [
+          287.26,
+          102.59
+        ],
+        [
+          288.01,
+          101.63
+        ],
+        [
+          288.84,
+          100.69
+        ],
+        [
+          289.73,
+          99.78
+        ],
+        [
+          290.69,
+          98.89
+        ],
+        [
+          291.72,
+          98.04
+        ],
+        [
+          292.81,
+          97.23
+        ],
+        [
+          293.96,
+          96.44
+        ],
+        [
+          295.17,
+          95.7
+        ],
+        [
+          296.43,
+          94.99
+        ],
+        [
+          297.75,
+          94.33
+        ],
+        [
+          299.11,
+          93.71
+        ],
+        [
+          300.52,
+          93.13
+        ],
+        [
+          301.97,
+          92.6
+        ],
+        [
+          303.46,
+          92.11
+        ],
+        [
+          304.99,
+          91.67
+        ],
+        [
+          306.55,
+          91.29
+        ],
+        [
+          308.13,
+          90.95
+        ],
+        [
+          309.74,
+          90.66
+        ],
+        [
+          311.37,
+          90.42
+        ],
+        [
+          313.01,
+          90.24
+        ],
+        [
+          314.67,
+          90.11
+        ],
+        [
+          316.33,
+          90.03
+        ],
+        [
+          318.0,
+          90.0
+        ],
+        [
+          319.67,
+          90.03
+        ],
+        [
+          321.33,
+          90.11
+        ],
+        [
+          322.99,
+          90.24
+        ],
+        [
+          324.63,
+          90.42
+        ],
+        [
+          326.26,
+          90.66
+        ],
+        [
+          327.87,
+          90.95
+        ],
+        [
+          329.45,
+          91.29
+        ],
+        [
+          331.01,
+          91.67
+        ],
+        [
+          332.54,
+          92.11
+        ],
+        [
+          334.03,
+          92.6
+        ],
+        [
+          335.48,
+          93.13
+        ],
+        [
+          336.89,
+          93.71
+        ],
+        [
+          338.25,
+          94.33
+        ],
+        [
+          339.57,
+          94.99
+        ],
+        [
+          340.83,
+          95.7
+        ],
+        [
+          342.04,
+          96.44
+        ],
+        [
+          343.19,
+          97.23
+        ],
+        [
+          344.28,
+          98.04
+        ],
+        [
+          345.31,
+          98.89
+        ],
+        [
+          346.27,
+          99.78
+        ],
+        [
+          347.16,
+          100.69
+        ],
+        [
+          347.99,
+          101.63
+        ],
+        [
+          348.74,
+          102.59
+        ],
+        [
+          349.41,
+          103.58
+        ],
+        [
+          350.01,
+          104.59
+        ],
+        [
+          350.54,
+          105.61
+        ],
+        [
+          350.98,
+          106.65
+        ],
+        [
+          351.35,
+          107.71
+        ],
+        [
+          351.63,
+          108.77
+        ],
+        [
+          351.84,
+          109.84
+        ],
+        [
+          351.96,
+          110.92
+        ]
+      ],
+      "height": 8,
+      "type": "admin",
+      "shape": {
+        "type": "ellipse",
+        "center": [
+          318,
+          112
+        ],
+        "radii": [
+          34,
+          22
+        ],
+        "symmetryAxes": [
+          "x",
+          "y"
+        ]
+      },
+      "estimatedFloors": 1,
+      "heightEstimate": {
+        "metres": 8,
+        "confidence": "low",
+        "references": [
+          "ref17"
+        ],
+        "note": "行政楼旁低层报告厅，暂无独立清晰实景，仅作低矮体量",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "plain",
+        "floorBands": true
+      },
+      "shapeBasis": "User correction: symmetric low ellipse attached to the west (left in north-up view) side of the administration building."
+    },
+    {
+      "id": "context-student-center",
+      "name": "大学生活动中心",
+      "pts": [
+        [
+          -143.8,
+          343.52
+        ],
+        [
+          -49.85,
+          343.52
+        ],
+        [
+          -49.85,
+          440.14
+        ],
+        [
+          -143.8,
+          440.14
+        ]
+      ],
+      "height": 14,
+      "type": "context",
+      "shape": {
+        "type": "rectangle"
+      },
+      "estimatedFloors": 3,
+      "heightEstimate": {
+        "metres": 14,
+        "confidence": "low",
+        "references": [
+          "ref17"
+        ],
+        "note": "校外侧活动中心估计",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "plain",
+        "floorBands": true
+      }
+    },
+    {
+      "id": "plan-sport-stand",
+      "name": "运动场附属建筑",
+      "pts": [
+        [
+          708.1,
+          542.06
+        ],
+        [
+          743.66,
+          542.06
+        ],
+        [
+          743.66,
+          739.09
+        ],
+        [
+          708.1,
+          739.09
+        ]
+      ],
+      "height": 5,
+      "type": "service",
+      "selectable": false,
+      "shape": {
+        "type": "rectangle"
+      },
+      "estimatedFloors": 1,
+      "heightEstimate": {
+        "metres": 5,
+        "confidence": "medium",
+        "references": [
+          "ref22"
+        ],
+        "note": "露天看台附属体量，按看台高差估计",
+        "surveyed": false
+      },
+      "modelDetails": {
+        "type": "plain",
+        "floorBands": true
+      }
+    }
+  ],
+  "contextBuildings": [],
+  "roads": [
+    {
+      "pts": [
+        [
+          -12.21,
+          811.42
+        ],
+        [
+          982.12,
+          814.4
+        ]
+      ],
+      "width": 18,
+      "name": "北二环路"
+    },
+    {
+      "pts": [
+        [
+          975.06,
+          794.26
+        ],
+        [
+          980.4,
+          -34.17
+        ]
+      ],
+      "width": 20,
+      "name": "华昌路"
+    },
+    {
+      "pts": [
+        [
+          -10.66,
+          -27.47
+        ],
+        [
+          984.99,
+          -23.91
+        ]
+      ],
+      "width": 18,
+      "name": "长兴路"
+    },
+    {
+      "pts": [
+        [
+          -13.51,
+          806.0
+        ],
+        [
+          -19.8,
+          -18.7
+        ]
+      ],
+      "width": 18,
+      "name": "沙洲湖东路"
+    },
+    {
+      "pts": [
+        [
+          168.9,
+          758.34
+        ],
+        [
+          926.44,
+          766.74
+        ],
+        [
+          931.67,
+          22.89
+        ],
+        [
+          30.1,
+          15.71
+        ]
+      ],
+      "width": 10,
+      "name": ""
+    },
+    {
+      "pts": [
+        [
+          521.33,
+          769.73
+        ],
+        [
+          518.33,
+          476.36
+        ],
+        [
+          510.59,
+          389.06
+        ]
+      ],
+      "width": 18,
+      "name": ""
+    },
+    {
+      "pts": [
+        [
+          512.35,
+          235.06
+        ],
+        [
+          508.7,
+          -2.75
+        ]
+      ],
+      "width": 18,
+      "name": ""
+    },
+    {
+      "pts": [
+        [
+          -5.37,
+          479.95
+        ],
+        [
+          476.17,
+          473.11
+        ]
+      ],
+      "width": 17,
+      "name": ""
+    },
+    {
+      "pts": [
+        [
+          540.6,
+          475.05
+        ],
+        [
+          931.29,
+          477.97
+        ]
+      ],
+      "width": 17,
+      "name": ""
+    },
+    {
+      "pts": [
+        [
+          162.82,
+          316.67
+        ],
+        [
+          439.16,
+          317.69
+        ]
+      ],
+      "width": 11,
+      "name": ""
+    },
+    {
+      "pts": [
+        [
+          582.27,
+          317.65
+        ],
+        [
+          920.1,
+          316.84
+        ]
+      ],
+      "width": 11,
+      "name": ""
+    },
+    {
+      "pts": [
+        [
+          518.64,
+          150.51
+        ],
+        [
+          926.15,
+          151.16
+        ]
+      ],
+      "width": 10,
+      "name": ""
+    },
+    {
+      "pts": [
+        [
+          159.53,
+          469.67
+        ],
+        [
+          157.84,
+          271.17
+        ],
+        [
+          171.12,
+          201.23
+        ],
+        [
+          210.53,
+          168.9
+        ],
+        [
+          327.98,
+          148.27
+        ],
+        [
+          451.03,
+          147.96
+        ]
+      ],
+      "width": 10,
+      "name": ""
+    },
+    {
+      "pts": [
+        [
+          159.62,
+          471.37
+        ],
+        [
+          174.01,
+          757.37
+        ]
+      ],
+      "width": 8,
+      "name": ""
+    },
+    {
+      "pts": [
+        [
+          310.92,
+          482.51
+        ],
+        [
+          311.16,
+          755.39
+        ]
+      ],
+      "width": 8,
+      "name": ""
+    },
+    {
+      "pts": [
+        [
+          543.24,
+          460.04
+        ],
+        [
+          903.32,
+          452.59
+        ]
+      ],
+      "width": 7,
+      "name": ""
+    },
+    {
+      "pts": [
+        [
+          590,
+          334.46
+        ],
+        [
+          908.51,
+          329.68
+        ]
+      ],
+      "width": 7,
+      "name": "",
+      "calibrationNote": "Start at the outside of the library ring road; do not cross its footprint."
+    },
+    {
+      "pts": [
+        [
+          426.8,
+          467.47
+        ],
+        [
+          439.29,
+          416.65
+        ],
+        [
+          440.33,
+          346.35
+        ]
+      ],
+      "width": 7,
+      "name": ""
+    },
+    {
+      "pts": [
+        [
+          586.68,
+          312.41
+        ],
+        [
+          586.14,
+          303.7
+        ],
+        [
+          584.33,
+          295.13
+        ],
+        [
+          581.29,
+          286.85
+        ],
+        [
+          577.06,
+          279.01
+        ],
+        [
+          571.71,
+          271.73
+        ],
+        [
+          565.33,
+          265.14
+        ],
+        [
+          558.01,
+          259.37
+        ],
+        [
+          549.9,
+          254.51
+        ],
+        [
+          541.12,
+          250.65
+        ],
+        [
+          531.82,
+          247.87
+        ],
+        [
+          522.18,
+          246.21
+        ],
+        [
+          512.35,
+          245.71
+        ],
+        [
+          502.5,
+          246.37
+        ],
+        [
+          492.82,
+          248.2
+        ],
+        [
+          483.48,
+          251.15
+        ],
+        [
+          474.63,
+          255.17
+        ],
+        [
+          466.43,
+          260.2
+        ],
+        [
+          459.03,
+          266.14
+        ],
+        [
+          452.57,
+          272.89
+        ],
+        [
+          447.14,
+          280.33
+        ],
+        [
+          442.84,
+          288.33
+        ],
+        [
+          439.75,
+          296.74
+        ],
+        [
+          437.91,
+          305.42
+        ],
+        [
+          437.35,
+          314.22
+        ],
+        [
+          438.09,
+          322.98
+        ],
+        [
+          440.09,
+          331.55
+        ],
+        [
+          443.33,
+          339.79
+        ],
+        [
+          447.74,
+          347.55
+        ],
+        [
+          453.24,
+          354.7
+        ],
+        [
+          459.73,
+          361.14
+        ],
+        [
+          467.1,
+          366.74
+        ],
+        [
+          475.22,
+          371.42
+        ],
+        [
+          483.96,
+          375.1
+        ],
+        [
+          493.16,
+          377.72
+        ],
+        [
+          502.67,
+          379.25
+        ],
+        [
+          512.33,
+          379.66
+        ],
+        [
+          521.98,
+          378.94
+        ],
+        [
+          531.46,
+          377.11
+        ],
+        [
+          540.61,
+          374.21
+        ],
+        [
+          549.28,
+          370.27
+        ],
+        [
+          557.33,
+          365.36
+        ],
+        [
+          564.62,
+          359.58
+        ],
+        [
+          571.03,
+          353.0
+        ],
+        [
+          576.45,
+          345.74
+        ],
+        [
+          580.8,
+          337.91
+        ],
+        [
+          583.98,
+          329.66
+        ],
+        [
+          585.96,
+          321.11
+        ],
+        [
+          586.68,
+          312.41
+        ]
+      ],
+      "width": 11,
+      "name": ""
+    }
+  ],
+  "paths": [],
+  "manualPaths": [],
+  "waters": [
+    {
+      "pts": [
+        [
+          437.57,
+          736.78
+        ],
+        [
+          433.21,
+          647.54
+        ],
+        [
+          425.59,
+          510.76
+        ],
+        [
+          427.49,
+          453.19
+        ],
+        [
+          441.78,
+          403.85
+        ],
+        [
+          438.78,
+          367.09
+        ],
+        [
+          425.08,
+          325.72
+        ],
+        [
+          418.29,
+          281.07
+        ],
+        [
+          436.51,
+          232.96
+        ],
+        [
+          428.9,
+          194.38
+        ],
+        [
+          398.72,
+          170.02
+        ],
+        [
+          345.44,
+          150.07
+        ],
+        [
+          292,
+          150.07
+        ],
+        [
+          274,
+          140
+        ],
+        [
+          266,
+          112
+        ],
+        [
+          276,
+          86
+        ],
+        [
+          310,
+          62
+        ],
+        [
+          322.55,
+          6.64
+        ],
+        [
+          337.52,
+          6.73
+        ],
+        [
+          325,
+          70
+        ],
+        [
+          290,
+          96
+        ],
+        [
+          281,
+          112
+        ],
+        [
+          286,
+          130
+        ],
+        [
+          300,
+          138
+        ],
+        [
+          360.09,
+          150.03
+        ],
+        [
+          413.23,
+          169.96
+        ],
+        [
+          443.31,
+          194.3
+        ],
+        [
+          450.84,
+          232.85
+        ],
+        [
+          432.56,
+          280.92
+        ],
+        [
+          439.24,
+          325.53
+        ],
+        [
+          452.84,
+          366.88
+        ],
+        [
+          455.76,
+          403.61
+        ],
+        [
+          441.4,
+          452.91
+        ],
+        [
+          439.39,
+          510.44
+        ],
+        [
+          446.72,
+          647.12
+        ],
+        [
+          450.9,
+          736.3
+        ]
+      ]
+    }
+  ],
+  "features": [
+    {
+      "name": "教学区停车场",
+      "center": [
+        255.365,
+        422.555
+      ],
+      "w": 108.39000000000001,
+      "h": 36.25
+    },
+    {
+      "name": "东南停车场",
+      "center": [
+        630.265,
+        194.665
+      ],
+      "w": 120.49000000000001,
+      "h": 44.370000000000005
+    },
+    {
+      "name": "南区停车场",
+      "center": [
+        661.075,
+        118.005
+      ],
+      "w": 177.25,
+      "h": 37.47000000000001
+    },
+    {
+      "name": "球场",
+      "center": [
+        625.0,
+        648.525
+      ],
+      "w": 36.42000000000007,
+      "h": 56.049999999999955
+    },
+    {
+      "name": "球场",
+      "center": [
+        625.84,
+        597.935
+      ],
+      "w": 36.700000000000045,
+      "h": 56.770000000000095
+    },
+    {
+      "name": "球场",
+      "center": [
+        666.1949999999999,
+        647.22
+      ],
+      "w": 36.59000000000003,
+      "h": 55.91999999999996
+    },
+    {
+      "name": "球场",
+      "center": [
+        667.3399999999999,
+        596.74
+      ],
+      "w": 36.860000000000014,
+      "h": 56.639999999999986
+    },
+    {
+      "name": "球场",
+      "center": [
+        744.2650000000001,
+        512.955
+      ],
+      "w": 39.110000000000014,
+      "h": 52.75000000000006
+    },
+    {
+      "name": "球场",
+      "center": [
+        788.995,
+        511.88
+      ],
+      "w": 39.23000000000002,
+      "h": 52.62000000000006
+    },
+    {
+      "name": "球场",
+      "center": [
+        833.4849999999999,
+        510.80999999999995
+      ],
+      "w": 39.370000000000005,
+      "h": 52.47999999999996
+    },
+    {
+      "name": "球场",
+      "center": [
+        877.75,
+        509.75
+      ],
+      "w": 39.5,
+      "h": 52.35999999999996
+    },
+    {
+      "name": "球场",
+      "center": [
+        47.535000000000004,
+        306.385
+      ],
+      "w": 38.730000000000004,
+      "h": 47.05000000000001
+    },
+    {
+      "name": "球场",
+      "center": [
+        44.09,
+        253.16000000000003
+      ],
+      "w": 39.0,
+      "h": 47.62000000000003
+    },
+    {
+      "name": "球场",
+      "center": [
+        93.8,
+        305.86
+      ],
+      "w": 38.81999999999999,
+      "h": 46.920000000000016
+    },
+    {
+      "name": "球场",
+      "center": [
+        90.705,
+        252.765
+      ],
+      "w": 39.09,
+      "h": 47.48999999999998
+    }
+  ],
+  "tracks": [
+    {
+      "name": "东侧田径场",
+      "center": [
+        813.87,
+        646.49
+      ],
+      "long": 183.84029808505,
+      "short": 101.49172971232686,
+      "angle": 0
+    },
+    {
+      "name": "西南运动场",
+      "center": [
+        97.01,
+        126.43
+      ],
+      "long": 163.48020308281977,
+      "short": 88.62008124573119,
+      "angle": 0
+    }
+  ],
+  "bounds": {
+    "x": [
+      -155,
+      1010
+    ],
+    "y": [
+      -30,
+      835
+    ]
+  },
+  "presentation": {
+    "type": "isometric",
+    "yaw": 45,
+    "elev": 35.264389682754654,
+    "lighting": "uniform white ambient with shallow gray contact shading"
+  },
+  "zones": [
+    {
+      "id": "plan-commercial-plaza",
+      "name": "商业区 · 广场",
+      "pts": [
+        [
+          190.24,
+          585.06
+        ],
+        [
+          224.19,
+          585.06
+        ],
+        [
+          224.19,
+          664.81
+        ],
+        [
+          190.24,
+          664.81
+        ]
+      ],
+      "type": "commercial",
+      "outline": "dashed"
+    },
+    {
+      "id": "plan-commercial",
+      "name": "商业区 · 商业街",
+      "pts": [
+        [
+          231.96,
+          581.08
+        ],
+        [
+          282.64,
+          581.08
+        ],
+        [
+          282.64,
+          664.17
+        ],
+        [
+          231.96,
+          664.17
+        ]
+      ],
+      "type": "commercial",
+      "outline": "dashed"
+    }
+  ]
+}

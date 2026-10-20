@@ -1,0 +1,23 @@
+.course-term-progress{padding:18px 0 20px;margin:16px 0 8px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.course-term-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;font-size:13px}
+.course-term-count{font-size:23px;line-height:1.25;font-weight:500;font-variant-numeric:tabular-nums}
+.course-term-meta{margin:7px 0 14px;font-size:12px;line-height:1.6;color:var(--ink-2)}
+.course-term-matrix{display:flex;flex-wrap:wrap;gap:5px;max-height:150px;overflow:auto;padding:1px 0 3px;align-content:flex-start}
+.course-term-dot{display:block;flex:0 0 6px;width:6px;height:6px;background:#999d9e;border-radius:0}
+.course-term-dot.is-upcoming,.course-term-dot.is-current{background:var(--preview-live-green,#22ef68)}
+.course-term-dot.is-current{animation:preview-class-breathe 3.8s ease-in-out infinite}
+.course-term-dot.is-event{background:transparent;box-shadow:inset 0 0 0 1px #999d9e}
+.course-term-dot.is-event.is-upcoming,.course-term-dot.is-event.is-current{box-shadow:inset 0 0 0 1px var(--preview-live-green,#22ef68)}
+.course-term-dot.is-pending{background:transparent;box-shadow:inset 0 0 0 1px var(--preview-live-green,#22ef68)}
+.course-term-key{display:flex;align-items:center;flex-wrap:wrap;gap:7px 14px;margin-top:12px;font-size:10px;line-height:1.6;color:var(--ink-2)}
+.course-term-key>span:not(.term-key-scale)::before{content:"";display:inline-block;vertical-align:middle;width:5px;height:5px;margin-right:5px;background:#999d9e}
+.course-term-key>span.term-key-upcoming::before,.course-term-key>span.term-key-current::before{background:var(--preview-live-green,#22ef68)}
+.course-term-key>span.term-key-current::before{animation:preview-class-breathe 3.8s ease-in-out infinite}
+.course-term-key>span.term-key-pending::before{background:none;box-shadow:inset 0 0 0 1px currentColor}
+.term-key-scale{margin-left:auto}
+.pixel-day-scene{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:160px;margin:32px 0 18px;padding:6px 0;contain:layout paint;pointer-events:none}
+.pixel-day-scene[hidden],html[data-appearance="custom"] .pixel-day-scene{display:none!important}
+.pixel-day-image{display:block;width:min(100%,360px);height:auto;aspect-ratio:2 / 1;object-fit:contain;border-radius:12px;image-rendering:pixelated}
+.pixel-day-caption{margin-top:8px;font-size:10px;line-height:1.5;letter-spacing:.18em;color:var(--ink-2)}
+@media(prefers-reduced-motion:reduce){.course-term-dot.is-current,.course-term-key>span.term-key-current::before{animation:none;opacity:1}}
+@media print{.pixel-day-scene{display:none}}

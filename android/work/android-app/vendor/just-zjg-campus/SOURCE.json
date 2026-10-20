@@ -1,0 +1,7 @@
+{
+  "source": "User-supplied just-zjg-campus-3d-webview.zip",
+  "sha256": "5f861ee43196861991cb40cae338a09a0973dbc124eaa4000e547643f3322dfe",
+  "geometry": "OpenStreetMap contributors, ODbL; manual approximate buildings as described in supplied README",
+  "buildingCount": 40,
+  "contextBuildingCount": 1
+}

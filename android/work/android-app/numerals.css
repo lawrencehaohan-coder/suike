@@ -1,0 +1,21 @@
+/* Numeric glyphs only. Chinese and Latin letters keep the existing UI font. */
+@font-face { font-family:'Suike Numbers';src:__SUIKE_NUMERAL_SRC__;font-style:normal;font-weight:100;font-display:swap;unicode-range:U+0025,U+002B-003A,U+2013-2014,U+2212; }
+@font-face { font-family:'Suike Numbers';src:__SUIKE_NUMERAL_SRC__;font-style:normal;font-weight:200;font-display:swap;unicode-range:U+0025,U+002B-003A,U+2013-2014,U+2212; }
+@font-face { font-family:'Suike Numbers';src:__SUIKE_NUMERAL_SRC__;font-style:normal;font-weight:300;font-display:swap;unicode-range:U+0025,U+002B-003A,U+2013-2014,U+2212; }
+@font-face { font-family:'Suike Numbers';src:__SUIKE_NUMERAL_SRC__;font-style:normal;font-weight:400;font-display:swap;unicode-range:U+0025,U+002B-003A,U+2013-2014,U+2212; }
+@font-face { font-family:'Suike Numbers';src:__SUIKE_NUMERAL_SRC__;font-style:normal;font-weight:500;font-display:swap;unicode-range:U+0025,U+002B-003A,U+2013-2014,U+2212; }
+@font-face { font-family:'Suike Numbers';src:__SUIKE_NUMERAL_SRC__;font-style:normal;font-weight:600;font-display:swap;unicode-range:U+0025,U+002B-003A,U+2013-2014,U+2212; }
+@font-face { font-family:'Suike Numbers';src:__SUIKE_NUMERAL_SRC__;font-style:normal;font-weight:700;font-display:swap;unicode-range:U+0025,U+002B-003A,U+2013-2014,U+2212; }
+@font-face { font-family:'Suike Numbers';src:__SUIKE_NUMERAL_SRC__;font-style:normal;font-weight:800;font-display:swap;unicode-range:U+0025,U+002B-003A,U+2013-2014,U+2212; }
+@font-face { font-family:'Suike Numbers';src:__SUIKE_NUMERAL_SRC__;font-style:normal;font-weight:900;font-display:swap;unicode-range:U+0025,U+002B-003A,U+2013-2014,U+2212; }
+:root {
+  --num:'Suike Numbers','SF Mono','Cascadia Mono','JetBrains Mono',Consolas,'Courier New',monospace;
+  --suike-ui-font:'Suike Numbers',system-ui,-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+body { font-family:var(--suike-ui-font); }
+input,select,textarea { font-family:inherit; }
+code,kbd,samp,pre { font-family:var(--num); }
+.inst-clock { font-weight:400;letter-spacing:.055em; }
+@media(min-width:360px) { .week-select-wrap { margin-left:6px; } }
+@media(min-width:360px) and (max-width:399px) { .week-range { font-size:10px; } }
+@media(max-width:359px) { .inst-clock { font-size:52px;letter-spacing:.035em; } }

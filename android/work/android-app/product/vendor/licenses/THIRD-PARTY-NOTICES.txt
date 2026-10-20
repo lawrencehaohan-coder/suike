@@ -1,0 +1,44 @@
+随课 / Suike — offline OCR third-party acknowledgements
+
+Tesseract4Android 4.9.0
+Copyright (C) 2019 Adaptech s.r.o., Robert Pösel
+Copyright (C) 2011 Google Inc.
+Copyright (C) 2011 Robert Theis
+Licensed under Apache License 2.0. See Tesseract4Android-LICENSE.txt.
+The Java/JNI bindings contain work from Tesseract4Android and tess-two.
+https://github.com/adaptech-cz/Tesseract4Android
+
+Tesseract OCR engine
+Bundled, unmodified native engine from the pinned Tesseract4Android AAR.
+Licensed under Apache License 2.0. See Tesseract-LICENSE.txt.
+https://github.com/tesseract-ocr/tesseract
+
+Chinese simplified model (chi_sim.traineddata)
+From tesseract-ocr/tessdata_fast, commit
+87416418657359cb625c412a48b6e1d6d41c29bd.
+Licensed under Apache License 2.0. See tessdata_fast-LICENSE.txt.
+https://github.com/tesseract-ocr/tessdata_fast
+
+Leptonica
+Copyright (C) 2001-2020 Leptonica. All rights reserved.
+BSD two-clause terms; see Leptonica-LICENSE.txt for the complete notice.
+https://github.com/DanBloomberg/leptonica
+
+PNG Reference Library / libpng
+Copyright (c) 1995-2025 The PNG Reference Library Authors, and the
+additional copyright holders listed in libpng-LICENSE.txt.
+PNG Reference Library License version 2 and historical notices are included.
+https://github.com/pnggroup/libpng
+
+Independent JPEG Group / libjpeg
+This software is based in part on the work of the Independent JPEG Group.
+Copyright (C) 1991-2024 Thomas G. Lane, Guido Vollbeding.
+The complete upstream README, including legal terms and disclaimers, is
+included unaltered as libjpeg-README.txt.
+https://ijg.org/
+
+The AAR and all JNI libraries are distributed without modification.
+License files come from the exact Tesseract4Android 4.9.0 source commit
+15c534717b1cb58261b58d4e4c1200c7f81f668c, or the pinned model commit.
+Original source locations and file hashes are recorded in licenses.lock.json.
+No OCR model or recognition result is uploaded by this offline OCR pipeline.

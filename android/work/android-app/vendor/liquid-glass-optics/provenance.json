@@ -1,0 +1,13 @@
+{
+  "repository": "https://github.com/LeonardSEO/liquid-glass-react",
+  "commit": "b857e5cd1ce3daf5599fc9a838364e591aa0c0e5",
+  "files": {
+    "LICENSE": "9e886199a0f61cf7c7f83184ba8d43bcfabce8d84a62a6a6856c038c207d5fd8",
+    "README.md": "a2811ec63fed2e8a431903d381c0b3eefcd8b43d6970a0ec47f974da215aebf7",
+    "package.json": "0d72286a22fbdd7e6ff20d342db6a5dc66c10d353e328a90ce9813f361e1d5e7",
+    "src/LiquidGlass.tsx": "0e2b48b41db58fc2a95c003a1e827951fa60b32f6c625ea96fac309a12db5171",
+    "src/index.ts": "fb4c4a17957ab2011b0276ab2d86be6019bc381b69e6e730775147beed7ee9d3",
+    "src/liquid-glass.css": "a9016295b167c9a9f880d251587f41d2b5c36e95587966aa714915ccda0e2d4d",
+    "src/maps.ts": "967cb0379b922886f24f8d88e7c6a9d820a9d11f9e6e477b4d907484a645c8f5"
+  }
+}

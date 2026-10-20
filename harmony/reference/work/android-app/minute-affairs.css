@@ -1,0 +1,59 @@
+/* Folded time indicators and bounded in-place task cards. No per-card blur or scroll work. */
+#weekGrid{position:relative}
+.week-plan-heading{display:block;margin-bottom:8px}
+.week-plan-heading h2{margin-bottom:10px}
+.week-affair-toolbar{width:100%;display:flex;align-items:center;justify-content:space-between;flex-wrap:nowrap;gap:8px}
+.week-affair-actions{display:flex;align-items:center;justify-content:flex-end;gap:6px}
+#weekView .week-toolbar-button{display:inline-flex;align-items:center;justify-content:center;flex:none;width:auto;min-width:0;height:44px;min-height:44px;margin:0;padding:8px 12px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink);font-family:inherit;font-size:12px;font-weight:500;line-height:1.3;letter-spacing:0;white-space:nowrap}
+#weekView .week-toolbar-button:disabled{opacity:.4;cursor:default}
+.week-affair-hint{margin:0 0 12px;color:var(--ink-2);font-size:11px;line-height:1.6}
+html[data-glass="on"] #weekView .week-toolbar-button{border-radius:999px;background:var(--lg-fill);border-color:transparent}
+html[data-appearance="custom"] #weekView .week-toolbar-button{border-radius:999px;background:var(--lg-content-tile);border-color:rgba(255,255,255,.32);color:#fff}
+html[data-appearance="custom"] .week-affair-hint{color:rgba(255,255,255,.86);text-shadow:0 1px 3px #000}
+.week-affairs-toggle[hidden]{display:none}
+.week-affairs-toggle[aria-expanded="true"]{text-decoration:underline;text-underline-offset:4px}
+.minute-gap,.minute-gap-time{border-bottom:1px solid var(--line-2);border-left:1px solid var(--line-2);min-width:0;min-height:0;pointer-events:none}
+.minute-gap{background:transparent;opacity:1}
+.minute-gap-time{border-left:0;border-right:1px solid var(--line-2)}
+#weekGrid .minute-time-mark{position:absolute;left:7px;right:7px;height:2px;border-radius:1px;background:var(--ink);opacity:.65;z-index:3;pointer-events:none;transform:translateY(-1px)}
+#weekGrid .minute-time-mark.is-in-class{left:auto;right:3px;width:12px}
+#weekGrid .minute-time-mark.has-conflict{background:var(--danger);opacity:.85}
+#weekGrid[data-minute-axis] .grid-day{position:relative;padding:2px 0 18px}
+#weekGrid[data-minute-axis] .grid-day span{line-height:13px}
+#weekGrid[data-minute-axis] .grid-day small{font-size:9px;line-height:11px}
+.minute-day-list{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;padding:0 0 2px;margin:0;border:0;background:none;color:inherit;cursor:pointer;min-height:44px;width:100%}
+.minute-day-count{font:9px/13px var(--num);border-bottom:1px solid var(--line);padding:0 3px}
+#weekGrid .minute-task-card{position:absolute;left:0;right:0;min-height:64px;max-height:160px;box-sizing:border-box;cursor:pointer;min-width:0;z-index:2}
+.minute-task-card .course-name{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;overflow-wrap:anywhere}
+.minute-task-card.is-short .course-name{-webkit-line-clamp:2}
+.minute-task-card .course-room{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1;overflow:hidden}
+.minute-task-card.is-short .course-room{display:none}
+.minute-task-card .minute-task-clock{display:block!important;flex-shrink:0;margin-top:auto;font-size:8px;line-height:1.3;white-space:nowrap;letter-spacing:0}
+.minute-task-clock span{display:block!important}
+.minute-gap-time{display:flex;flex-direction:column;justify-content:space-between;text-align:center;padding:3px 0;color:var(--ink-2);font:8px/11px var(--num);overflow:hidden}
+.minute-gap-time small{font:inherit}.minute-gap-time.is-folded{padding:0}
+.minute-list-dialog{max-width:480px}.minute-list{display:flex;flex-direction:column;gap:8px}
+.minute-event-row{width:100%;min-height:66px;padding:12px;display:flex;align-items:flex-start;gap:12px;border:1px solid var(--line);border-left:2px solid var(--ink);border-radius:5px;background:var(--card);color:var(--ink);text-align:left;cursor:pointer;font:inherit}
+.minute-event-info{flex:1;min-width:0}.minute-event-name{display:block;font-size:14px;line-height:1.45;font-weight:600;overflow-wrap:anywhere}
+.minute-event-meta{display:block;margin-top:3px;font:11px/1.5 var(--num);color:var(--ink-2);overflow-wrap:anywhere}
+.minute-event-conflict{display:block;margin-top:4px;color:var(--danger);font-size:11px;line-height:1.45;overflow-wrap:anywhere}
+.minute-event-chevron{font-size:18px;line-height:22px;opacity:.45;flex:none}
+.minute-day-list:focus-visible,.minute-event-row:focus-visible,.week-affairs-toggle:focus-visible{outline:2px solid currentColor;outline-offset:-2px}
+html[data-appearance="custom"] .minute-day-list,html[data-appearance="custom"] .minute-event-row{color:#fff;text-shadow:0 1px 3px #000}
+html[data-appearance="custom"] .minute-event-row{background:var(--lg-content-tile);border-color:rgba(255,255,255,.32);border-left-color:#fff}
+html[data-appearance="custom"] .minute-event-meta{color:rgba(255,255,255,.86)}
+html[data-appearance="custom"] #weekGrid .minute-time-mark{background:#fff}
+html[data-appearance="custom"] #weekGrid .minute-time-mark.has-conflict{background:#ffb8ae}
+html[data-appearance="custom"] .minute-event-conflict,html[data-appearance="custom"] .minute-task-conflict{color:#ffcbc3}
+html[data-appearance="custom"] .minute-arrangement.conflict .course-name{color:#ffcbc3}
+@media(max-width:340px){#weekView .week-toolbar-button{padding:8px;font-size:11px}.week-affair-actions{gap:4px}}
+.agenda-minute{align-items:center;min-height:48px;padding-top:6px;padding-bottom:6px}
+.agenda-minute .course-time strong{display:inline;font-size:13px}.agenda-minute .course-time strong+strong::before{content:'–';margin:0 2px}.agenda-minute .course-time{width:94px}
+.agenda-minute .minute-duration{display:block;width:2px;flex:none;max-height:76px;border-radius:1px;background:currentColor;opacity:.65;margin:0 10px 0 0;min-height:1px}
+.agenda-minute .course-info .course-name{font-size:14px}.agenda-minute .course-tag{padding-top:0}
+
+
+#weekGrid .minute-course-group{position:absolute;left:0;right:0;min-height:64px;box-sizing:border-box;z-index:2;cursor:pointer;min-width:0}
+.minute-course-group .minute-task-clock{display:block!important;flex-shrink:0;margin-top:auto;font-size:8px;line-height:1.3;white-space:nowrap;letter-spacing:0}
+.minute-group-more{font-size:9px;line-height:1.4;margin-top:5px;color:var(--ink-2)}
+html[data-appearance="custom"] .minute-group-more{color:rgba(255,255,255,.86)}

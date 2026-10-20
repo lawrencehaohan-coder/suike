@@ -1,0 +1,14 @@
+/* Existing form vocabulary; only task-specific fields are shown. */
+.manual-schedule-mode{margin:0 0 12px}.manual-schedule-mode .pf-seg-btn{min-height:44px;cursor:pointer}
+#courseForm:not([data-manual-kind="task"]) .manual-task-only,#courseForm[data-manual-kind="task"] .manual-course-only{display:none!important}
+#courseForm[data-manual-kind="task"] input[name="room"]{width:100%}
+#courseForm[data-manual-kind="task"] input[name="room"]:only-child{grid-column:1/-1}
+.manual-durations{display:flex;gap:8px;flex-wrap:wrap}
+.manual-durations .inst-btn{flex:1;min-height:44px;padding:8px;font-size:12px;letter-spacing:0}
+.manual-durations .inst-btn[aria-pressed="true"]{outline:1px solid currentColor;outline-offset:-2px}
+.manual-task-status{margin:0;color:var(--ink-2);font-size:11px;line-height:1.6}
+html[data-appearance="custom"] .manual-task-status{color:rgba(255,255,255,.9);text-shadow:0 1px 3px #000}
+
+#courseForm[data-manual-kind="task"] .form-grid{row-gap:12px}
+#courseForm[data-manual-kind="task"] .field{gap:6px}
+#courseForm[data-manual-kind="task"] .dialog-actions{margin-top:12px}

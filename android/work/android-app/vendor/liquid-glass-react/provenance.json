@@ -1,0 +1,11 @@
+{
+  "repository": "https://github.com/rdev/liquid-glass-react",
+  "commit": "ac48eab18d1f7f444ae30002d240cae29c863a21",
+  "files": {
+    "LICENSE": "3beea6e227a2549d48b616818e01ce303482cb0d598182add5d629b339bdb7cc",
+    "package.json": "bdc33c1ffe4279a10d71d06668e4d66249735eb856ef1c7390985ffaf71b419b",
+    "README.md": "4235d2d5143eb67e0c6a0c5d87cb123ee691d5b76c6e3038ff51817567c36e7d",
+    "src\\index.tsx": "aaea920c8de2af15d4df322f99124d65b57a9088b2479c056bce428f3ddeadba",
+    "src\\utils.ts": "73a3fb2a6578b8e8bcbf7eb79e8dbeb6a15a36d8ba5525a2d665002d0b5cd917"
+  }
+}

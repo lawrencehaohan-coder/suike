@@ -1,0 +1,162 @@
+/* 随课 1.4.0 功能界面：黑白仪器风 + 像素语言（方角 / 等宽数字 / 绿色状态块）。 */
+
+/* ======== 设置页 · 课表工具面板 ======== */
+#productFeatures .pf-tools { display: flex; flex-direction: column; }
+.pf-tool {
+  display: flex; align-items: center; width: 100%; text-align: left;
+  padding: 11px 0; background: none; border: none; border-top: 1px solid var(--line-2);
+}
+.pf-tool:first-child { border-top: none; padding-top: 2px; }
+.pf-tool:active .pf-tool-title { color: var(--ink); }
+.pf-tool-icon {
+  flex: none; width: 30px; height: 30px; margin-right: 11px;
+  border: 1px solid var(--line); border-radius: 2px;
+  display: flex; align-items: center; justify-content: center; color: var(--ink-2);
+}
+.pf-tool-icon svg { width: 15px; height: 15px; }
+.pf-tool-text { flex: 1; min-width: 0; }
+.pf-tool-title { display: block; font-size: 13px; font-weight: 600; color: var(--ink); }
+.pf-tool-desc { display: block; font-size: 11px; color: var(--ink-2); margin-top: 1px; overflow-wrap: anywhere; }
+.pf-tool-meta {
+  flex: none; margin-left: 10px;
+  font-family: var(--num); font-variant-numeric: tabular-nums;
+  font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3);
+}
+.pf-tool-chevron { flex: none; width: 13px; height: 13px; margin-left: 6px; color: var(--ink-3); }
+.pf-summary-line {
+  margin: 10px 0 0; padding-top: 10px; border-top: 1px solid var(--line-2);
+  font-size: 10px; letter-spacing: .08em; color: var(--ink-3);
+}
+
+/* ======== 共用弹窗结构 ======== */
+dialog.product-dialog { padding: 18px 18px 14px; max-height: calc(100vh - 48px); max-height: calc(100dvh - 48px); overflow-y: auto; }
+.pd-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 4px; }
+.pd-eyebrow { font-size: 9px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 3px; }
+.pd-head h2, #productDialogTitle { font-size: 16px; font-weight: 600; margin: 0; }
+.pd-head .icon-button { margin: -4px -6px 0 12px; }
+.pd-sub { font-size: 12px; color: var(--ink-2); margin: 6px 0 2px; }
+.pd-body { margin-top: 10px; }
+.pd-foot {
+  display: flex; justify-content: flex-end; gap: 10px;
+  margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line-2);
+}
+.pd-foot .button { min-width: 96px; }
+#productDialog .form-error { margin-top: 14px; }
+
+/* ======== 通用小组件 ======== */
+.pf-note {
+  font-size: 12px; color: var(--ink-2); line-height: 1.6;
+  border-left: 2px solid var(--line); padding: 2px 0 2px 10px; margin: 10px 0;
+}
+.pf-warn {
+  font-size: 12px; color: var(--danger); line-height: 1.6;
+  border-left: 2px solid var(--danger); padding: 2px 0 2px 10px; margin: 10px 0;
+}
+.pf-pill {
+  display: inline-block; flex: none;
+  font-family: var(--num); font-variant-numeric: tabular-nums;
+  font-size: 9px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+  border: 1px solid var(--line); border-radius: 2px; padding: 2px 6px; color: var(--ink-2);
+}
+/* 绿色状态块：与 NOW 卡的像素指示灯同款 */
+.pf-pill.is-ok { color: var(--accent); border-color: var(--accent); }
+.pf-pill.is-ok::before {
+  content: ""; display: inline-block; width: 5px; height: 5px;
+  background: var(--accent); margin-right: 4px; vertical-align: 1px;
+}
+.pf-pill.is-danger { color: var(--danger); border-color: var(--danger); }
+.pf-empty {
+  border: 1px dashed var(--line); border-radius: 2px;
+  padding: 18px 14px; text-align: center; margin: 10px 0;
+}
+.pf-empty h4 { font-size: 12px; font-weight: 600; margin: 0 0 3px; }
+.pf-empty p { font-size: 11px; color: var(--ink-2); margin: 0; }
+.pf-steps {
+  font-family: var(--num); font-size: 9px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--ink-3); margin: 0 0 10px;
+}
+.pf-row-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.pf-row-actions .inst-btn, .pf-row-actions .text-button { flex: none; }
+
+/* 键值行（对齐主界面 detail-row） */
+.pf-kv { display: flex; padding: 8px 0; border-bottom: 1px solid var(--line-2); font-size: 13px; }
+.pf-kv:last-child { border-bottom: none; }
+.pf-kv-label { flex: none; width: 76px; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); padding-top: 2px; }
+
+/* ======== 表单 ======== */
+#productDialog .pf-field { margin: 0 0 12px; }
+#productDialog .pf-field input, #productDialog .pf-field select, #productDialog .pf-field textarea {
+  width: 100%; padding: 9px 10px;
+  border: 1px solid var(--line); border-radius: 7px;
+  background: var(--card); color: var(--ink);
+  font-size: 14px; font-family: inherit; box-sizing: border-box;
+}
+#productDialog .pf-field input:focus, #productDialog .pf-field select:focus, #productDialog .pf-field textarea:focus { border-color: var(--ink); outline: none; }
+#productDialog .pf-field input[type="date"], #productDialog .pf-field input[type="number"] { font-family: var(--num); font-variant-numeric: tabular-nums; }
+#productDialog .pf-field textarea { resize: vertical; line-height: 1.6; font-size: 13px; }
+.pf-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 12px; }
+.pf-check { display: flex; align-items: flex-start; gap: 9px; margin: 12px 0; cursor: pointer; }
+.pf-check input { flex: none; width: 16px; height: 16px; margin: 1px 0 0; accent-color: var(--ink); }
+.pf-check-text strong { display: block; font-size: 13px; font-weight: 500; }
+.pf-check-text small { display: block; font-size: 11px; color: var(--ink-2); margin-top: 1px; }
+
+/* 分段选择器（影响范围等） */
+.pf-seg { display: flex; border: 1px solid var(--line); border-radius: 2px; overflow: hidden; margin: 4px 0 2px; }
+.pf-seg-btn {
+  flex: 1; background: var(--card); border: none; border-left: 1px solid var(--line);
+  padding: 8px 2px 7px; text-align: center;
+}
+.pf-seg-btn:first-child { border-left: none; }
+.pf-seg-btn strong { display: block; font-size: 12px; font-weight: 600; color: var(--ink-2); }
+.pf-seg-btn small { display: block; font-size: 9px; letter-spacing: .06em; color: var(--ink-3); margin-top: 2px; }
+.pf-seg-btn.active { background: var(--ink); }
+.pf-seg-btn.active strong { color: var(--paper); }
+.pf-seg-btn.active small { color: var(--paper); opacity: .65; }
+.pf-vhidden { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+
+/* ======== 卡片（快照 / 学期 / 通知草稿） ======== */
+.pf-card { border: 1px solid var(--line); border-radius: 6px; padding: 12px 13px; margin: 10px 0; }
+.pf-card-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.pf-card-head strong { font-size: 13px; font-weight: 600; overflow-wrap: anywhere; }
+.pf-card-meta {
+  font-family: var(--num); font-variant-numeric: tabular-nums;
+  font-size: 10px; letter-spacing: .06em; color: var(--ink-3); margin-top: 4px;
+}
+.pf-card-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 10px; }
+.pf-chips { display: flex; flex-wrap: wrap; gap: 5px; margin: 8px 0 2px; }
+.pf-chip {
+  font-family: var(--num); font-variant-numeric: tabular-nums; font-size: 10px;
+  border: 1px solid var(--line); border-radius: 2px; padding: 2px 7px; color: var(--ink-2);
+}
+.pf-conflict { border-left: 2px solid var(--danger); padding: 4px 0 4px 10px; margin: 8px 0; font-size: 12px; }
+.pf-conflict strong { color: var(--danger); font-weight: 600; }
+.pf-conflict span { color: var(--ink-2); }
+.pf-unconfirmed { border-left: 2px solid var(--line); padding: 4px 0 4px 10px; margin: 8px 0; font-size: 12px; color: var(--ink-2); }
+
+/* 通知草稿卡片 */
+.pf-draft { padding: 12px 13px; }
+.pf-draft .pf-field { margin-bottom: 10px; }
+.pf-draft-issues { font-size: 11px; color: var(--danger); margin: 6px 0; }
+.pf-draft .pf-check { border-top: 1px solid var(--line-2); padding-top: 10px; margin-bottom: 2px; }
+
+/* 摘要栏（通知预览统计） */
+.pf-summary {
+  display: flex; flex-wrap: wrap; gap: 4px 14px;
+  border: 1px solid var(--line); border-radius: 2px;
+  padding: 10px 12px; margin: 12px 0;
+  font-family: var(--num); font-variant-numeric: tabular-nums; font-size: 11px; color: var(--ink-2);
+}
+
+/* 解析身份条（通知导入第一步） */
+.pf-profile {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  border: 1px solid var(--line); border-radius: 2px; padding: 9px 12px; margin: 0 0 12px;
+}
+.pf-profile-text { font-size: 11px; color: var(--ink-2); }
+.pf-profile-text strong { font-family: var(--num); font-variant-numeric: tabular-nums; color: var(--ink); font-weight: 600; }
+
+/* 课程详情内的功能按钮组 */
+.pf-course-tools { margin-top: 14px; }
+.pf-course-tools .micro { display: block; margin-bottom: 8px; }
+.pf-course-tools-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.pf-course-tools-row .inst-btn { flex: 1; min-width: 100px; padding: 9px 4px; }

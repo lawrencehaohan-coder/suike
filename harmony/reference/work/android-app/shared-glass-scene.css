@@ -1,0 +1,31 @@
+/* Image-wallpaper glass shares a background pass instead of capturing the
+   scrolling page separately for every card. Text and the original rims stay DOM. */
+.lg-glass-scene{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.lg-video-foreground{position:fixed;left:0;bottom:0;width:100%;pointer-events:none;z-index:39}
+html:not([data-glass-video="on"]) .lg-video-foreground{display:none}
+html[data-glass-video="on"] .suike-wallpaper>video{opacity:0!important}
+html[data-glass-video="on"] .bottom-nav::after,html[data-glass-video="on"] .lg-scroll-edge::before{display:none!important}
+html[data-glass-video="on"] .lg-scroll-edge{opacity:0!important}
+html[data-appearance="custom"] .suike-wallpaper::after{z-index:1}
+html[data-appearance="custom"][data-glass-scene="on"] .lg-scene-surface{
+ -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+}
+
+/* Fixed navigation samples a cached wallpaper image through its original lens.
+   Its highlight, moving selection and foreground typography stay unchanged. */
+html[data-appearance="custom"][data-glass-scene="on"] .bottom-nav,
+html[data-appearance="custom"][data-glass-scene="on"] .lg-scroll-edge{
+ -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+}
+html[data-appearance="custom"][data-glass-scene="on"] .bottom-nav::after{
+ content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;
+ background-image:linear-gradient(var(--lg-glass),var(--lg-glass)),linear-gradient(rgba(0,0,0,.24),rgba(0,0,0,.24)),var(--lg-scene-photo);
+ background-size:100% 100%,100% 100%,var(--lg-scene-photo-size);background-position:center,center,var(--lg-scene-photo-position);background-repeat:no-repeat;
+ filter:var(--lg-scene-nav-filter);clip-path:inset(0 round 999px);
+}
+html[data-appearance="custom"][data-glass-scene="on"] .lg-scroll-edge{background:none}
+html[data-appearance="custom"][data-glass-scene="on"] .lg-scroll-edge::before{
+ content:"";position:absolute;left:0;right:0;bottom:0;height:100vh;
+ background-image:linear-gradient(rgba(0,0,0,.24),rgba(0,0,0,.24)),var(--lg-scene-photo);background-size:cover;background-position:center;
+ filter:blur(12px);
+}

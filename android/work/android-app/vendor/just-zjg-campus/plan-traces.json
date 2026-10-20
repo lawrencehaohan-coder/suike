@@ -1,0 +1,1234 @@
+{
+  "photoCorners": [
+    [
+      571,
+      79
+    ],
+    [
+      1740,
+      28
+    ],
+    [
+      1678,
+      1001
+    ],
+    [
+      634,
+      995
+    ]
+  ],
+  "diagramCorners": [
+    [
+      0,
+      800
+    ],
+    [
+      960,
+      800
+    ],
+    [
+      960,
+      0
+    ],
+    [
+      0,
+      0
+    ]
+  ],
+  "homography": [
+    0.8868930253810626,
+    -0.06099810109061904,
+    -501.5970675064278,
+    0.005116636602357895,
+    -0.8902947688102674,
+    882.5993473603212,
+    4.9744949419804504e-05,
+    -0.0001192378602960469
+  ],
+  "buildings": [
+    {
+      "id": "plan-teaching-E",
+      "name": "教学楼 E",
+      "photoPolygon": [
+        [
+          825,
+          566
+        ],
+        [
+          948,
+          566
+        ],
+        [
+          948,
+          593
+        ],
+        [
+          825,
+          593
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "plan-teaching-F",
+      "name": "教学楼 F",
+      "photoPolygon": [
+        [
+          958,
+          514
+        ],
+        [
+          1056,
+          514
+        ],
+        [
+          1056,
+          551
+        ],
+        [
+          958,
+          551
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "plan-teaching-G",
+      "name": "教学楼 G",
+      "photoPolygon": [
+        [
+          826,
+          603
+        ],
+        [
+          950,
+          603
+        ],
+        [
+          950,
+          631
+        ],
+        [
+          826,
+          631
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "plan-teaching-H",
+      "name": "教学楼 H",
+      "photoPolygon": [
+        [
+          961,
+          589
+        ],
+        [
+          1043,
+          589
+        ],
+        [
+          1071,
+          570
+        ],
+        [
+          1071,
+          608
+        ],
+        [
+          1048,
+          620
+        ],
+        [
+          961,
+          620
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "osm-262554891",
+      "name": "教学楼 B",
+      "photoPolygon": [
+        [
+          1248,
+          493
+        ],
+        [
+          1377,
+          493
+        ],
+        [
+          1377,
+          534
+        ],
+        [
+          1248,
+          534
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "osm-262554957",
+      "name": "教学楼 A",
+      "photoPolygon": [
+        [
+          1235,
+          562
+        ],
+        [
+          1262,
+          577
+        ],
+        [
+          1368,
+          577
+        ],
+        [
+          1368,
+          611
+        ],
+        [
+          1239,
+          611
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "osm-262555111",
+      "name": "教学楼 C",
+      "photoPolygon": [
+        [
+          1385,
+          540
+        ],
+        [
+          1493,
+          540
+        ],
+        [
+          1493,
+          573
+        ],
+        [
+          1385,
+          573
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "osm-262555479",
+      "name": "教学楼 D",
+      "photoPolygon": [
+        [
+          1387,
+          579
+        ],
+        [
+          1495,
+          579
+        ],
+        [
+          1495,
+          613
+        ],
+        [
+          1387,
+          613
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "osm-262555503",
+      "name": "外语楼",
+      "photoPolygon": [
+        [
+          1510,
+          501
+        ],
+        [
+          1617,
+          501
+        ],
+        [
+          1617,
+          569
+        ],
+        [
+          1510,
+          569
+        ],
+        [
+          1510,
+          546
+        ],
+        [
+          1584,
+          546
+        ],
+        [
+          1584,
+          525
+        ],
+        [
+          1510,
+          525
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "library",
+      "name": "图书馆",
+      "photoPolygon": [
+        [
+          1113.2819118488837,
+          606.9919439057139
+        ],
+        [
+          1103.0,
+          623.319856780546
+        ],
+        [
+          1104.1376645678306,
+          671.0947337013278
+        ],
+        [
+          1124.3365769891243,
+          693.0032821124869
+        ],
+        [
+          1149.2793360045794,
+          702.1111442637625
+        ],
+        [
+          1165.2925014310247,
+          709.0
+        ],
+        [
+          1190.2781911848883,
+          705.1084588990004
+        ],
+        [
+          1214.770177447052,
+          692.605848127704
+        ],
+        [
+          1248.4922724670864,
+          658.2609279427122
+        ],
+        [
+          1253.0,
+          638.1739519618081
+        ],
+        [
+          1245.89496279336,
+          626.5490079069074
+        ],
+        [
+          1218.075844304522,
+          611.6617932269133
+        ],
+        [
+          1188.775615340584,
+          602.6864090705654
+        ],
+        [
+          1130.1107613050945,
+          598.0
+        ]
+      ],
+      "coordinateBasis": "Approximate photo-space extent before user-requested regular ellipse; not the final building outline",
+      "finalShape": "symmetric ellipse; scene-calibrated.json library.shape"
+    },
+    {
+      "id": "osm-260623895",
+      "name": "体育馆",
+      "photoPolygon": [
+        [
+          1131,
+          216
+        ],
+        [
+          1220,
+          214
+        ],
+        [
+          1237,
+          307
+        ],
+        [
+          1117,
+          310
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "osm-260621106",
+      "name": "一食堂",
+      "photoPolygon": [
+        [
+          969,
+          393
+        ],
+        [
+          1071,
+          393
+        ],
+        [
+          1071,
+          444
+        ],
+        [
+          969,
+          444
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "osm-260621060",
+      "name": "华诚餐饮",
+      "photoPolygon": [
+        [
+          689,
+          501
+        ],
+        [
+          739,
+          497
+        ],
+        [
+          751,
+          620
+        ],
+        [
+          703,
+          625
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "plan-dorm-1",
+      "name": "1 号宿舍",
+      "photoPolygon": [
+        [
+          810,
+          395
+        ],
+        [
+          905,
+          395
+        ],
+        [
+          905,
+          431
+        ],
+        [
+          810,
+          431
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "plan-dorm-2",
+      "name": "2 号宿舍",
+      "photoPolygon": [
+        [
+          808,
+          352
+        ],
+        [
+          905,
+          352
+        ],
+        [
+          905,
+          386
+        ],
+        [
+          808,
+          386
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "plan-dorm-3",
+      "name": "3 号宿舍",
+      "photoPolygon": [
+        [
+          639,
+          401
+        ],
+        [
+          730,
+          401
+        ],
+        [
+          730,
+          434
+        ],
+        [
+          639,
+          434
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "plan-dorm-4",
+      "name": "4 号宿舍",
+      "photoPolygon": [
+        [
+          635,
+          352
+        ],
+        [
+          726,
+          352
+        ],
+        [
+          726,
+          384
+        ],
+        [
+          635,
+          384
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "plan-dorm-5",
+      "name": "5 号宿舍",
+      "photoPolygon": [
+        [
+          626,
+          268
+        ],
+        [
+          721,
+          268
+        ],
+        [
+          721,
+          300
+        ],
+        [
+          626,
+          300
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "plan-dorm-6",
+      "name": "6 号宿舍",
+      "photoPolygon": [
+        [
+          624,
+          215
+        ],
+        [
+          720,
+          215
+        ],
+        [
+          720,
+          248
+        ],
+        [
+          624,
+          248
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "plan-dorm-7",
+      "name": "7 号宿舍",
+      "photoPolygon": [
+        [
+          620,
+          159
+        ],
+        [
+          716,
+          159
+        ],
+        [
+          716,
+          192
+        ],
+        [
+          620,
+          192
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "plan-dorm-8",
+      "name": "8 号宿舍",
+      "photoPolygon": [
+        [
+          799,
+          196
+        ],
+        [
+          894,
+          196
+        ],
+        [
+          894,
+          231
+        ],
+        [
+          799,
+          231
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "plan-dorm-9",
+      "name": "9 号宿舍",
+      "photoPolygon": [
+        [
+          797,
+          146
+        ],
+        [
+          891,
+          146
+        ],
+        [
+          891,
+          181
+        ],
+        [
+          797,
+          181
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "plan-dorm-10",
+      "name": "10 号宿舍",
+      "photoPolygon": [
+        [
+          970,
+          191
+        ],
+        [
+          1069,
+          191
+        ],
+        [
+          1069,
+          223
+        ],
+        [
+          970,
+          223
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "plan-dorm-11",
+      "name": "11 号宿舍",
+      "photoPolygon": [
+        [
+          971,
+          143
+        ],
+        [
+          1070,
+          143
+        ],
+        [
+          1070,
+          175
+        ],
+        [
+          971,
+          175
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "plan-dorm-12",
+      "name": "12 号宿舍",
+      "photoPolygon": [
+        [
+          445,
+          437
+        ],
+        [
+          534,
+          437
+        ],
+        [
+          534,
+          479
+        ],
+        [
+          445,
+          479
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "plan-dorm-13",
+      "name": "13 号宿舍",
+      "photoPolygon": [
+        [
+          434,
+          318
+        ],
+        [
+          523,
+          318
+        ],
+        [
+          523,
+          365
+        ],
+        [
+          434,
+          365
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "plan-teachers",
+      "name": "教师公寓",
+      "photoPolygon": [
+        [
+          442,
+          383
+        ],
+        [
+          530,
+          383
+        ],
+        [
+          530,
+          428
+        ],
+        [
+          442,
+          428
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "plan-commercial",
+      "name": "商业街",
+      "photoPolygon": [
+        [
+          851,
+          240
+        ],
+        [
+          906,
+          240
+        ],
+        [
+          906,
+          341
+        ],
+        [
+          851,
+          341
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "plan-service-1",
+      "name": "电信服务",
+      "photoPolygon": [
+        [
+          969,
+          255
+        ],
+        [
+          1070,
+          255
+        ],
+        [
+          1070,
+          286
+        ],
+        [
+          969,
+          286
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "plan-service-2",
+      "name": "联通营业厅",
+      "photoPolygon": [
+        [
+          970,
+          290
+        ],
+        [
+          1070,
+          290
+        ],
+        [
+          1070,
+          323
+        ],
+        [
+          970,
+          323
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "plan-service-3",
+      "name": "移动营业厅",
+      "photoPolygon": [
+        [
+          970,
+          328
+        ],
+        [
+          1071,
+          328
+        ],
+        [
+          1071,
+          359
+        ],
+        [
+          970,
+          359
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "business",
+      "name": "商学院",
+      "photoPolygon": [
+        [
+          830,
+          680
+        ],
+        [
+          949,
+          680
+        ],
+        [
+          949,
+          718
+        ],
+        [
+          830,
+          718
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "career",
+      "name": "招生就业指导中心",
+      "photoPolygon": [
+        [
+          959,
+          685
+        ],
+        [
+          1039,
+          687
+        ],
+        [
+          1072,
+          708
+        ],
+        [
+          1072,
+          740
+        ],
+        [
+          1045,
+          722
+        ],
+        [
+          959,
+          716
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "backup-b",
+      "name": "备用教学楼 B",
+      "photoPolygon": [
+        [
+          862,
+          727
+        ],
+        [
+          949,
+          727
+        ],
+        [
+          949,
+          759
+        ],
+        [
+          862,
+          759
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "backup-c",
+      "name": "备用教学楼 C",
+      "photoPolygon": [
+        [
+          958,
+          752
+        ],
+        [
+          1058,
+          752
+        ],
+        [
+          1058,
+          788
+        ],
+        [
+          958,
+          788
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "telecom-college",
+      "name": "电信学院",
+      "photoPolygon": [
+        [
+          1383,
+          675
+        ],
+        [
+          1566,
+          675
+        ],
+        [
+          1566,
+          714
+        ],
+        [
+          1383,
+          714
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "power-institute",
+      "name": "智能电力研究院",
+      "photoPolygon": [
+        [
+          1245,
+          714
+        ],
+        [
+          1373,
+          714
+        ],
+        [
+          1373,
+          745
+        ],
+        [
+          1245,
+          745
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "server-room",
+      "name": "机房",
+      "photoPolygon": [
+        [
+          1381,
+          744
+        ],
+        [
+          1513,
+          744
+        ],
+        [
+          1513,
+          779
+        ],
+        [
+          1381,
+          779
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "metallurgy",
+      "name": "冶金材料楼",
+      "photoPolygon": [
+        [
+          1517,
+          729
+        ],
+        [
+          1614,
+          729
+        ],
+        [
+          1614,
+          817
+        ],
+        [
+          1517,
+          817
+        ],
+        [
+          1517,
+          787
+        ],
+        [
+          1582,
+          787
+        ],
+        [
+          1582,
+          751
+        ],
+        [
+          1517,
+          751
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "ship-civil",
+      "name": "船海土木楼",
+      "photoPolygon": [
+        [
+          1493,
+          849
+        ],
+        [
+          1622,
+          849
+        ],
+        [
+          1622,
+          885
+        ],
+        [
+          1493,
+          885
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "mechanical",
+      "name": "机动学院",
+      "photoPolygon": [
+        [
+          1585,
+          887
+        ],
+        [
+          1624,
+          887
+        ],
+        [
+          1624,
+          960
+        ],
+        [
+          1491,
+          960
+        ],
+        [
+          1491,
+          925
+        ],
+        [
+          1585,
+          925
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "training-center",
+      "name": "工程实训中心",
+      "photoPolygon": [
+        [
+          1335,
+          905
+        ],
+        [
+          1427,
+          905
+        ],
+        [
+          1427,
+          993
+        ],
+        [
+          1333,
+          993
+        ],
+        [
+          1333,
+          964
+        ],
+        [
+          1391,
+          964
+        ],
+        [
+          1391,
+          935
+        ],
+        [
+          1335,
+          935
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "osm-260623023",
+      "name": "行政楼",
+      "photoPolygon": [
+        [
+          1001,
+          852
+        ],
+        [
+          1139,
+          852
+        ],
+        [
+          1139,
+          904
+        ],
+        [
+          1001,
+          904
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "osm-260623230",
+      "name": "报告厅",
+      "photoPolygon": [
+        [
+          1065,
+          893
+        ],
+        [
+          1138,
+          893
+        ],
+        [
+          1138,
+          922
+        ],
+        [
+          1123,
+          938
+        ],
+        [
+          1090,
+          940
+        ],
+        [
+          1065,
+          928
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "context-student-center",
+      "name": "大学生活动中心",
+      "photoPolygon": [
+        [
+          455,
+          519
+        ],
+        [
+          547,
+          519
+        ],
+        [
+          547,
+          627
+        ],
+        [
+          455,
+          627
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    },
+    {
+      "id": "plan-sport-stand",
+      "name": "运动场附属建筑",
+      "photoPolygon": [
+        [
+          1417,
+          123
+        ],
+        [
+          1453,
+          123
+        ],
+        [
+          1453,
+          374
+        ],
+        [
+          1417,
+          374
+        ]
+      ],
+      "coordinateBasis": "user plan-board photograph"
+    }
+  ],
+  "footprintNote": "Initial photo-space bounding traces, before regularization. Final symmetric/orthogonal geometry is in scene-calibrated.json and regular-footprints.json."
+}

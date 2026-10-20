@@ -1,0 +1,15 @@
+.period-time-hint { font-size:12px; color:var(--ink-2); line-height:1.6; margin:8px 0; }
+.settings-fold-card .period-list > .period-edit-item { padding:0; }
+.settings-fold-card .period-list > .period-edit-item > .period-edit-row { margin-left:0; }
+.period-edit-row { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:4px; width:100%; min-height:44px; padding:8px 2px; border:0; border-radius:6px; background:transparent; text-align:left; }
+.period-edit-row:active { background:var(--line-2); }
+.period-edit-row .period-edit-chevron { font-size:16px; color:var(--ink-2); }
+.period-edit-row strong { white-space:nowrap; }
+.teaching-period-preview { padding:12px 0; }
+.teaching-period-preview > strong { font-size:13px; }
+.teaching-period-preview p { font-size:12px; line-height:1.6; margin-top:8px; }
+.teaching-period-preview .help-details { margin-top:4px; }
+.teaching-period-preview .help-details summary { min-height:36px; display:flex; align-items:center; }
+
+.daily-period-count-row { display:flex; align-items:center; justify-content:space-between; gap:8px; width:100%; min-height:44px; padding:8px 2px; color:var(--ink); background:transparent; border:0; text-align:left; }
+.daily-period-fields .form-grid { margin-top:12px; }

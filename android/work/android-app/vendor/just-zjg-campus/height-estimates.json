@@ -1,0 +1,1211 @@
+{
+  "date": "2026-10-20",
+  "method": "Relative height modelling, not measurement. Count visible floors when readable; otherwise retain broad low-confidence same-type estimates. Do not infer exact building-letter names from facade inscriptions.",
+  "photographsReviewed": 23,
+  "floorEvidence": {
+    "url": "https://zjg.just.edu.cn/2026/0910/c90a24575/page.htm",
+    "fact": "图书馆五楼报告厅",
+    "interpretation": "至少五层，不等于精确总高度"
+  },
+  "sources": [
+    {
+      "id": "ref01",
+      "page": "https://www.just.edu.cn/2019/0531/c8784a97447/page.htm",
+      "image": "https://www.just.edu.cn/_upload/article/images/37/9c/ed3df24445a1b352b37e6bfa440d/4871f49e-45d0-4ee1-bbb8-72bff54ef82f.jpg",
+      "title": "《广学甄微》"
+    },
+    {
+      "id": "ref02",
+      "page": "https://www.just.edu.cn/2019/0531/c8784a97449/page.htm",
+      "image": "https://www.just.edu.cn/_upload/article/images/ee/40/ac75f2574352a9e6e5fd8a428cb6/593616fb-828b-48c7-b3d3-7ea426952987.jpg",
+      "title": "《博学明辨》"
+    },
+    {
+      "id": "ref03",
+      "page": "https://www.just.edu.cn/2019/0531/c8784a97450/page.htm",
+      "image": "https://www.just.edu.cn/_upload/article/images/a1/99/a538190c4ffeb8c293d1565552af/0182e82f-5095-4b24-82f0-8814aff7f1fc.jpg",
+      "title": "张家港校区"
+    },
+    {
+      "id": "ref04",
+      "page": "https://www.just.edu.cn/2019/0601/c8784a97791/page.htm",
+      "image": "https://www.just.edu.cn/_upload/article/images/78/d1/6dc449a14705a6fb8d85b96cdcaf/a8b8f389-3421-4fcc-a0bf-52097903b5f0.png",
+      "title": "校园一瞥"
+    },
+    {
+      "id": "ref05",
+      "page": "https://www.just.edu.cn/2019/0531/c8784a97452/page.htm",
+      "image": "https://www.just.edu.cn/_upload/article/images/e7/dc/34736e3649ec9400ac7c213fad3d/83a3a7aa-7774-44bc-83cd-91d09771d0ca.jpg",
+      "title": "校园一瞥"
+    },
+    {
+      "id": "ref06",
+      "page": "https://www.just.edu.cn/2019/0531/c8784a97468/page.htm",
+      "image": "https://www.just.edu.cn/_upload/article/images/0d/75/a8a62b524339bc59f7ff71831fdb/c62e45a6-535f-4f98-84ea-7be144deea67.jpg",
+      "title": "宁静致远"
+    },
+    {
+      "id": "ref07",
+      "page": "https://www.just.edu.cn/2019/0531/c8784a97473/page.htm",
+      "image": "https://www.just.edu.cn/_upload/article/images/ff/c3/9ad5edeb4c329ff5a0b683f34d7f/bdf5de57-90b3-4d3c-bc58-c48b0d9d5872.jpg",
+      "title": "张家港校区"
+    },
+    {
+      "id": "ref08",
+      "page": "https://www.just.edu.cn/2019/0531/c8784a97474/page.htm",
+      "image": "https://www.just.edu.cn/_upload/article/images/f5/d1/c92d481d44019be2a4d3d9e4125f/c31b2ee5-0667-4552-93ad-f09b0157b9f6.jpg",
+      "title": "张家港校区"
+    },
+    {
+      "id": "ref09",
+      "page": "https://www.just.edu.cn/2019/0531/c8784a97475/page.htm",
+      "image": "https://www.just.edu.cn/_upload/article/images/5a/3c/de9d7e434b13b9c8dfdfafc80bdc/fa28339e-51da-4d45-a852-32e76ff99788.jpg",
+      "title": "张家港校区"
+    },
+    {
+      "id": "ref10",
+      "page": "https://www.just.edu.cn/2019/0531/c8784a97476/page.htm",
+      "image": "https://www.just.edu.cn/_upload/article/images/bd/f6/ab12ce9143068082e472538dc5ef/b0294647-0144-4ab1-a641-ca71e26d7219.jpg",
+      "title": "张家港校区"
+    },
+    {
+      "id": "ref11",
+      "page": "https://www.just.edu.cn/2019/0531/c8784a97477/page.htm",
+      "image": "https://www.just.edu.cn/_upload/article/images/67/d7/9493d5b04d42b78b3ea14e1f2031/078cd164-25e2-4591-abbc-973bf6043f4a.jpg",
+      "title": "张家港校区"
+    },
+    {
+      "id": "ref12",
+      "page": "https://www.just.edu.cn/2019/0531/c8784a97478/page.htm",
+      "image": "https://www.just.edu.cn/_upload/article/images/b8/82/7ba977124067a8903c9cb90ae2ec/b48d87ef-3cbb-4ce8-81fe-be26c239885c.jpg",
+      "title": "夜幕下的张家港校区"
+    },
+    {
+      "id": "ref13",
+      "page": "https://www.just.edu.cn/2019/0531/c8784a97479/page.htm",
+      "image": "https://www.just.edu.cn/_upload/article/images/76/71/488af9ea421fa68dd309de3fc4ff/01ea08e1-4153-4141-bf66-e88c8b506fc5.jpg",
+      "title": "夜幕下的张家港图书馆"
+    },
+    {
+      "id": "ref14",
+      "page": "https://www.just.edu.cn/2019/0531/c8784a97480/page.htm",
+      "image": "https://www.just.edu.cn/_upload/article/images/c9/58/2a8d5564460296066393659c37fb/70494bb4-1034-45b5-ac5d-d7a7d580d0fd.jpg",
+      "title": "张家港校区"
+    },
+    {
+      "id": "ref15",
+      "page": "https://www.just.edu.cn/2019/0531/c8784a97481/page.htm",
+      "image": "https://www.just.edu.cn/_upload/article/images/4e/3c/1fb30624418397a76f9044c9ffed/5908aac1-9ada-47da-af4c-3d062eed0937.jpg",
+      "title": "张家港校区"
+    },
+    {
+      "id": "ref16",
+      "page": "https://www.just.edu.cn/2019/0531/c8784a97693/page.htm",
+      "image": "https://www.just.edu.cn/_upload/article/images/c5/94/21228905400d8ef6e568a55c62e7/c0626609-97ac-4250-8e65-a94da4e1d6b4.jpg",
+      "title": "张家港校区图书馆"
+    },
+    {
+      "id": "ref17",
+      "page": "https://www.just.edu.cn/2019/0326/c8784a77092/page.htm",
+      "image": "https://www.just.edu.cn/_upload/article/images/b7/f0/48df29aa493fb9b9a4ebb1fe1b91/ca4d44ae-e546-4264-bb27-31d849824e17.jpg",
+      "title": "张家港校区鸟瞰图"
+    },
+    {
+      "id": "ref18",
+      "page": "https://www.just.edu.cn/2019/0326/c8784a77091/page.htm",
+      "image": "https://www.just.edu.cn/_upload/article/images/e2/d8/596c6be44ec388b3aa6008a4fe12/c114bc12-a050-435a-8b90-e864e676e9e4.jpg",
+      "title": "张家港校区大门"
+    },
+    {
+      "id": "ref20",
+      "page": "https://justsit.edu.cn/19/list.htm",
+      "image": "https://justsit.edu.cn/_upload/article/images/d3/34/42dc77af4272b4c48980ae97e3c9/de59abd4-7230-48b2-aaa5-65434439b8ab.jpg",
+      "title": "学院简介"
+    },
+    {
+      "id": "ref21",
+      "page": "https://justsit.edu.cn/19/list.htm",
+      "image": "https://justsit.edu.cn/_upload/article/images/d3/34/42dc77af4272b4c48980ae97e3c9/55d66c43-b50d-4ee6-a35f-159201eacbf4.jpg",
+      "title": "学院简介"
+    },
+    {
+      "id": "ref22",
+      "page": "https://justsit.edu.cn/19/list.htm",
+      "image": "https://justsit.edu.cn/_upload/article/images/d3/34/42dc77af4272b4c48980ae97e3c9/6f1a9d12-b4d0-47be-bb5f-e3bf1a6af009_d.jpg",
+      "title": "学院简介"
+    },
+    {
+      "id": "ref23",
+      "page": "https://justsit.edu.cn/19/list.htm",
+      "image": "https://justsit.edu.cn/_upload/article/images/d3/34/42dc77af4272b4c48980ae97e3c9/0c5100a4-c7db-4275-aacd-0acc862d358f_d.jpg",
+      "title": "学院简介"
+    },
+    {
+      "id": "ref24",
+      "page": "https://sbc.just.edu.cn/2025/0910/c5391a365986/page.htm",
+      "image": "https://sbc.just.edu.cn/_upload/article/images/50/87/d67bff3b46a9984b137df4a09837/5e9cb3e2-a46e-456e-b6e6-ea21a29f809f.jpg",
+      "title": "暑期“热战”：国有资产管理处全力推进校园改造项目"
+    }
+  ],
+  "buildings": [
+    {
+      "id": "plan-teaching-E",
+      "name": "教学楼 E",
+      "metres": 20,
+      "confidence": "low",
+      "references": [
+        "ref03",
+        "ref06",
+        "ref07",
+        "ref14"
+      ],
+      "note": "教学组团四至五层主楼；不能把照片中的楼名直接绑定字母",
+      "surveyed": false,
+      "floorsApprox": 5,
+      "modelDetails": {
+        "type": "teaching-block",
+        "floorBands": true,
+        "source": [
+          "aerial-112s",
+          "aerial-137s"
+        ]
+      }
+    },
+    {
+      "id": "plan-teaching-F",
+      "name": "教学楼 F",
+      "metres": 17,
+      "confidence": "low",
+      "references": [
+        "ref03",
+        "ref06",
+        "ref07",
+        "ref14"
+      ],
+      "note": "按同组团四层翼楼估计，字母楼层未独立核实",
+      "surveyed": false,
+      "floorsApprox": 4,
+      "modelDetails": {
+        "type": "teaching-block",
+        "floorBands": true,
+        "source": [
+          "aerial-112s",
+          "aerial-137s"
+        ]
+      }
+    },
+    {
+      "id": "plan-teaching-G",
+      "name": "教学楼 G",
+      "metres": 17,
+      "confidence": "low",
+      "references": [
+        "ref03",
+        "ref06",
+        "ref07",
+        "ref14"
+      ],
+      "note": "按同组团四层翼楼估计，字母楼层未独立核实",
+      "surveyed": false,
+      "floorsApprox": 4,
+      "modelDetails": {
+        "type": "teaching-block",
+        "floorBands": true,
+        "source": [
+          "aerial-112s",
+          "aerial-137s"
+        ]
+      }
+    },
+    {
+      "id": "plan-teaching-H",
+      "name": "教学楼 H",
+      "metres": 17,
+      "confidence": "low",
+      "references": [
+        "ref03",
+        "ref06",
+        "ref07",
+        "ref14"
+      ],
+      "note": "按同组团四层翼楼估计，字母楼层未独立核实",
+      "surveyed": false,
+      "floorsApprox": 4,
+      "modelDetails": {
+        "type": "teaching-block",
+        "floorBands": true,
+        "source": [
+          "aerial-112s",
+          "aerial-137s"
+        ]
+      }
+    },
+    {
+      "id": "osm-262554891",
+      "name": "教学楼 B",
+      "metres": 17,
+      "confidence": "low",
+      "references": [
+        "ref03",
+        "ref06",
+        "ref14"
+      ],
+      "note": "同校区教学/学院楼多数为四层级翼楼，未确认字母与楼名一一对应",
+      "surveyed": false,
+      "floorsApprox": 4,
+      "modelDetails": {
+        "type": "teaching-block",
+        "floorBands": true,
+        "source": [
+          "aerial-112s",
+          "aerial-137s"
+        ]
+      }
+    },
+    {
+      "id": "osm-262554957",
+      "name": "教学楼 A",
+      "metres": 17,
+      "confidence": "low",
+      "references": [
+        "ref03",
+        "ref06",
+        "ref14"
+      ],
+      "note": "同校区教学/学院楼多数为四层级翼楼，未确认字母与楼名一一对应",
+      "surveyed": false,
+      "floorsApprox": 4,
+      "modelDetails": {
+        "type": "teaching-block",
+        "floorBands": true,
+        "source": [
+          "aerial-112s",
+          "aerial-137s"
+        ]
+      }
+    },
+    {
+      "id": "osm-262555111",
+      "name": "教学楼 C",
+      "metres": 17,
+      "confidence": "low",
+      "references": [
+        "ref03",
+        "ref06",
+        "ref14"
+      ],
+      "note": "同校区教学/学院楼多数为四层级翼楼，未确认字母与楼名一一对应",
+      "surveyed": false,
+      "floorsApprox": 4,
+      "modelDetails": {
+        "type": "teaching-block",
+        "floorBands": true,
+        "source": [
+          "aerial-112s",
+          "aerial-137s"
+        ]
+      }
+    },
+    {
+      "id": "osm-262555479",
+      "name": "教学楼 D",
+      "metres": 17,
+      "confidence": "low",
+      "references": [
+        "ref03",
+        "ref06",
+        "ref14"
+      ],
+      "note": "同校区教学/学院楼多数为四层级翼楼，未确认字母与楼名一一对应",
+      "surveyed": false,
+      "floorsApprox": 4,
+      "modelDetails": {
+        "type": "teaching-block",
+        "floorBands": true,
+        "source": [
+          "aerial-112s",
+          "aerial-137s"
+        ]
+      }
+    },
+    {
+      "id": "osm-262555503",
+      "name": "外语楼",
+      "metres": 17,
+      "confidence": "low",
+      "references": [
+        "ref03",
+        "ref06",
+        "ref14"
+      ],
+      "note": "同校区教学/学院楼多数为四层级翼楼，未确认字母与楼名一一对应",
+      "surveyed": false,
+      "floorsApprox": 4,
+      "modelDetails": {
+        "type": "teaching-block",
+        "floorBands": true,
+        "source": [
+          "aerial-112s",
+          "aerial-137s"
+        ]
+      }
+    },
+    {
+      "id": "library",
+      "name": "图书馆",
+      "metres": 24,
+      "confidence": "medium-high",
+      "references": [
+        "ref01",
+        "ref08",
+        "ref13",
+        "ref16",
+        "aerial-070s",
+        "aerial-080s"
+      ],
+      "note": "图书馆外观与官方五楼使用信息；屋面包含檐口，米数为估计",
+      "surveyed": false,
+      "floorsApprox": 5,
+      "modelDetails": {
+        "type": "elliptical-library",
+        "floorBands": true,
+        "roofCap": 0.8,
+        "capScale": 1.025,
+        "bandProjection": 0.7,
+        "bandLevels": [
+          4.8,
+          9.6,
+          14.4,
+          19.2
+        ],
+        "source": [
+          "aerial-070s",
+          "aerial-080s",
+          "ref16"
+        ]
+      }
+    },
+    {
+      "id": "osm-260623895",
+      "name": "体育馆",
+      "metres": 19,
+      "confidence": "medium",
+      "references": [
+        "aerial-043s",
+        "aerial-046s",
+        "aerial-050s",
+        "aerial-056s",
+        "ref22"
+      ],
+      "note": "实拍正门和运动场侧面共同校正：屋顶中段低曲率、两侧弯曲下包至近地面；南面独立柱廊雨棚、架空入口平台和宽阶梯。约19米总高及各构件尺寸仍为估算，不是9米直墙上加半圆屋顶。",
+      "surveyed": false,
+      "floorsApprox": 2,
+      "modelDetails": {
+        "type": "wrapped-shell-gym",
+        "profile": "broad shallow crown with curved haunches descending near ground",
+        "roofSegments": 40,
+        "shellFootHeight": 2.2,
+        "shoulderFraction": 0.22,
+        "crownDrop": 0.6,
+        "front": "south",
+        "platformHeight": 3.5,
+        "canopyHeight": 8.8,
+        "canopyWidthRatio": 0.66,
+        "stairs": 12,
+        "source": [
+          "aerial-043s",
+          "aerial-046s",
+          "aerial-050s",
+          "aerial-056s",
+          "ref22"
+        ]
+      }
+    },
+    {
+      "id": "osm-260621106",
+      "name": "一食堂",
+      "metres": 12,
+      "confidence": "low",
+      "references": [
+        "ref17",
+        "ref24"
+      ],
+      "note": "食堂三层级体量估计；改造照片仅用于外立面尺度参考",
+      "surveyed": false,
+      "floorsApprox": 3,
+      "modelDetails": {
+        "type": "plain",
+        "floorBands": true
+      }
+    },
+    {
+      "id": "osm-260621060",
+      "name": "华诚餐饮",
+      "metres": 12,
+      "confidence": "low",
+      "references": [
+        "ref17",
+        "ref24"
+      ],
+      "note": "食堂三层级体量估计；改造照片仅用于外立面尺度参考",
+      "surveyed": false,
+      "floorsApprox": 3,
+      "modelDetails": {
+        "type": "plain",
+        "floorBands": true
+      }
+    },
+    {
+      "id": "plan-dorm-1",
+      "name": "1 号宿舍",
+      "metres": 22,
+      "confidence": "low",
+      "references": [
+        "ref05",
+        "ref17",
+        "aerial-187s",
+        "aerial-200s"
+      ],
+      "note": "航拍生活区可读六层及屋顶构架；同组宿舍统一采用约20米主体加2米构架，未逐栋核实编号与屋顶设备数量",
+      "surveyed": false,
+      "floorsApprox": 6,
+      "modelDetails": {
+        "type": "dorm-roof-racks",
+        "floorBands": true,
+        "wallHeight": 20,
+        "rackTop": 22,
+        "wallFloors": 6,
+        "racks": 5,
+        "source": [
+          "aerial-187s",
+          "aerial-200s"
+        ]
+      }
+    },
+    {
+      "id": "plan-dorm-2",
+      "name": "2 号宿舍",
+      "metres": 22,
+      "confidence": "low",
+      "references": [
+        "ref05",
+        "ref17",
+        "aerial-187s",
+        "aerial-200s"
+      ],
+      "note": "航拍生活区可读六层及屋顶构架；同组宿舍统一采用约20米主体加2米构架，未逐栋核实编号与屋顶设备数量",
+      "surveyed": false,
+      "floorsApprox": 6,
+      "modelDetails": {
+        "type": "dorm-roof-racks",
+        "floorBands": true,
+        "wallHeight": 20,
+        "rackTop": 22,
+        "wallFloors": 6,
+        "racks": 5,
+        "source": [
+          "aerial-187s",
+          "aerial-200s"
+        ]
+      }
+    },
+    {
+      "id": "plan-dorm-3",
+      "name": "3 号宿舍",
+      "metres": 22,
+      "confidence": "low",
+      "references": [
+        "ref05",
+        "ref17",
+        "aerial-187s",
+        "aerial-200s"
+      ],
+      "note": "航拍生活区可读六层及屋顶构架；同组宿舍统一采用约20米主体加2米构架，未逐栋核实编号与屋顶设备数量",
+      "surveyed": false,
+      "floorsApprox": 6,
+      "modelDetails": {
+        "type": "dorm-roof-racks",
+        "floorBands": true,
+        "wallHeight": 20,
+        "rackTop": 22,
+        "wallFloors": 6,
+        "racks": 5,
+        "source": [
+          "aerial-187s",
+          "aerial-200s"
+        ]
+      }
+    },
+    {
+      "id": "plan-dorm-4",
+      "name": "4 号宿舍",
+      "metres": 22,
+      "confidence": "low",
+      "references": [
+        "ref05",
+        "ref17",
+        "aerial-187s",
+        "aerial-200s"
+      ],
+      "note": "航拍生活区可读六层及屋顶构架；同组宿舍统一采用约20米主体加2米构架，未逐栋核实编号与屋顶设备数量",
+      "surveyed": false,
+      "floorsApprox": 6,
+      "modelDetails": {
+        "type": "dorm-roof-racks",
+        "floorBands": true,
+        "wallHeight": 20,
+        "rackTop": 22,
+        "wallFloors": 6,
+        "racks": 5,
+        "source": [
+          "aerial-187s",
+          "aerial-200s"
+        ]
+      }
+    },
+    {
+      "id": "plan-dorm-5",
+      "name": "5 号宿舍",
+      "metres": 22,
+      "confidence": "low",
+      "references": [
+        "ref05",
+        "ref17",
+        "aerial-187s",
+        "aerial-200s"
+      ],
+      "note": "航拍生活区可读六层及屋顶构架；同组宿舍统一采用约20米主体加2米构架，未逐栋核实编号与屋顶设备数量",
+      "surveyed": false,
+      "floorsApprox": 6,
+      "modelDetails": {
+        "type": "dorm-roof-racks",
+        "floorBands": true,
+        "wallHeight": 20,
+        "rackTop": 22,
+        "wallFloors": 6,
+        "racks": 5,
+        "source": [
+          "aerial-187s",
+          "aerial-200s"
+        ]
+      }
+    },
+    {
+      "id": "plan-dorm-6",
+      "name": "6 号宿舍",
+      "metres": 22,
+      "confidence": "low",
+      "references": [
+        "ref05",
+        "ref17",
+        "aerial-187s",
+        "aerial-200s"
+      ],
+      "note": "航拍生活区可读六层及屋顶构架；同组宿舍统一采用约20米主体加2米构架，未逐栋核实编号与屋顶设备数量",
+      "surveyed": false,
+      "floorsApprox": 6,
+      "modelDetails": {
+        "type": "dorm-roof-racks",
+        "floorBands": true,
+        "wallHeight": 20,
+        "rackTop": 22,
+        "wallFloors": 6,
+        "racks": 5,
+        "source": [
+          "aerial-187s",
+          "aerial-200s"
+        ]
+      }
+    },
+    {
+      "id": "plan-dorm-7",
+      "name": "7 号宿舍",
+      "metres": 22,
+      "confidence": "low",
+      "references": [
+        "ref05",
+        "ref17",
+        "aerial-187s",
+        "aerial-200s"
+      ],
+      "note": "航拍生活区可读六层及屋顶构架；同组宿舍统一采用约20米主体加2米构架，未逐栋核实编号与屋顶设备数量",
+      "surveyed": false,
+      "floorsApprox": 6,
+      "modelDetails": {
+        "type": "dorm-roof-racks",
+        "floorBands": true,
+        "wallHeight": 20,
+        "rackTop": 22,
+        "wallFloors": 6,
+        "racks": 5,
+        "source": [
+          "aerial-187s",
+          "aerial-200s"
+        ]
+      }
+    },
+    {
+      "id": "plan-dorm-8",
+      "name": "8 号宿舍",
+      "metres": 22,
+      "confidence": "low",
+      "references": [
+        "ref05",
+        "ref17",
+        "aerial-187s",
+        "aerial-200s"
+      ],
+      "note": "航拍生活区可读六层及屋顶构架；同组宿舍统一采用约20米主体加2米构架，未逐栋核实编号与屋顶设备数量",
+      "surveyed": false,
+      "floorsApprox": 6,
+      "modelDetails": {
+        "type": "dorm-roof-racks",
+        "floorBands": true,
+        "wallHeight": 20,
+        "rackTop": 22,
+        "wallFloors": 6,
+        "racks": 5,
+        "source": [
+          "aerial-187s",
+          "aerial-200s"
+        ]
+      }
+    },
+    {
+      "id": "plan-dorm-9",
+      "name": "9 号宿舍",
+      "metres": 22,
+      "confidence": "low",
+      "references": [
+        "ref05",
+        "ref17",
+        "aerial-187s",
+        "aerial-200s"
+      ],
+      "note": "航拍生活区可读六层及屋顶构架；同组宿舍统一采用约20米主体加2米构架，未逐栋核实编号与屋顶设备数量",
+      "surveyed": false,
+      "floorsApprox": 6,
+      "modelDetails": {
+        "type": "dorm-roof-racks",
+        "floorBands": true,
+        "wallHeight": 20,
+        "rackTop": 22,
+        "wallFloors": 6,
+        "racks": 5,
+        "source": [
+          "aerial-187s",
+          "aerial-200s"
+        ]
+      }
+    },
+    {
+      "id": "plan-dorm-10",
+      "name": "10 号宿舍",
+      "metres": 22,
+      "confidence": "low",
+      "references": [
+        "ref05",
+        "ref17",
+        "aerial-187s",
+        "aerial-200s"
+      ],
+      "note": "航拍生活区可读六层及屋顶构架；同组宿舍统一采用约20米主体加2米构架，未逐栋核实编号与屋顶设备数量",
+      "surveyed": false,
+      "floorsApprox": 6,
+      "modelDetails": {
+        "type": "dorm-roof-racks",
+        "floorBands": true,
+        "wallHeight": 20,
+        "rackTop": 22,
+        "wallFloors": 6,
+        "racks": 5,
+        "source": [
+          "aerial-187s",
+          "aerial-200s"
+        ]
+      }
+    },
+    {
+      "id": "plan-dorm-11",
+      "name": "11 号宿舍",
+      "metres": 22,
+      "confidence": "low",
+      "references": [
+        "ref05",
+        "ref17",
+        "aerial-187s",
+        "aerial-200s"
+      ],
+      "note": "航拍生活区可读六层及屋顶构架；同组宿舍统一采用约20米主体加2米构架，未逐栋核实编号与屋顶设备数量",
+      "surveyed": false,
+      "floorsApprox": 6,
+      "modelDetails": {
+        "type": "dorm-roof-racks",
+        "floorBands": true,
+        "wallHeight": 20,
+        "rackTop": 22,
+        "wallFloors": 6,
+        "racks": 5,
+        "source": [
+          "aerial-187s",
+          "aerial-200s"
+        ]
+      }
+    },
+    {
+      "id": "plan-dorm-12",
+      "name": "12 号宿舍",
+      "metres": 22,
+      "confidence": "low",
+      "references": [
+        "ref05",
+        "ref17",
+        "aerial-187s",
+        "aerial-200s"
+      ],
+      "note": "航拍生活区可读六层及屋顶构架；同组宿舍统一采用约20米主体加2米构架，未逐栋核实编号与屋顶设备数量",
+      "surveyed": false,
+      "floorsApprox": 6,
+      "modelDetails": {
+        "type": "dorm-roof-racks",
+        "floorBands": true,
+        "wallHeight": 20,
+        "rackTop": 22,
+        "wallFloors": 6,
+        "racks": 5,
+        "source": [
+          "aerial-187s",
+          "aerial-200s"
+        ]
+      }
+    },
+    {
+      "id": "plan-dorm-13",
+      "name": "13 号宿舍",
+      "metres": 22,
+      "confidence": "low",
+      "references": [
+        "ref05",
+        "ref17",
+        "aerial-187s",
+        "aerial-200s"
+      ],
+      "note": "航拍生活区可读六层及屋顶构架；同组宿舍统一采用约20米主体加2米构架，未逐栋核实编号与屋顶设备数量",
+      "surveyed": false,
+      "floorsApprox": 6,
+      "modelDetails": {
+        "type": "dorm-roof-racks",
+        "floorBands": true,
+        "wallHeight": 20,
+        "rackTop": 22,
+        "wallFloors": 6,
+        "racks": 5,
+        "source": [
+          "aerial-187s",
+          "aerial-200s"
+        ]
+      }
+    },
+    {
+      "id": "plan-teachers",
+      "name": "教师公寓",
+      "metres": 22,
+      "confidence": "low",
+      "references": [
+        "ref05",
+        "ref17",
+        "aerial-187s",
+        "aerial-200s"
+      ],
+      "note": "教师公寓缺少独立对应实景；暂采用生活区同类六层级模型，编号和高度仍待确认",
+      "surveyed": false,
+      "floorsApprox": 6,
+      "modelDetails": {
+        "type": "dorm-roof-racks",
+        "floorBands": true,
+        "wallHeight": 20,
+        "rackTop": 22,
+        "wallFloors": 6,
+        "racks": 5,
+        "source": [
+          "aerial-187s",
+          "aerial-200s"
+        ]
+      }
+    },
+    {
+      "id": "plan-service-1",
+      "name": "电信服务",
+      "metres": 4,
+      "confidence": "low",
+      "references": [
+        "ref17"
+      ],
+      "note": "生活服务低层体量估计",
+      "surveyed": false,
+      "floorsApprox": 1,
+      "modelDetails": {
+        "type": "plain",
+        "floorBands": true
+      }
+    },
+    {
+      "id": "plan-service-2",
+      "name": "联通营业厅",
+      "metres": 4,
+      "confidence": "low",
+      "references": [
+        "ref17"
+      ],
+      "note": "生活服务低层体量估计",
+      "surveyed": false,
+      "floorsApprox": 1,
+      "modelDetails": {
+        "type": "plain",
+        "floorBands": true
+      }
+    },
+    {
+      "id": "plan-service-3",
+      "name": "移动营业厅",
+      "metres": 4,
+      "confidence": "low",
+      "references": [
+        "ref17"
+      ],
+      "note": "生活服务低层体量估计",
+      "surveyed": false,
+      "floorsApprox": 1,
+      "modelDetails": {
+        "type": "plain",
+        "floorBands": true
+      }
+    },
+    {
+      "id": "business",
+      "name": "商学院",
+      "metres": 17,
+      "confidence": "low",
+      "references": [
+        "ref03",
+        "ref06",
+        "ref14"
+      ],
+      "note": "同校区教学/学院楼多数为四层级翼楼，未确认字母与楼名一一对应",
+      "surveyed": false,
+      "floorsApprox": 4,
+      "modelDetails": {
+        "type": "teaching-block",
+        "floorBands": true,
+        "source": [
+          "aerial-112s",
+          "aerial-137s"
+        ]
+      }
+    },
+    {
+      "id": "career",
+      "name": "招生就业指导中心",
+      "metres": 9,
+      "confidence": "low",
+      "references": [
+        "ref17"
+      ],
+      "note": "低层附属楼，延用模型相对层级并降低不必要高差",
+      "surveyed": false,
+      "floorsApprox": 2,
+      "modelDetails": {
+        "type": "plain",
+        "floorBands": true
+      }
+    },
+    {
+      "id": "backup-b",
+      "name": "备用教学楼 B",
+      "metres": 13,
+      "confidence": "low",
+      "references": [
+        "ref17"
+      ],
+      "note": "低层教学体量估计",
+      "surveyed": false,
+      "floorsApprox": 3,
+      "modelDetails": {
+        "type": "teaching-block",
+        "floorBands": true,
+        "source": [
+          "aerial-112s",
+          "aerial-137s"
+        ]
+      }
+    },
+    {
+      "id": "backup-c",
+      "name": "备用教学楼 C",
+      "metres": 13,
+      "confidence": "low",
+      "references": [
+        "ref17"
+      ],
+      "note": "低层教学体量估计",
+      "surveyed": false,
+      "floorsApprox": 3,
+      "modelDetails": {
+        "type": "teaching-block",
+        "floorBands": true,
+        "source": [
+          "aerial-112s",
+          "aerial-137s"
+        ]
+      }
+    },
+    {
+      "id": "telecom-college",
+      "name": "电信学院",
+      "metres": 17,
+      "confidence": "low",
+      "references": [
+        "ref03",
+        "ref06",
+        "ref14"
+      ],
+      "note": "同校区教学/学院楼多数为四层级翼楼，未确认字母与楼名一一对应",
+      "surveyed": false,
+      "floorsApprox": 4,
+      "modelDetails": {
+        "type": "teaching-block",
+        "floorBands": true,
+        "source": [
+          "aerial-112s",
+          "aerial-137s"
+        ]
+      }
+    },
+    {
+      "id": "power-institute",
+      "name": "智能电力研究院",
+      "metres": 16,
+      "confidence": "low",
+      "references": [
+        "ref17"
+      ],
+      "note": "同片区研究用楼估计",
+      "surveyed": false,
+      "floorsApprox": 4,
+      "modelDetails": {
+        "type": "plain",
+        "floorBands": true
+      }
+    },
+    {
+      "id": "server-room",
+      "name": "机房",
+      "metres": 9,
+      "confidence": "low",
+      "references": [
+        "ref17"
+      ],
+      "note": "低层机房估计",
+      "surveyed": false,
+      "floorsApprox": 2,
+      "modelDetails": {
+        "type": "teaching-block",
+        "floorBands": true,
+        "source": [
+          "aerial-112s",
+          "aerial-137s"
+        ]
+      }
+    },
+    {
+      "id": "metallurgy",
+      "name": "冶金材料楼",
+      "metres": 13,
+      "confidence": "low",
+      "references": [
+        "ref17"
+      ],
+      "note": "学院实验楼估计",
+      "surveyed": false,
+      "floorsApprox": 3,
+      "modelDetails": {
+        "type": "teaching-block",
+        "floorBands": true,
+        "source": [
+          "aerial-112s",
+          "aerial-137s"
+        ]
+      }
+    },
+    {
+      "id": "ship-civil",
+      "name": "船海土木楼",
+      "metres": 17,
+      "confidence": "low",
+      "references": [
+        "ref03",
+        "ref06",
+        "ref14"
+      ],
+      "note": "同校区教学/学院楼多数为四层级翼楼，未确认字母与楼名一一对应",
+      "surveyed": false,
+      "floorsApprox": 4,
+      "modelDetails": {
+        "type": "teaching-block",
+        "floorBands": true,
+        "source": [
+          "aerial-112s",
+          "aerial-137s"
+        ]
+      }
+    },
+    {
+      "id": "mechanical",
+      "name": "机动学院",
+      "metres": 21,
+      "confidence": "low",
+      "references": [
+        "ref17"
+      ],
+      "note": "相对较高学院楼估计",
+      "surveyed": false,
+      "floorsApprox": 5,
+      "modelDetails": {
+        "type": "teaching-block",
+        "floorBands": true,
+        "source": [
+          "aerial-112s",
+          "aerial-137s"
+        ]
+      }
+    },
+    {
+      "id": "training-center",
+      "name": "工程实训中心",
+      "metres": 11,
+      "confidence": "low",
+      "references": [
+        "ref17"
+      ],
+      "note": "实训厂房高层高、低层数体量估计",
+      "surveyed": false,
+      "floorsApprox": 2,
+      "modelDetails": {
+        "type": "plain",
+        "floorBands": true
+      }
+    },
+    {
+      "id": "osm-260623023",
+      "name": "行政楼",
+      "metres": 34,
+      "confidence": "medium",
+      "references": [
+        "ref18",
+        "ref20",
+        "aerial-025s"
+      ],
+      "note": "航拍可见主体约8–9层级，顶部有开敞框架；总高约34米为估算，主体27米加顶部7米仅为造型分段",
+      "surveyed": false,
+      "floorsApprox": 8,
+      "modelDetails": {
+        "type": "open-roof-frame",
+        "floorBands": true,
+        "wallHeight": 27,
+        "frameTop": 34,
+        "columns": 9,
+        "wallFloors": 6,
+        "source": [
+          "aerial-025s",
+          "ref18"
+        ]
+      }
+    },
+    {
+      "id": "osm-260623230",
+      "name": "报告厅",
+      "metres": 8,
+      "confidence": "low",
+      "references": [
+        "ref17"
+      ],
+      "note": "行政楼旁低层报告厅，暂无独立清晰实景，仅作低矮体量",
+      "surveyed": false,
+      "floorsApprox": 1,
+      "modelDetails": {
+        "type": "plain",
+        "floorBands": true
+      }
+    },
+    {
+      "id": "context-student-center",
+      "name": "大学生活动中心",
+      "metres": 14,
+      "confidence": "low",
+      "references": [
+        "ref17"
+      ],
+      "note": "校外侧活动中心估计",
+      "surveyed": false,
+      "floorsApprox": 3,
+      "modelDetails": {
+        "type": "plain",
+        "floorBands": true
+      }
+    },
+    {
+      "id": "plan-sport-stand",
+      "name": "运动场附属建筑",
+      "metres": 5,
+      "confidence": "medium",
+      "references": [
+        "ref22"
+      ],
+      "note": "露天看台附属体量，按看台高差估计",
+      "surveyed": false,
+      "floorsApprox": 1,
+      "modelDetails": {
+        "type": "plain",
+        "floorBands": true
+      }
+    }
+  ],
+  "aerialSource": {
+    "url": "https://www.bilibili.com/video/BV1sx411h7PG/",
+    "title": "江苏科技大学张家港校区、江苏科技大学苏州理工学院",
+    "published": "2017-06-19",
+    "timestampsSeconds": [
+      25,
+      38,
+      43,
+      46,
+      50,
+      53,
+      56,
+      59,
+      62,
+      70,
+      80,
+      100,
+      112,
+      125,
+      137,
+      145,
+      154,
+      162,
+      170,
+      178,
+      187,
+      200
+    ],
+    "resolution": [
+      640,
+      360
+    ],
+    "use": "relative heights and main forms, not measured geometry; public source video not redistributed"
+  },
+  "excludedGroundZones": [
+    "plan-commercial",
+    "plan-commercial-plaza"
+  ]
+}

@@ -1,0 +1,83 @@
+package cn.suike.timetable.featuretests;
+
+import android.app.Activity;
+import android.media.*;
+import android.opengl.*;
+import android.view.Surface;
+import java.nio.ByteBuffer;
+import android.app.Instrumentation;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.SystemClock;
+import android.view.FrameMetrics;
+import android.view.PixelCopy;
+import android.view.Window;
+import android.webkit.WebView;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONTokener;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicReference;
+
+/** Isolated synthetic-data AVD only. Measures the shipping WebView and window. */
+public final class VideoScrollInstrumentation extends Instrumentation {
+ private Activity activity;private WebView web;private String variant;private File folder;private final JSONArray runs=new JSONArray();
+ @Override public void onCreate(Bundle args){variant=args==null?"unknown":args.getString("variant","unknown");super.onCreate(args);start();}
+ private void require(boolean ok,String code){if(!ok)throw new AssertionError(code);}
+ private Object eval(String script)throws Exception{CountDownLatch done=new CountDownLatch(1);AtomicReference<Object> out=new AtomicReference<>();runOnMainSync(()->web.evaluateJavascript(script,s->{try{out.set(new JSONTokener(s).nextValue());}catch(Exception ignored){}done.countDown();}));require(done.await(25,TimeUnit.SECONDS),"JS_TIMEOUT");return out.get();}
+ private void waitJs(String script)throws Exception{long end=SystemClock.elapsedRealtime()+45000;do{if(Boolean.TRUE.equals(eval(script)))return;SystemClock.sleep(100);}while(SystemClock.elapsedRealtime()<end);throw new AssertionError("JS_CONDITION_TIMEOUT");}
+ private JSONObject stats(List<Double> values)throws Exception{ArrayList<Double> sorted; synchronized(values){sorted=new ArrayList<>(values);}Collections.sort(sorted);JSONObject out=new JSONObject();out.put("count",sorted.size());if(!sorted.isEmpty()){out.put("p50ms",sorted.get(sorted.size()/2));out.put("p95ms",sorted.get(Math.min(sorted.size()-1,(int)(sorted.size()*.95))));out.put("over33ms",sorted.stream().filter(x->x>33.34).count());out.put("over50ms",sorted.stream().filter(x->x>50).count());}return out;}
+ private void save(JSONObject report)throws Exception{try(FileOutputStream out=new FileOutputStream(new File(folder,variant+"-report.json"))){out.write(report.toString(2).getBytes("UTF-8"));}}
+ private void picture(String name)throws Exception{SystemClock.sleep(350);CountDownLatch done=new CountDownLatch(1);AtomicReference<android.graphics.Bitmap> bmp=new AtomicReference<>();AtomicReference<Integer> result=new AtomicReference<>();runOnMainSync(()->{android.view.View v=activity.getWindow().getDecorView();android.graphics.Bitmap b=android.graphics.Bitmap.createBitmap(v.getWidth(),v.getHeight(),android.graphics.Bitmap.Config.ARGB_8888);bmp.set(b);PixelCopy.request(activity.getWindow(),b,r->{result.set(r);done.countDown();},new Handler(android.os.Looper.getMainLooper()));});require(done.await(8,TimeUnit.SECONDS)&&result.get()!=null&&result.get()==PixelCopy.SUCCESS,"PIXEL_COPY_FAILED");try(FileOutputStream out=new FileOutputStream(new File(folder,variant+"-"+name+".png"))){bmp.get().compress(android.graphics.Bitmap.CompressFormat.PNG,100,out);}finally{if(bmp.get()!=null)bmp.get().recycle();}}
+
+
+ private void generateHd(File output)throws Exception{
+  MediaCodec codec=MediaCodec.createEncoderByType("video/avc");MediaFormat format=MediaFormat.createVideoFormat("video/avc",1080,1920);format.setInteger(MediaFormat.KEY_COLOR_FORMAT,MediaCodecInfo.CodecCapabilities.COLOR_FormatSurface);format.setInteger(MediaFormat.KEY_BIT_RATE,3000000);format.setInteger(MediaFormat.KEY_FRAME_RATE,30);format.setInteger(MediaFormat.KEY_I_FRAME_INTERVAL,1);
+  MediaMuxer muxer=null;Surface surface=null;EGLDisplay display=EGL14.EGL_NO_DISPLAY;EGLContext context=EGL14.EGL_NO_CONTEXT;EGLSurface window=EGL14.EGL_NO_SURFACE;
+  try{codec.configure(format,null,null,MediaCodec.CONFIGURE_FLAG_ENCODE);surface=codec.createInputSurface();codec.start();muxer=new MediaMuxer(output.getAbsolutePath(),MediaMuxer.OutputFormat.MUXER_OUTPUT_MPEG_4);
+   display=EGL14.eglGetDisplay(EGL14.EGL_DEFAULT_DISPLAY);int[] version=new int[2];require(EGL14.eglInitialize(display,version,0,version,1),"EGL_INIT");EGLConfig[] config=new EGLConfig[1];int[] count=new int[1];require(EGL14.eglChooseConfig(display,new int[]{EGL14.EGL_RED_SIZE,8,EGL14.EGL_GREEN_SIZE,8,EGL14.EGL_BLUE_SIZE,8,EGL14.EGL_RENDERABLE_TYPE,EGL14.EGL_OPENGL_ES2_BIT,0x3142,1,EGL14.EGL_NONE},0,config,0,1,count,0)&&count[0]>0,"EGL_CONFIG");
+   context=EGL14.eglCreateContext(display,config[0],EGL14.EGL_NO_CONTEXT,new int[]{EGL14.EGL_CONTEXT_CLIENT_VERSION,2,EGL14.EGL_NONE},0);window=EGL14.eglCreateWindowSurface(display,config[0],surface,new int[]{EGL14.EGL_NONE},0);require(EGL14.eglMakeCurrent(display,window,window,context),"EGL_CURRENT");GLES20.glViewport(0,0,1080,1920);
+   MediaCodec.BufferInfo info=new MediaCodec.BufferInfo();int track=-1;boolean started=false,eos=false;
+   for(int frame=0;frame<=90;frame++){
+    if(frame<90){GLES20.glDisable(GLES20.GL_SCISSOR_TEST);GLES20.glClearColor(.1f,.23f,.38f,1);GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT);GLES20.glEnable(GLES20.GL_SCISSOR_TEST);
+     for(int y=0;y<1920;y+=120){GLES20.glScissor(0,y,1080,65);GLES20.glClearColor(.25f+y/8000f,.4f+y/7000f,.45f,1);GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT);}GLES20.glScissor((frame*16)%1080,0,60,1920);GLES20.glClearColor(.68f,.76f,.7f,1);GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT);EGLExt.eglPresentationTimeANDROID(display,window,frame*1000000000L/30);require(EGL14.eglSwapBuffers(display,window),"EGL_SWAP");
+    }else codec.signalEndOfInputStream();
+    long end=SystemClock.elapsedRealtime()+15000;while(!eos){int index=codec.dequeueOutputBuffer(info,frame==90?10000:0);if(index==MediaCodec.INFO_TRY_AGAIN_LATER){if(frame<90)break;require(SystemClock.elapsedRealtime()<end,"VIDEO_ENCODE_TIMEOUT");continue;}if(index==MediaCodec.INFO_OUTPUT_FORMAT_CHANGED){require(!started,"DUPLICATE_VIDEO_FORMAT");track=muxer.addTrack(codec.getOutputFormat());muxer.start();started=true;}else if(index>=0){ByteBuffer buffer=codec.getOutputBuffer(index);if((info.flags&MediaCodec.BUFFER_FLAG_CODEC_CONFIG)!=0)info.size=0;if(info.size>0){require(started,"VIDEO_MUXER_NOT_READY");buffer.position(info.offset);buffer.limit(info.offset+info.size);muxer.writeSampleData(track,buffer,info);}eos=(info.flags&MediaCodec.BUFFER_FLAG_END_OF_STREAM)!=0;codec.releaseOutputBuffer(index,false);}}
+   }require(started&&eos,"VIDEO_ENCODE_INCOMPLETE");muxer.stop();
+  }finally{if(display!=EGL14.EGL_NO_DISPLAY){EGL14.eglMakeCurrent(display,EGL14.EGL_NO_SURFACE,EGL14.EGL_NO_SURFACE,EGL14.EGL_NO_CONTEXT);if(window!=EGL14.EGL_NO_SURFACE)EGL14.eglDestroySurface(display,window);if(context!=EGL14.EGL_NO_CONTEXT)EGL14.eglDestroyContext(display,context);EGL14.eglTerminate(display);}if(surface!=null)surface.release();try{codec.stop();}catch(Exception ignored){}codec.release();if(muxer!=null)muxer.release();}
+ }
+
+ @Override public void onStart(){JSONObject report=new JSONObject();boolean passed=false;HandlerThread meter=null;try{
+require(Build.VERSION.SDK_INT==36&&"ranchu".equals(Build.HARDWARE),"EMULATOR_ONLY");folder=new File(getTargetContext().getExternalFilesDir(null),"video-scroll-profile");require(folder.isDirectory()||folder.mkdirs(),"REPORT_FOLDER_FAILED");
+Intent intent=new Intent().setClassName("cn.suike.timetable","cn.suike.timetable.MainActivity").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);activity=startActivitySync(intent);Field f=activity.getClass().getDeclaredField("webView");f.setAccessible(true);web=(WebView)f.get(activity);waitJs("!!(window.__suikeBoot&&__suikeBoot.ready&&window.SuikeFeatures)");
+eval("(function(){var s=SuikeFeatures.getState();function t(n){return String(Math.floor(n/60)).padStart(2,'0')+':'+String(n%60).padStart(2,'0');}s.periods=Array.from({length:12},(_,i)=>({start:t(360+i*40),end:t(390+i*40)}));s.courses=[];var today=new Date(Date.now()+28800000).toISOString().slice(0,10),day=TimetableModel.dayOf(today);for(var d=1;d<=7;d++){var date=TimetableModel.addDays(today,d-day);for(var p=1;p<=11;p+=2)s.courses.push({id:'qa-video-'+d+'-'+p,name:'课程示例 '+d+'-'+p,day:d,start:p,end:p+1,dates:[date],sourceTime:'',room:'教学楼 A101',teacher:'示例教师',color:'teal'});}s.importLedger=null;s.skipLegacyImportBaseline=true;s.productSettings=SuikeFeatures.settings();s.productSettings.setupCompleted=true;s.productSettings.reminders.enabled=false;SuikeFeatures.commitState(s,'synthetic video fixture');document.querySelector('[data-view=settings]').click();})()");
+File fixture=new File(folder,"fixture1080.mp4");if(!fixture.isFile()||fixture.length()==0){try(java.io.InputStream in=getContext().getAssets().open("fixture1080.mp4");FileOutputStream out=new FileOutputStream(fixture)){byte[] block=new byte[65536];int read;while((read=in.read(block))>=0)out.write(block,0,read);}catch(java.io.FileNotFoundException missing){generateHd(fixture);}}require(fixture.length()>1024,"EMPTY_VIDEO_FIXTURE");String raw=android.util.Base64.encodeToString(java.nio.file.Files.readAllBytes(fixture.toPath()),android.util.Base64.NO_WRAP);eval("window.__qaVideo={base64:"+JSONObject.quote(raw)+",ready:true}");
+byte[] bytes=java.nio.file.Files.readAllBytes(fixture.toPath()),digest=java.security.MessageDigest.getInstance("SHA-256").digest(bytes);StringBuilder hash=new StringBuilder();for(byte b:digest)hash.append(String.format(java.util.Locale.ROOT,"%02x",b&255));report.put("fixtureSHA256",hash.toString());report.put("fixtureBytes",bytes.length);
+eval("(function(){var data=atob(__qaVideo.base64),a=new Uint8Array(data.length);for(var i=0;i<data.length;i++)a[i]=data.charCodeAt(i);var d=new DataTransfer();d.items.add(new File([a],'synthetic-1080p.mp4',{type:'video/mp4'}));var input=document.getElementById('wallpaperVideo');input.files=d.files;input.dispatchEvent(new Event('change',{bubbles:true}));delete __qaVideo.base64;})()");
+waitJs("document.documentElement.dataset.wallpaper==='on'&&SuikeWallpaper.mediaForGlass().element.readyState>=2&&SuikeWallpaper.mediaForGlass().element.currentTime>.05");SystemClock.sleep(2000);
+require(Boolean.TRUE.equals(eval("SuikeWallpaper.mediaForGlass().element.videoWidth===1080&&SuikeWallpaper.mediaForGlass().element.videoHeight===1920")),"HD_VIDEO_DIMENSIONS_FAILED");
+meter=new HandlerThread("video-frame-metrics");meter.start();final Handler handler=new Handler(meter.getLooper());for(String view:new String[]{"settings","week","today"})for(int frost:new int[]{0,70}){
+eval("document.querySelector('[data-view="+view+"]').click();SuikeAppearance.setFrost("+frost+",true);document.querySelectorAll('#settingsView details').forEach(d=>d.open=true);document.getElementById('toast').hidden=true;window.scrollTo(0,0);SuikeWallpaper.mediaForGlass().element.currentTime=0");SystemClock.sleep(1800);if(variant.contains("shared"))waitJs("SuikeGlassScene.status.active&&SuikeGlassScene.status.mediaKind==='video'&&SuikeGlassScene.status.failures===0&&document.querySelector('.lg-video-foreground').parentElement===document.querySelector('.bottom-nav').parentElement");
+final List<Double> total=Collections.synchronizedList(new ArrayList<>()),gpu=Collections.synchronizedList(new ArrayList<>());Window.OnFrameMetricsAvailableListener listener=(window,metrics,dropped)->{long n=metrics.getMetric(FrameMetrics.TOTAL_DURATION);if(n>0)total.add(n/1000000.0);long g=metrics.getMetric(FrameMetrics.GPU_DURATION);if(g>0)gpu.add(g/1000000.0);};runOnMainSync(()->activity.getWindow().addOnFrameMetricsAvailableListener(listener,handler));
+eval("window.__qaScroll={done:false,samples:[]};(function(){var q=__qaScroll,start=performance.now(),last=start,max=Math.max(0,document.scrollingElement.scrollHeight-innerHeight);q.maxScroll=max;var first=SuikeWallpaper.mediaForGlass().element.getVideoPlaybackQuality();q.before={totalVideoFrames:first.totalVideoFrames,droppedVideoFrames:first.droppedVideoFrames};function tick(now){q.samples.push(now-last);last=now;var elapsed=now-start;window.scrollTo(0,max*(1-Math.cos(elapsed/1200*Math.PI))*.5);if(elapsed<4800)requestAnimationFrame(tick);else{q.done=true;q.elapsed=elapsed;var v=SuikeWallpaper.mediaForGlass().element,k=v.getVideoPlaybackQuality();q.after={totalVideoFrames:k.totalVideoFrames,droppedVideoFrames:k.droppedVideoFrames};}}requestAnimationFrame(tick);})()");
+waitJs("__qaScroll.done");runOnMainSync(()->activity.getWindow().removeOnFrameMetricsAvailableListener(listener));JSONObject run=new JSONObject((String)eval("JSON.stringify({raf:__qaScroll,scene:SuikeGlassScene.status,liveBackdropCount:Array.from(document.querySelectorAll('*')).filter(el=>{var r=el.getBoundingClientRect();return r.width&&r.height&&r.bottom>0&&r.top<innerHeight&&getComputedStyle(el).backdropFilter!=='none';}).length})"));run.put("view",view);run.put("frost",frost);run.put("windowFrames",stats(total));run.put("gpuFrames",stats(gpu));runs.put(run);report.put("runs",runs);save(report);if(frost==0){eval("window.scrollTo(0,(document.scrollingElement.scrollHeight-innerHeight)*.38)");picture(view);}}
+JSONArray switches=new JSONArray();for(String target:new String[]{"settings","week","today","settings","week","today"}){eval("window.__qaSwitch={done:false,samples:[]};(function(){var q=__qaSwitch,start=performance.now(),last=start;document.querySelector('[data-view="+target+"]').click();window.scrollTo(0,0);function tick(now){q.samples.push(now-last);last=now;if(now-start<650)requestAnimationFrame(tick);else{q.elapsed=now-start;q.done=true;}}requestAnimationFrame(tick);})()");waitJs("__qaSwitch.done");JSONObject r=new JSONObject((String)eval("JSON.stringify(__qaSwitch)"));r.put("view",target);switches.put(r);}report.put("switches",switches);
+eval("document.querySelector('[data-view=today]').click();window.scrollTo(0,0);document.querySelector('.agenda-card').click()");
+picture("video-dialog");
+if(variant.contains("shared")){
+eval("document.getElementById('courseDialog').close();window.__qaOldVideo=SuikeWallpaper.mediaForGlass().element;var c=document.createElement('canvas');c.width=720;c.height=1280;var x=c.getContext('2d');x.fillStyle='#527f9b';x.fillRect(0,0,720,1280);c.toBlob(function(b){var d=new DataTransfer();d.items.add(new File([b],'image-regression.png',{type:'image/png'}));var input=document.getElementById('wallpaperImage');input.files=d.files;input.dispatchEvent(new Event('change',{bubbles:true}));},'image/png')");
+waitJs("SuikeGlassScene.status.active&&SuikeGlassScene.status.mediaKind==='image'");
+require(Boolean.TRUE.equals(eval("!document.documentElement.dataset.glassVideo&&document.querySelectorAll('.lg-video-foreground').length===0&&__qaOldVideo.paused&&__qaOldVideo.getAttribute('src')===null")),"IMAGE_OR_DECODER_CLEANUP_REGRESSION");
+picture("image-regression");report.put("imageRegressionVerified",true);report.put("oldVideoSourceReleased",true);}
+report.put("fixtureWidth",1080);report.put("fixtureHeight",1920);report.put("hardwareAccelerated",web.isHardwareAccelerated());report.put("webView",WebView.getCurrentWebViewPackage().versionName);report.put("method","Same host-GPU API36 emulator, synthetic 1080x1920 AVC MP4; animation callbacks and native pipeline metrics, not phone FPS");passed=true;
+}catch(Throwable failure){try{report.put("failure",failure.getClass().getSimpleName()+":"+failure.getMessage());if(web!=null)report.put("runtime",new JSONObject((String)eval("JSON.stringify({boot:window.__suikeBoot,scene:window.SuikeGlassScene?SuikeGlassScene.status:null,wallpaper:document.documentElement.dataset.wallpaper,status:document.getElementById('wallpaperStatus').textContent})")));}catch(Exception ignored){}}finally{if(meter!=null)meter.quitSafely();try{report.put("passed",passed);report.put("variant",variant);report.put("runs",runs);if(folder!=null)save(report);}catch(Exception ignored){}if(activity!=null)runOnMainSync(()->activity.finish());Bundle out=new Bundle();out.putString("videoScrollReport",report.toString());finish(passed?Activity.RESULT_OK:Activity.RESULT_CANCELED,out);}}}

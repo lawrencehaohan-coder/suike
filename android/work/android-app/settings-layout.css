@@ -1,0 +1,25 @@
+/* Existing settings visual tokens stay unchanged. Only disclosure and spacing are scoped here. */
+.settings-fold-heading {
+  display:flex; align-items:center; justify-content:space-between;
+  min-height:44px; list-style:none; cursor:pointer;
+}
+.settings-fold-heading::-webkit-details-marker { display:none; }
+.settings-fold-heading > .card-heading { min-width:0; margin:0; }
+.settings-fold-heading > #periodTitle { margin:0; }
+.settings-fold-chevron {
+  flex:none; width:16px; height:16px; margin-left:12px; color:var(--ink-2);
+  transition:transform 180ms ease;
+}
+.settings-fold[open] > .settings-fold-heading > .settings-fold-chevron { transform:rotate(180deg); }
+.settings-fold-content { margin-top:16px; }
+.settings-fold-card .period-list {
+  display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); grid-column-gap:16px;
+}
+.settings-fold-card .period-list > div { min-width:0; flex-wrap:wrap; }
+.settings-fold-card .period-list > div > :last-child { margin-left:8px; }
+@media(max-width:360px) {
+  .settings-fold-card .period-list { grid-template-columns:minmax(0,1fr); }
+}
+@media(prefers-reduced-motion:reduce) {
+  .settings-fold-chevron { transition:none; }
+}

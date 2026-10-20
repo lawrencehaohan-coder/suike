@@ -1,0 +1,1838 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#F5F5F4">
+  <meta name="description" content="随课，你的私人课表。查看每日课程与周课表，支持周次、编辑和本地备份。">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>随课 · 私人课表</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22512%22%20height%3D%22512%22%20viewBox%3D%220%200%20512%20512%22%3E%0A%20%20%3Crect%20width%3D%22512%22%20height%3D%22512%22%20rx%3D%2296%22%20fill%3D%22%23f3f6f5%22%2F%3E%0A%20%20%3Crect%20x%3D%22128%22%20y%3D%22136%22%20width%3D%22256%22%20height%3D%22258%22%20rx%3D%2228%22%20fill%3D%22%23126b5f%22%2F%3E%0A%20%20%3Crect%20x%3D%22152%22%20y%3D%22210%22%20width%3D%22208%22%20height%3D%22160%22%20rx%3D%228%22%20fill%3D%22%23f3f6f5%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M190%20118v50M322%20118v50%22%20stroke%3D%22%23126b5f%22%20stroke-width%3D%2226%22%20stroke-linecap%3D%22round%22%2F%3E%0A%20%20%3Crect%20x%3D%22178%22%20y%3D%22236%22%20width%3D%2238%22%20height%3D%2238%22%20rx%3D%225%22%20fill%3D%22%23126b5f%22%2F%3E%0A%20%20%3Crect%20x%3D%22237%22%20y%3D%22236%22%20width%3D%2238%22%20height%3D%2238%22%20rx%3D%225%22%20fill%3D%22%23126b5f%22%2F%3E%0A%20%20%3Crect%20x%3D%22296%22%20y%3D%22236%22%20width%3D%2238%22%20height%3D%2238%22%20rx%3D%225%22%20fill%3D%22%23126b5f%22%2F%3E%0A%20%20%3Crect%20x%3D%22178%22%20y%3D%22296%22%20width%3D%2238%22%20height%3D%2238%22%20rx%3D%225%22%20fill%3D%22%23126b5f%22%2F%3E%0A%20%20%3Cpath%20d%3D%22m244%20315%2024%2022%2049-45%22%20fill%3D%22none%22%20stroke%3D%22%23126b5f%22%20stroke-width%3D%2218%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%0A%3C%2Fsvg%3E%0A" type="image/svg+xml">
+  <style>/* 随课 · 单色仪器风（Monochrome Instrument） */
+:root {
+  --paper: #F5F5F4;
+  --card: #FFFFFF;
+  --ink: #1B1B1A;
+  --ink-2: #6E6E6A;
+  --ink-3: #9C9C97;
+  --line: #E4E4E0;
+  --line-2: #EFEFEC;
+  --accent: #1D9E75;
+  --danger: #C8362B;
+  --num: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+}
+html[data-theme="dark"], body[data-theme="dark"] {
+  --paper: #131312;
+  --card: #1C1C1B;
+  --ink: #EDEDE8;
+  --ink-2: #A3A39E;
+  --ink-3: #6E6E6A;
+  --line: #2D2D2B;
+  --line-2: #242423;
+  --accent: #34C48F;
+  --danger: #E5665B;
+}
+@media (prefers-color-scheme: dark) {
+  html[data-theme="auto"], body[data-theme="auto"] {
+    --paper: #131312;
+    --card: #1C1C1B;
+    --ink: #EDEDE8;
+    --ink-2: #A3A39E;
+    --ink-3: #6E6E6A;
+    --line: #2D2D2B;
+    --line-2: #242423;
+    --accent: #34C48F;
+    --danger: #E5665B;
+  }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+button { font: inherit; color: inherit; cursor: pointer; }
+h1, h2, h3, p { margin: 0; }
+svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+.skip-link { position: absolute; left: -9999px; top: 0; background: var(--ink); color: var(--paper); padding: 8px 14px; z-index: 99; }
+.skip-link:focus { left: 8px; top: 8px; }
+
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+/* 微型大写标签：仪器风的脚注 */
+.micro {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.micro {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.app-shell {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* ======== 顶部仪表区 ======== */
+.app-header {
+  padding: calc(18px + env(safe-area-inset-top)) 2px 4px;
+}
+.inst-topline {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.inst-clockrow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 10px;
+}
+.inst-clock {
+  font-family: var(--num);
+  font-variant-numeric: tabular-nums;
+  font-size: 56px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: .01em;
+}
+.inst-side { text-align: right; padding-bottom: 6px; }
+.inst-side .micro { display: block; }
+.inst-side .micro + .micro { margin-top: 4px; color: var(--ink-3); }
+.inst-dateline { margin-top: 10px; color: var(--ink-3); }
+.inst-dateline span { font-family: var(--num); font-variant-numeric: tabular-nums; }
+.inst-dateline #termLabel { font-family: inherit; text-transform: none; letter-spacing: .08em; }
+
+/* ======== 卡片基础 ======== */
+.week-toolbar, .settings-card, .empty-state, .week-load, .now-card, .next-card, .agenda-card, .pending-course {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+/* ======== 周工具栏 ======== */
+.week-toolbar { margin-top: 18px; padding: 14px 16px; }
+.week-heading { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; }
+.week-title-row { display: flex; align-items: center; }
+.week-title-row h2 { font-size: 15px; font-weight: 600; }
+.week-select-wrap { position: relative; display: inline-flex; align-items: center; margin-left: 10px; }
+.week-select-wrap select {
+  appearance: none; -webkit-appearance: none;
+  border: 1px solid var(--line); border-radius: 6px;
+  background: var(--card); color: var(--ink-2);
+  font-size: 11px; padding: 4px 22px 4px 8px;
+}
+.week-select-wrap svg { position: absolute; right: 6px; width: 12px; height: 12px; pointer-events: none; color: var(--ink-3); }
+.week-range { font-family: var(--num); font-variant-numeric: tabular-nums; font-size: 11px; color: var(--ink-3); }
+.week-controls { display: flex; margin-top: 12px; }
+.week-controls .inst-btn { flex: 1; }
+.week-controls .inst-btn + .inst-btn { margin-left: 8px; }
+.inst-btn {
+  border: 1px solid var(--line); border-radius: 7px;
+  background: var(--card); color: var(--ink-2);
+  font-size: 10px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase;
+  padding: 8px 0;
+}
+.inst-btn:active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+/* ======== 视图与段落标题 ======== */
+.view { margin-top: 18px; }
+.section-heading {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin: 20px 2px 10px;
+}
+.section-heading h2, .section-heading h3 {
+  font-size: 10px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2);
+}
+.subtle-label { font-family: var(--num); font-size: 10px; letter-spacing: .08em; color: var(--ink-3); margin-left: auto; margin-right: 10px; }
+.inst-add {
+  display: inline-flex; align-items: center;
+  border: 1px solid var(--line); border-radius: 6px; background: var(--card);
+  font-size: 10px; letter-spacing: .1em; color: var(--ink-2); padding: 5px 9px;
+}
+.inst-add svg { width: 11px; height: 11px; margin-right: 4px; }
+.inst-add:active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.text-button {
+  border: 1px solid var(--line); border-radius: 6px; background: var(--card);
+  font-size: 10px; letter-spacing: .1em; color: var(--ink-2); padding: 5px 9px;
+  display: inline-flex; align-items: center;
+}
+.text-button svg { width: 11px; height: 11px; margin-right: 4px; }
+.danger-text { color: var(--danger); border-color: var(--danger); }
+.view-hint { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); margin: 14px 2px 0; display: flex; align-items: center; }
+.view-hint svg { width: 13px; height: 13px; margin-right: 6px; }
+
+/* ======== 日签（密度点阵） ======== */
+.day-strip { display: grid; grid-template-columns: repeat(7, 1fr); grid-gap: 6px; }
+.day-btn {
+  border: 1px solid var(--line); border-radius: 8px; background: var(--card);
+  padding: 9px 0 8px; text-align: center;
+}
+.day-name { display: block; font-family: var(--num); font-size: 12px; font-weight: 600; color: var(--ink-2); }
+.day-pips { display: block; margin-top: 5px; min-height: 4px; line-height: 4px; }
+.day-pips i { display: inline-block; width: 3px; height: 3px; border-radius: 50%; background: var(--ink-3); margin: 0 1px; }
+.day-btn.is-today { border-color: var(--ink); }
+.day-btn.active { background: var(--ink); border-color: var(--ink); }
+.day-btn.active .day-name { color: var(--paper); }
+.day-btn.active .day-pips i { background: var(--paper); }
+
+/* ======== NOW / NEXT 卡 ======== */
+.next-course { margin-top: 14px; }
+.now-card, .next-card {
+  display: block; width: 100%; text-align: left;
+  padding: 13px 15px; margin: 0 0 8px;
+}
+.nc-label { display: flex; align-items: center; font-size: 10px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); }
+.nc-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-right: 7px; }
+.nc-row { display: flex; justify-content: space-between; align-items: baseline; margin-top: 8px; }
+.nc-name { font-size: 16px; font-weight: 600; }
+.nc-time { font-family: var(--num); font-variant-numeric: tabular-nums; font-size: 13px; color: var(--ink); white-space: nowrap; margin-left: 12px; }
+.nc-meta { font-size: 12px; color: var(--ink-2); margin-top: 4px; }
+.nc-progress { display: block; height: 2px; background: var(--line-2); border-radius: 1px; margin-top: 10px; overflow: hidden; }
+.nc-progress i { display: block; height: 100%; background: var(--accent); }
+.nc-big { font-family: var(--num); font-variant-numeric: tabular-nums; font-size: 24px; font-weight: 500; white-space: nowrap; }
+.nc-info { margin-left: 14px; min-width: 0; }
+.nc-info .nc-name { font-size: 14px; }
+.next-card .nc-row { justify-content: flex-start; align-items: center; }
+
+/* ======== 今日课程列表 ======== */
+.agenda { margin-top: 2px; }
+.agenda-card {
+  display: flex; align-items: flex-start;
+  width: 100%; text-align: left;
+  padding: 11px 14px; margin: 0 0 8px;
+}
+.agenda-card.is-past { opacity: .45; }
+.course-time { flex: none; width: 74px; }
+.course-time strong { display: block; font-family: var(--num); font-variant-numeric: tabular-nums; font-size: 13px; font-weight: 500; }
+.course-time .period { display: block; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); margin-top: 2px; }
+.course-line { display: none; }
+.course-info { flex: 1; min-width: 0; }
+.course-name { font-size: 14px; font-weight: 600; overflow-wrap: anywhere; }
+.course-meta { margin-top: 3px; }
+.course-meta span { font-size: 11px; color: var(--ink-2); }
+.course-meta span + span::before { content: '·  '; color: var(--ink-3); }
+.course-tag { flex: none; font-size: 9px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); margin-left: 10px; padding-top: 2px; }
+.course-tag.current { color: var(--accent); }
+.course-tag.done { color: var(--ink-3); }
+
+/* ======== 空状态 / 待确认 ======== */
+.empty-state { padding: 26px 18px; text-align: center; }
+.empty-state svg { width: 34px; height: 34px; color: var(--ink-3); }
+.empty-state h3 { font-size: 13px; font-weight: 600; margin-top: 8px; }
+.empty-state p { font-size: 12px; color: var(--ink-2); margin: 4px 0 12px; }
+.pending-section { margin-top: 4px; }
+.pending-course {
+  display: block; width: 100%; text-align: left;
+  border-style: dashed; padding: 11px 14px; margin: 0 0 8px;
+}
+.pending-date { font-family: var(--num); font-size: 10px; letter-spacing: .1em; color: var(--ink-3); margin-bottom: 3px; }
+.pending-time-note { font-size: 11px; color: var(--ink-2); margin-top: 2px; }
+
+/* ======== WEEK LOAD 条形图 ======== */
+.week-load { margin-top: 16px; padding: 13px 15px; }
+.wl-title { margin-bottom: 12px; }
+.wl-bars { display: flex; align-items: flex-end; }
+.wl-col { flex: 1; text-align: center; }
+.wl-bar { display: block; width: 10px; margin: 0 auto; background: var(--ink); border-radius: 1px; }
+.wl-bar.empty { background: var(--line); }
+.wl-label { display: block; font-family: var(--num); font-size: 9px; color: var(--ink-3); margin-top: 5px; }
+
+/* ======== 周视图网格 ======== */
+.week-grid-wrap {
+  overflow-x: auto;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  -webkit-overflow-scrolling: touch;
+}
+.week-grid {
+  display: grid;
+  grid-template-columns: 46px repeat(7, minmax(96px, 1fr));
+  min-width: 720px;
+}
+.grid-corner, .grid-day, .grid-time, .grid-slot { border-bottom: 1px solid var(--line-2); }
+.grid-corner { border-right: 1px solid var(--line-2); font-size: 9px; letter-spacing: .1em; color: var(--ink-3); display: flex; align-items: center; justify-content: center; text-transform: uppercase; }
+.grid-day { text-align: center; padding: 8px 0 6px; border-left: 1px solid var(--line-2); }
+.grid-day span { display: block; font-size: 10px; font-weight: 600; letter-spacing: .12em; color: var(--ink-2); }
+.grid-day small { display: block; font-family: var(--num); font-size: 9px; color: var(--ink-3); margin-top: 1px; }
+.grid-day.is-today { box-shadow: inset 0 2px 0 var(--ink); }
+.grid-day.is-today span { color: var(--ink); }
+.grid-time { border-right: 1px solid var(--line-2); text-align: center; padding-top: 5px; }
+.period-number { display: block; font-family: var(--num); font-size: 11px; font-weight: 600; color: var(--ink-2); }
+.period-time { display: block; font-family: var(--num); font-size: 8px; color: var(--ink-3); white-space: pre-line; line-height: 1.4; margin-top: 1px; }
+.grid-slot { border-left: 1px solid var(--line-2); }
+.grid-slot.afternoon, .grid-time.afternoon { box-shadow: inset 0 2px 0 var(--line); }
+.week-course {
+  position: relative;
+  margin: 2px 3px; padding: 5px 7px 5px 9px;
+  background: var(--card);
+  border: 1px solid var(--line); border-left: 2px solid var(--ink);
+  border-radius: 5px;
+  text-align: left; overflow: hidden;
+  display: flex; flex-direction: column; align-items: flex-start;
+}
+.week-course .course-name { font-size: 11px; font-weight: 600; line-height: 1.3; }
+.week-course .course-room, .week-course .course-teacher, .week-course .course-weeks { font-size: 9px; color: var(--ink-2); margin-top: 2px; overflow-wrap: anywhere; }
+.week-course .course-weeks { color: var(--ink-3); font-family: var(--num); }
+.week-course.conflict { border-left-color: var(--danger); }
+.week-course.conflict .course-name { color: var(--danger); }
+
+/* ======== 设置页 ======== */
+.settings-card { padding: 16px; margin-bottom: 12px; }
+.card-heading { display: flex; align-items: center; margin-bottom: 12px; }
+.section-icon { flex: none; width: 30px; height: 30px; border: 1px solid var(--line); border-radius: 7px; display: flex; align-items: center; justify-content: center; margin-right: 10px; color: var(--ink-2); }
+.section-icon svg { width: 15px; height: 15px; }
+.card-heading h3 { font-size: 13px; font-weight: 600; }
+.card-heading p { font-size: 11px; color: var(--ink-2); margin-top: 1px; }
+.settings-description { font-size: 12px; color: var(--ink-2); margin-bottom: 12px; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; grid-gap: 12px; }
+.field { display: block; }
+.field-full { grid-column: 1 / -1; }
+.field > span { display: block; font-size: 10px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 5px; }
+.field input, .field select {
+  width: 100%; padding: 9px 10px;
+  border: 1px solid var(--line); border-radius: 7px;
+  background: var(--card); color: var(--ink);
+  font-size: 14px; font-family: inherit;
+}
+.field input:focus, .field select:focus { border-color: var(--ink); outline: none; }
+.field small { display: block; font-size: 10px; color: var(--ink-3); margin-top: 4px; }
+.field input[type="date"], .field input[name="weeks"], .field input[name="sourceTime"] { font-family: var(--num); font-variant-numeric: tabular-nums; }
+.checkbox-field { display: flex; align-items: center; }
+.checkbox-field input { width: 16px; height: 16px; margin-right: 8px; accent-color: var(--ink); }
+.checkbox-field span { margin: 0; }
+.required { color: var(--danger); }
+.color-field input[type="color"] { padding: 3px; height: 38px; }
+.card-actions { margin-top: 14px; }
+.backup-actions { display: flex; margin-bottom: 12px; }
+.backup-actions .button { flex: 1; }
+.backup-actions .button + .button { margin-left: 10px; }
+.help-details { margin-top: 12px; border-top: 1px solid var(--line-2); padding-top: 10px; }
+.help-details summary { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); cursor: pointer; }
+.help-details p { font-size: 12px; color: var(--ink-2); margin-top: 8px; }
+.period-card h3 { font-size: 10px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 10px; }
+.period-list > div { display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid var(--line-2); }
+.period-list > div:last-child { border-bottom: none; }
+.period-list span { font-size: 12px; color: var(--ink-2); }
+.period-list strong { font-family: var(--num); font-variant-numeric: tabular-nums; font-size: 12px; font-weight: 500; }
+.settings-footer { text-align: center; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); margin: 18px 0 8px; }
+.status-line { text-align: center; font-size: 10px; letter-spacing: .08em; color: var(--ink-3); margin: 16px 0 0; }
+
+/* ======== 按钮 ======== */
+.button {
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--line); border-radius: 8px;
+  background: var(--card); color: var(--ink);
+  font-size: 13px; font-weight: 500; padding: 10px 18px;
+}
+.button svg { width: 14px; height: 14px; margin-right: 6px; }
+.button-primary { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.button-outline { background: var(--card); }
+.button-danger { background: var(--card); color: var(--danger); border-color: var(--danger); }
+.icon-button {
+  width: 34px; height: 34px; flex: none;
+  border: 1px solid var(--line); border-radius: 8px; background: var(--card);
+  display: inline-flex; align-items: center; justify-content: center; color: var(--ink-2);
+}
+.icon-button svg { width: 15px; height: 15px; }
+
+/* ======== 底部导航 ======== */
+.bottom-nav {
+  position: fixed; left: 50%; transform: translateX(-50%);
+  bottom: calc(10px + env(safe-area-inset-bottom));
+  width: calc(min(100%, 1000px) - 24px);
+  display: flex;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 4px;
+  z-index: 40;
+}
+.nav-item { flex: 1; background: none; border: none; padding: 8px 0 7px; text-align: center; border-radius: 9px; }
+.nav-label { display: block; font-size: 9px; font-weight: 500; letter-spacing: .16em; color: var(--ink-3); }
+.nav-pips { display: block; margin-top: 4px; line-height: 3px; min-height: 3px; }
+.nav-pips i { display: inline-block; width: 3px; height: 3px; border-radius: 50%; background: var(--line); margin: 0 1.5px; }
+.nav-item.active { background: var(--line-2); }
+.nav-item.active .nav-label { color: var(--ink); font-weight: 600; }
+.nav-item.active .nav-pips i { background: var(--ink); }
+
+main { padding-bottom: 108px; }
+
+/* ======== 弹窗 ======== */
+dialog {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--card);
+  color: var(--ink);
+  padding: 20px;
+  width: calc(min(100% - 32px, 480px));
+  max-height: calc(100% - 64px);
+  overflow-y: auto;
+}
+dialog::backdrop { background: rgba(20, 20, 19, .32); }
+.dialog-heading { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+.dialog-heading h2 { font-size: 15px; font-weight: 600; }
+.eyebrow { font-size: 9px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
+.detail-title { font-size: 18px; font-weight: 600; }
+.detail-subtitle { font-size: 11px; letter-spacing: .1em; color: var(--ink-2); margin: 3px 0 14px; }
+.detail-row { display: flex; padding: 9px 0; border-bottom: 1px solid var(--line-2); font-size: 13px; }
+.detail-row:last-child { border-bottom: none; }
+.detail-label { flex: none; width: 76px; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); padding-top: 2px; }
+.dialog-actions { display: flex; justify-content: flex-end; margin-top: 16px; }
+.dialog-actions .button + .button { margin-left: 10px; }
+.form-error { background: var(--card); border: 1px solid var(--danger); color: var(--danger); font-size: 12px; border-radius: 7px; padding: 9px 11px; margin-top: 12px; }
+
+/* ======== Toast ======== */
+.toast {
+  position: fixed; left: 50%; transform: translateX(-50%);
+  bottom: calc(76px + env(safe-area-inset-bottom));
+  background: var(--ink); color: var(--paper);
+  font-size: 12px; padding: 10px 18px;
+  border-radius: 999px; z-index: 60;
+  max-width: calc(100% - 48px);
+}
+.toast-undo { font-size: 11px; letter-spacing: .08em; }
+
+@media print {
+  .bottom-nav, .toast, .week-controls, .inst-add, .text-button { display: none; }
+  body { background: #fff; }
+}
+</style>
+  
+  
+  
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">跳转到课表</a>
+  <div id="app" class="app-shell">
+    <header class="app-header">
+      <div class="inst-topline">
+        <h1 id="headerTitle" class="micro" aria-label="随课">SUIKE · TIMETABLE</h1>
+        <span id="headWeek" class="micro">W-- · ---</span>
+      </div>
+      <div class="inst-clockrow">
+        <p id="clock" class="inst-clock" aria-label="当前时间">--:--</p>
+        <div class="inst-side"><span id="headPeriod" class="micro">PERIOD --</span><span id="headPhase" class="micro">&nbsp;</span></div>
+      </div>
+      <p class="micro inst-dateline"><span id="headDate">----.--.-- ---</span><span aria-hidden="true"> · </span><span id="termLabel">示例课表</span></p>
+    </header>
+
+    <main id="mainContent">
+      <section class="week-toolbar" aria-label="选择课表周">
+        <div class="week-heading">
+          <div class="week-title-row"><h2 id="weekLabel">本周课表</h2><span class="week-select-wrap"><select id="weekSelect" aria-label="选择课表周"><option value="1">第 1 周</option></select><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg></span></div>
+          <p id="weekRange" class="week-range">载入学期日期…</p>
+        </div>
+        <div class="week-controls">
+          <button id="prevWeek" type="button" class="inst-btn" aria-label="上一周">‹ PREV</button>
+          <button id="thisWeek" type="button" class="inst-btn">本周</button>
+          <button id="nextWeek" type="button" class="inst-btn" aria-label="下一周">NEXT ›</button>
+        </div>
+      </section>
+
+      <section id="todayView" class="view today-view" aria-label="每日课程">
+        <nav id="dayStrip" class="day-strip" aria-label="选择星期"></nav>
+        <div id="nextCourse" class="next-course" aria-live="polite"></div>
+        <div class="section-heading"><h2 id="selectedDayLabel">今天</h2><span id="agendaCount" class="subtle-label"></span><button id="addCourse" type="button" class="inst-add"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>添加课程</button></div>
+        <div id="agenda" class="agenda"><div class="empty-state"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="10" y="12" width="28" height="28" rx="3"/><path d="M16 8v8M32 8v8M10 22h28M18 29h12M18 34h7"/></svg><p>正在载入课表…</p></div></div>
+        <section id="agendaPendingSection" class="pending-section" aria-labelledby="agendaPendingTitle" hidden>
+          <div class="section-heading"><h3 id="agendaPendingTitle">时间待确认</h3></div>
+          <div id="agendaPending" class="pending-list"></div>
+        </section>
+        <div id="weekLoad" class="week-load" aria-label="本周课程负载"></div>
+        <p class="view-hint">点开课程可查看详情或调整安排</p>
+      </section>
+
+      <section id="weekView" class="view week-view" aria-label="整周课表" hidden>
+        <div class="section-heading"><h2>一周安排</h2><button id="addCourseWeek" type="button" class="text-button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>添加</button></div>
+        <div class="week-grid-wrap" tabindex="0" aria-label="可左右滑动的周课表"><div id="weekGrid" class="week-grid" role="grid" aria-label="周课表"></div></div>
+        <p class="view-hint week-hint"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16m-4-4 4 4-4 4M8 8l-4 4 4 4"/></svg>左右滑动查看整周，点课程查看详情</p>
+        <section id="weekPendingSection" class="pending-section" aria-labelledby="weekPendingTitle" hidden>
+          <div class="section-heading"><h3 id="weekPendingTitle">时间待确认</h3></div>
+          <div id="weekPending" class="pending-list"></div>
+        </section>
+      </section>
+
+      <section id="settingsView" class="view settings-view" aria-label="课表设置" hidden>
+        <div class="section-heading"><h2>课表设置</h2></div>
+        <form id="settingsForm" class="settings-card">
+          <div class="card-heading"><span class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M8 3v4M16 3v4M4 11h16M8 15h3"/></svg></span><div><h3>学期</h3><p>周次由开学第一周的周一计算</p></div></div>
+          <div class="form-grid">
+            <label class="field"><span>第一周周一（选填）</span><input type="date" name="startMonday" id="startMonday"><small>未知时留空，按具体上课日期显示</small></label>
+            <label class="field"><span>学期总周数</span><input type="number" name="totalWeeks" id="totalWeeks" min="1" max="52" value="24" required inputmode="numeric"></label>
+            <label class="field field-full"><span>外观</span><select name="theme" id="theme"><option value="auto">跟随系统</option><option value="light">浅色</option><option value="dark">深色</option></select></label>
+          </div>
+          <div class="card-actions"><button type="submit" class="button button-primary">保存设置</button></div>
+        </form>
+
+        <section class="settings-card" aria-labelledby="backupTitle">
+          <div class="card-heading"><span class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 7h14v14H5zM8 3h8M3 7h18M9 11h6"/></svg></span><div><h3 id="backupTitle">备份课表</h3><p>课程和修改保存在当前设备</p></div></div>
+          <p class="settings-description">导出备份后，可在另一台设备上导入。清理浏览器数据前记得备份。</p>
+          <div class="backup-actions"><button id="exportData" type="button" class="button button-outline"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M5 16v5h14v-5"/></svg>导出备份</button><button id="restoreData" type="button" class="button button-outline"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m-4 4 4-4 4 4M5 16v5h14v-5"/></svg>导入备份</button></div>
+          <input id="importFile" type="file" accept="application/json,.json" hidden>
+          <button id="resetData" type="button" class="text-button danger-text">恢复初始课表</button>
+        </section>
+
+        <section class="settings-card" aria-labelledby="installTitle">
+          <div class="card-heading"><span class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M10 18h4M10 6h4M12 6v7m-3-3 3 3 3-3"/></svg></span><div><h3 id="installTitle">添加到手机桌面</h3><p>下次像打开应用一样打开课表</p></div></div>
+          <button id="installApp" type="button" class="button button-primary">添加到桌面</button>
+          <details id="installHelp" class="help-details"><summary>安卓手机怎么打开？</summary><div><p>用 Chrome 或 Edge 打开课表链接，进入浏览器菜单，选择“添加到主屏幕”或“安装应用”。</p><p>如果你打开的是本地文件，建议保留原文件和课表备份。桌面安装需要通过网址访问。</p></div></details>
+        </section>
+
+        <section class="settings-card period-card" aria-labelledby="periodTitle">
+          <h3 id="periodTitle">上课时间</h3>
+          <div class="period-list"><div><span>第 1 节</span><strong>08:00–08:45</strong></div><div><span>第 2 节</span><strong>08:55–09:40</strong></div><div><span>第 3 节</span><strong>10:00–10:45</strong></div><div><span>第 4 节</span><strong>10:55–11:40</strong></div><div><span>第 5 节</span><strong>14:00–14:45</strong></div><div><span>第 6 节</span><strong>14:55–15:40</strong></div><div><span>第 7 节</span><strong>16:00–16:45</strong></div><div><span>第 8 节</span><strong>16:55–17:40</strong></div></div>
+        </section>
+        <p class="settings-footer">随课 · 每一节，都安排清楚</p>
+      </section>
+      <p id="statusLine" class="status-line" role="status">课程保存在当前设备</p>
+    </main>
+
+    <nav class="bottom-nav" aria-label="主要导航">
+      <button type="button" data-view="today" class="nav-item active" aria-current="page" aria-label="今日"><span class="nav-label">TODAY</span><span class="nav-pips" aria-hidden="true"><i></i><i></i><i></i></span></button>
+      <button type="button" data-view="week" class="nav-item" aria-label="周课表"><span class="nav-label">WEEK</span><span class="nav-pips" aria-hidden="true"><i></i><i></i><i></i></span></button>
+      <button type="button" data-view="settings" class="nav-item" aria-label="设置"><span class="nav-label">SETTINGS</span><span class="nav-pips" aria-hidden="true"><i></i><i></i><i></i></span></button>
+    </nav>
+  </div>
+
+  <dialog id="courseDialog" class="course-dialog" aria-labelledby="detailDialogTitle">
+    <div class="dialog-heading"><span class="eyebrow" id="detailDialogTitle">课程详情</span><button id="closeDetail" type="button" class="icon-button" aria-label="关闭课程详情"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+    <div id="courseDetail" class="course-detail"></div>
+    <div class="dialog-actions"><button id="deleteCourse" type="button" class="button button-danger">删除课程</button><button id="editCourse" type="button" class="button button-primary"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 4 5 5M4 20l5-1L20 8a2 2 0 0 0-5-5L4 14z"/></svg>编辑课程</button></div>
+  </dialog>
+
+  <dialog id="editDialog" class="edit-dialog" aria-labelledby="formTitle">
+    <form id="courseForm">
+      <div class="dialog-heading"><h2 id="formTitle">编辑课程</h2><span class="eyebrow">课程安排</span></div>
+      <input type="hidden" name="id">
+      <div class="form-grid">
+        <label class="field field-full"><span>课程名称 <span class="required" aria-hidden="true">*</span></span><input name="name" type="text" maxlength="80" required placeholder="例如：示例力学" autocomplete="off"></label>
+        <label class="field field-full"><span>星期</span><select name="day" required><option value="1">星期一</option><option value="2">星期二</option><option value="3">星期三</option><option value="4">星期四</option><option value="5">星期五</option><option value="6">星期六</option><option value="7">星期日</option></select></label>
+        <label class="field checkbox-field field-full"><input id="pendingTime" name="pendingTime" type="checkbox"><span>时间待确认</span></label>
+        <input id="timeNote" name="timeNote" type="hidden"><span id="timeNoteField" hidden></span>
+        <label class="field"><span>开始时间</span><input id="courseBegin" type="time" step="60"></label>
+        <label class="field"><span>结束时间</span><input id="courseFinish" type="time" step="60"></label>
+        <label id="confirmedStartField" class="field"><span>开始节次</span><select name="start" required><option value="" disabled>请选择节次</option><option value="1">第 1 节 · 08:00</option><option value="2">第 2 节 · 08:55</option><option value="3">第 3 节 · 10:00</option><option value="4">第 4 节 · 10:55</option><option value="5">第 5 节 · 14:00</option><option value="6">第 6 节 · 14:55</option><option value="7">第 7 节 · 16:00</option><option value="8">第 8 节 · 16:55</option><option value="9">第 9 节 · 19:00</option><option value="10">第 10 节 · 19:55</option></select></label>
+        <label id="confirmedEndField" class="field"><span>结束节次</span><select name="end" required><option value="" disabled>请选择节次</option><option value="1">第 1 节 · 08:45</option><option value="2">第 2 节 · 09:40</option><option value="3">第 3 节 · 10:45</option><option value="4">第 4 节 · 11:40</option><option value="5">第 5 节 · 14:45</option><option value="6">第 6 节 · 15:40</option><option value="7">第 7 节 · 16:45</option><option value="8">第 8 节 · 17:40</option><option value="9">第 9 节 · 19:45</option><option value="10">第 10 节 · 20:40</option></select></label>
+        <label class="field"><span>教室 / 地点</span><input name="room" type="text" maxlength="80" placeholder="例如：教学楼 201" autocomplete="off"></label>
+        <label class="field"><span>教师</span><input name="teacher" type="text" maxlength="40" placeholder="选填" autocomplete="off"></label>
+        <label class="field field-full"><span>上课日期 / 周次 <span class="required" aria-hidden="true">*</span></span><input name="weeks" type="text" required placeholder="例如：2026-10-12, 2026-10-19" autocomplete="off"><small>具体日期用逗号分隔；设置第一周周一后，也可填写 1-16、1,3,5 或 1-16 单周。单双周限制应用于整段周次。</small></label>
+        <label id="sourceTimeField" class="field field-full"><span>晚课实际时间（第 9–10 节）</span><input name="sourceTime" type="text" placeholder="留空按 19:00-19:45 / 19:55-20:40" autocomplete="off"><small>留空时按默认晚课时段填写；与默认不同的调课请填写实际完整时段，例如 18:30-20:05。</small></label>
+        <label class="field color-field"><span>课程颜色</span><input name="color" type="color" value="#087f75" aria-label="课程颜色"></label>
+      </div>
+      <p id="formError" class="form-error" role="alert" hidden></p>
+      <div class="dialog-actions"><button id="cancelEdit" type="button" class="button button-outline">取消</button><button type="submit" class="button button-primary">保存课程</button></div>
+    </form>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+<script>window.TIMETABLE_SEED = {
+  "schemaVersion": 1,
+  "settings": {
+    "startMonday": "2026-08-31",
+    "totalWeeks": 26,
+    "termLabel": "示例课表",
+    "coverageStart": "2026-08-01",
+    "coverageEnd": "2027-01-31",
+    "theme": "auto"
+  },
+  "periods": [
+    {
+      "start": "08:00",
+      "end": "08:45"
+    },
+    {
+      "start": "08:55",
+      "end": "09:40"
+    },
+    {
+      "start": "10:00",
+      "end": "10:45"
+    },
+    {
+      "start": "10:55",
+      "end": "11:40"
+    },
+    {
+      "start": "14:00",
+      "end": "14:45"
+    },
+    {
+      "start": "14:55",
+      "end": "15:40"
+    },
+    {
+      "start": "16:00",
+      "end": "16:45"
+    },
+    {
+      "start": "16:55",
+      "end": "17:40"
+    },
+    {
+      "start": "19:00",
+      "end": "19:45"
+    },
+    {
+      "start": "19:55",
+      "end": "20:40"
+    }
+  ],
+  "courses": [
+    {
+      "id": "imported-001",
+      "name": "示例物理2",
+      "day": 1,
+      "start": 1,
+      "end": 2,
+      "room": "示例教学楼A-101",
+      "teacher": "示例教师05",
+      "color": "teal",
+      "dates": [
+        "2026-08-31",
+        "2026-09-14",
+        "2026-09-28",
+        "2026-10-05",
+        "2026-10-12",
+        "2026-10-19",
+        "2026-10-26",
+        "2026-11-02",
+        "2026-11-09",
+        "2026-11-16"
+      ],
+      "sourceTime": "08:30-10:05"
+    },
+    {
+      "id": "imported-002",
+      "name": "示例通识课程",
+      "day": 1,
+      "start": 3,
+      "end": 4,
+      "room": "示例教学楼BE-105",
+      "teacher": "示例教师07",
+      "color": "blue",
+      "dates": [
+        "2026-08-31",
+        "2026-09-14",
+        "2026-09-28",
+        "2026-10-05",
+        "2026-10-12",
+        "2026-10-19",
+        "2026-10-26",
+        "2026-11-16",
+        "2026-11-23",
+        "2026-11-30",
+        "2026-12-14",
+        "2026-12-21"
+      ],
+      "sourceTime": "10:25-12:00"
+    },
+    {
+      "id": "imported-003",
+      "name": "示例机械",
+      "day": 1,
+      "start": 5,
+      "end": 6,
+      "room": "示例教学楼BE-101",
+      "teacher": "示例教师02",
+      "color": "amber",
+      "dates": [
+        "2026-08-31",
+        "2026-09-14",
+        "2026-09-28",
+        "2026-10-05",
+        "2026-10-12",
+        "2026-10-19",
+        "2026-10-26",
+        "2026-11-02",
+        "2026-11-09",
+        "2026-11-16",
+        "2026-11-23",
+        "2026-11-30"
+      ],
+      "sourceTime": "14:00-15:35"
+    },
+    {
+      "id": "imported-004",
+      "name": "示例电学1",
+      "day": 2,
+      "start": 3,
+      "end": 4,
+      "room": "示例教学楼A-101",
+      "teacher": "示例教师06",
+      "color": "rose",
+      "dates": [
+        "2026-09-01",
+        "2026-09-15",
+        "2026-09-29",
+        "2026-10-13",
+        "2026-10-20",
+        "2026-11-17",
+        "2026-11-24",
+        "2026-12-01",
+        "2026-12-15",
+        "2026-12-22"
+      ],
+      "sourceTime": "10:25-12:00"
+    },
+    {
+      "id": "imported-005",
+      "name": "示例力学",
+      "day": 2,
+      "start": 5,
+      "end": 6,
+      "room": "示例教学楼BB-304",
+      "teacher": "示例教师04",
+      "color": "purple",
+      "dates": [
+        "2026-09-01",
+        "2026-09-15",
+        "2026-09-29",
+        "2026-10-06",
+        "2026-10-13",
+        "2026-10-20",
+        "2026-10-27",
+        "2026-11-03",
+        "2026-11-10",
+        "2026-11-17",
+        "2026-11-24",
+        "2026-12-01",
+        "2026-12-15",
+        "2026-12-22"
+      ],
+      "sourceTime": "14:00-15:35"
+    },
+    {
+      "id": "imported-006",
+      "name": "示例数学",
+      "day": 3,
+      "start": 1,
+      "end": 2,
+      "room": "示例教学楼BB-303",
+      "teacher": "示例教师10",
+      "color": "teal",
+      "dates": [
+        "2026-09-02",
+        "2026-09-16",
+        "2026-09-30",
+        "2026-10-07",
+        "2026-10-14",
+        "2026-10-21",
+        "2026-10-28",
+        "2026-11-18",
+        "2026-11-25",
+        "2026-12-02",
+        "2026-12-16",
+        "2026-12-23"
+      ],
+      "sourceTime": "08:30-10:05"
+    },
+    {
+      "id": "imported-007",
+      "name": "示例运动3",
+      "day": 3,
+      "start": 5,
+      "end": 6,
+      "room": "",
+      "teacher": "示例教师03",
+      "color": "blue",
+      "dates": [
+        "2026-09-02",
+        "2026-09-16",
+        "2026-09-30",
+        "2026-10-14",
+        "2026-10-28",
+        "2026-11-11",
+        "2026-11-25",
+        "2026-12-09",
+        "2026-12-23"
+      ],
+      "sourceTime": "14:00-15:35"
+    },
+    {
+      "id": "imported-008",
+      "name": "示例机械",
+      "day": 3,
+      "start": 7,
+      "end": 8,
+      "room": "示例教学楼BE-201",
+      "teacher": "示例教师02",
+      "color": "amber",
+      "dates": [
+        "2026-09-02",
+        "2026-09-16",
+        "2026-09-30",
+        "2026-10-07",
+        "2026-10-14",
+        "2026-10-21",
+        "2026-10-28",
+        "2026-11-04",
+        "2026-11-11",
+        "2026-11-18"
+      ],
+      "sourceTime": "15:55-17:30"
+    },
+    {
+      "id": "imported-009",
+      "name": "示例力学",
+      "day": 4,
+      "start": 1,
+      "end": 2,
+      "room": "示例教学楼BB-304",
+      "teacher": "示例教师04",
+      "color": "purple",
+      "dates": [
+        "2026-09-03",
+        "2026-09-17",
+        "2026-10-01",
+        "2026-10-08",
+        "2026-10-15",
+        "2026-10-22",
+        "2026-10-29",
+        "2026-11-05",
+        "2026-11-12",
+        "2026-11-19",
+        "2026-11-26",
+        "2026-12-03",
+        "2026-12-17",
+        "2026-12-24"
+      ],
+      "sourceTime": "08:30-10:05"
+    },
+    {
+      "id": "imported-010",
+      "name": "示例英语3",
+      "day": 4,
+      "start": 3,
+      "end": 4,
+      "room": "示例教学楼A-215",
+      "teacher": "示例教师09",
+      "color": "amber",
+      "dates": [
+        "2026-09-03",
+        "2026-09-10",
+        "2026-09-17",
+        "2026-09-24",
+        "2026-10-01",
+        "2026-10-08",
+        "2026-10-15",
+        "2026-10-22",
+        "2026-10-29",
+        "2026-11-05",
+        "2026-11-12",
+        "2026-11-19",
+        "2026-11-26",
+        "2026-12-03",
+        "2026-12-10",
+        "2026-12-17"
+      ],
+      "sourceTime": "10:25-12:00"
+    },
+    {
+      "id": "imported-011",
+      "name": "示例物理2",
+      "day": 4,
+      "start": 5,
+      "end": 6,
+      "room": "示例教学楼A-101",
+      "teacher": "示例教师05",
+      "color": "teal",
+      "dates": [
+        "2026-09-03",
+        "2026-09-17",
+        "2026-10-01",
+        "2026-10-08",
+        "2026-10-15",
+        "2026-10-22",
+        "2026-10-29",
+        "2026-11-05",
+        "2026-11-12",
+        "2026-11-19"
+      ],
+      "sourceTime": "14:00-15:35"
+    },
+    {
+      "id": "imported-012",
+      "name": "示例数学",
+      "day": 5,
+      "start": 3,
+      "end": 4,
+      "room": "示例教学楼BB-304",
+      "teacher": "示例教师10",
+      "color": "teal",
+      "dates": [
+        "2026-09-04",
+        "2026-09-18",
+        "2026-10-02",
+        "2026-10-09"
+      ],
+      "sourceTime": "10:25-12:00"
+    },
+    {
+      "id": "imported-013",
+      "name": "示例力学",
+      "day": 5,
+      "start": 5,
+      "end": 6,
+      "room": "示例教学楼BB-304",
+      "teacher": "示例教师04",
+      "color": "purple",
+      "dates": [
+        "2026-09-04"
+      ],
+      "sourceTime": "14:00-15:35"
+    },
+    {
+      "id": "imported-014",
+      "name": "示例文化",
+      "day": 2,
+      "start": 7,
+      "end": 8,
+      "room": "示例教学楼BE-201",
+      "teacher": "示例教师01",
+      "color": "rose",
+      "dates": [
+        "2026-09-15",
+        "2026-09-29",
+        "2026-10-06",
+        "2026-10-20",
+        "2026-10-27",
+        "2026-11-03",
+        "2026-11-10",
+        "2026-11-24"
+      ],
+      "sourceTime": "15:55-17:30"
+    },
+    {
+      "id": "imported-015",
+      "name": "示例电学1",
+      "day": 5,
+      "start": 7,
+      "end": 8,
+      "room": "示例教学楼A-101",
+      "teacher": "示例教师06",
+      "color": "rose",
+      "dates": [
+        "2026-09-18"
+      ],
+      "sourceTime": "15:55-17:30"
+    },
+    {
+      "id": "imported-016",
+      "name": "示例时政2",
+      "day": 1,
+      "start": 9,
+      "end": 10,
+      "room": "示例教学楼BE-204",
+      "teacher": "示例教师08",
+      "color": "purple",
+      "dates": [
+        "2026-10-05",
+        "2026-10-12",
+        "2026-10-19",
+        "2026-10-26"
+      ],
+      "sourceTime": "18:30-20:05"
+    },
+    {
+      "id": "imported-017",
+      "name": "示例电学1",
+      "day": 5,
+      "start": 5,
+      "end": 6,
+      "room": "示例教学楼BE-201",
+      "teacher": "示例教师06",
+      "color": "rose",
+      "dates": [
+        "2026-10-09",
+        "2026-10-16"
+      ],
+      "sourceTime": "14:00-15:35"
+    },
+    {
+      "id": "imported-018",
+      "name": "示例通识课程",
+      "day": 2,
+      "start": 7,
+      "end": 8,
+      "room": "示例教学楼BE-204",
+      "teacher": "示例教师07",
+      "color": "blue",
+      "dates": [
+        "2026-10-13",
+        "2026-12-01",
+        "2026-12-15",
+        "2026-12-22"
+      ],
+      "sourceTime": "15:55-17:30"
+    },
+    {
+      "id": "imported-019",
+      "name": "示例电学1",
+      "day": 5,
+      "start": 3,
+      "end": 4,
+      "room": "示例教学楼A-101",
+      "teacher": "示例教师06",
+      "color": "rose",
+      "dates": [
+        "2026-10-23",
+        "2026-10-30",
+        "2026-11-06",
+        "2026-11-13",
+        "2026-11-20",
+        "2026-11-27",
+        "2026-12-04"
+      ],
+      "sourceTime": "10:25-12:00"
+    },
+    {
+      "id": "imported-020",
+      "name": "示例文化",
+      "day": 5,
+      "start": 5,
+      "end": 6,
+      "room": "示例教学楼BE-201",
+      "teacher": "示例教师01",
+      "color": "rose",
+      "dates": [
+        "2026-10-23",
+        "2026-10-30",
+        "2026-11-06",
+        "2026-11-13",
+        "2026-11-20",
+        "2026-11-27",
+        "2026-12-04",
+        "2026-12-18"
+      ],
+      "sourceTime": "14:00-15:35"
+    },
+    {
+      "id": "notice-2026-engineering-mechanics-lab-class1",
+      "name": "示例力学实验（1班）",
+      "day": 6,
+      "start": 5,
+      "end": 6,
+      "room": "实验1、2：示例实验楼118；实验3：示例实验楼207（当日项目待确认）",
+      "teacher": "",
+      "color": "purple",
+      "dates": [
+        "2026-10-31",
+        "2026-11-07",
+        "2026-11-21"
+      ],
+      "sourceTime": ""
+    },
+    {
+      "id": "notice-2026-electrical-lab-class1-week12",
+      "name": "示例电学1实验（1批次·暂定）",
+      "day": 4,
+      "start": 7,
+      "end": 8,
+      "room": "地点待通知",
+      "teacher": "",
+      "color": "amber",
+      "dates": [
+        "2026-11-19"
+      ],
+      "sourceTime": ""
+    },
+    {
+      "id": "notice-2026-electrical-lab-class1-weeks13-16",
+      "name": "示例电学1实验（1批次·暂定）",
+      "day": 4,
+      "start": 5,
+      "end": 6,
+      "room": "地点待通知",
+      "teacher": "",
+      "color": "amber",
+      "dates": [
+        "2026-11-26",
+        "2026-12-03",
+        "2026-12-10",
+        "2026-12-17"
+      ],
+      "sourceTime": ""
+    },
+    {
+      "id": "notice-2026-physics-lab-sample1-room210",
+      "name": "示例物理实验（示例1班）",
+      "day": 7,
+      "start": null,
+      "end": null,
+      "room": "210室（楼名未注明）",
+      "teacher": "",
+      "color": "blue",
+      "dates": [
+        "2026-10-18"
+      ],
+      "sourceTime": "",
+      "timeMode": "pending",
+      "timeNote": "19:00开始，结束时间待确认"
+    },
+    {
+      "id": "notice-2026-physics-lab-sample1-room103",
+      "name": "示例物理实验（示例1班）",
+      "day": 3,
+      "start": null,
+      "end": null,
+      "room": "103室（楼名未注明）",
+      "teacher": "",
+      "color": "blue",
+      "dates": [
+        "2026-11-04"
+      ],
+      "sourceTime": "",
+      "timeMode": "pending",
+      "timeNote": "19:00开始，结束时间待确认"
+    },
+    {
+      "id": "notice-2026-physics-lab-sample1-room106",
+      "name": "示例物理实验（示例1班）",
+      "day": 3,
+      "start": null,
+      "end": null,
+      "room": "106室（楼名未注明）",
+      "teacher": "",
+      "color": "blue",
+      "dates": [
+        "2026-11-11"
+      ],
+      "sourceTime": "",
+      "timeMode": "pending",
+      "timeNote": "19:00开始，结束时间待确认"
+    },
+    {
+      "id": "notice-2026-physics-lab-sample1-room110",
+      "name": "示例物理实验（示例1班）",
+      "day": 6,
+      "start": null,
+      "end": null,
+      "room": "110室（楼名未注明）",
+      "teacher": "",
+      "color": "blue",
+      "dates": [
+        "2026-11-14"
+      ],
+      "sourceTime": "",
+      "timeMode": "pending",
+      "timeNote": "19:00开始，结束时间待确认"
+    },
+    {
+      "id": "notice-2026-physics-lab-sample1-room114",
+      "name": "示例物理实验（示例1班）",
+      "day": 6,
+      "start": null,
+      "end": null,
+      "room": "114室（楼名未注明）",
+      "teacher": "",
+      "color": "blue",
+      "dates": [
+        "2026-11-21"
+      ],
+      "sourceTime": "",
+      "timeMode": "pending",
+      "timeNote": "19:00开始，结束时间待确认"
+    }
+  ],
+  "appliedUpdateIds": [
+    "notice-2026-engineering-mechanics-lab-class1",
+    "notice-2026-electrical-lab-class1-week12",
+    "notice-2026-electrical-lab-class1-weeks13-16",
+    "notice-2026-physics-lab-sample1-room210",
+    "notice-2026-physics-lab-sample1-room103",
+    "notice-2026-physics-lab-sample1-room106",
+    "notice-2026-physics-lab-sample1-room110",
+    "notice-2026-physics-lab-sample1-room114"
+  ]
+};
+</script>
+<script>(function (root, factory) {
+  'use strict';
+  const api = factory();
+  if (typeof module === 'object' && module.exports) module.exports = api;
+  else root.TimetableModel = api;
+})(typeof globalThis !== 'undefined' ? globalThis : this, function () {
+  'use strict';
+  const DAY = 86400000;
+  const COLORS = Object.freeze({ teal: '#087f75', blue: '#4277b8', amber: '#b47b22', rose: '#b55b73', purple: '#8065ad' });
+  const DEFAULT_PERIODS = Object.freeze([
+    { start: '08:00', end: '08:45' }, { start: '08:55', end: '09:40' },
+    { start: '10:00', end: '10:45' }, { start: '10:55', end: '11:40' },
+    { start: '14:00', end: '14:45' }, { start: '14:55', end: '15:40' },
+    { start: '16:00', end: '16:45' }, { start: '16:55', end: '17:40' }
+  ]);
+  function fail(message) { throw new Error(message); }
+  function parseISO(value) {
+    if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return null;
+    const [year, month, day] = value.split('-').map(Number);
+    if (year < 1900 || year > 2200) return null;
+    const date = new Date(Date.UTC(year, month - 1, day));
+    return date.getUTCFullYear() === year && date.getUTCMonth() === month - 1 && date.getUTCDate() === day ? date : null;
+  }
+  function iso(date) { return date.toISOString().slice(0, 10); }
+  function addDays(value, days) {
+    const date = parseISO(value);
+    if (!date || !Number.isInteger(days)) fail('日期无效');
+    return iso(new Date(date.getTime() + days * DAY));
+  }
+  function dayOf(value) { const date = parseISO(value); if (!date) fail('日期无效'); return date.getUTCDay() || 7; }
+  function mondayOf(value) { return addDays(value, 1 - dayOf(value)); }
+  function weekNumber(value, startMonday) {
+    const date = parseISO(value), first = parseISO(startMonday);
+    return date && first ? Math.floor((date - first) / (7 * DAY)) + 1 : null;
+  }
+  function parseWeeks(expression, totalWeeks) {
+    if (typeof expression !== 'string' || !expression.trim()) fail('请填写上课周次');
+    let text = expression.replace(/[，、；;]/g, ',').replace(/[–—－~～至]/g, '-').replace(/第|周|\s/g, '');
+    const odd = text.includes('单'), even = text.includes('双');
+    if (odd && even) fail('请分别填写单周或双周');
+    text = text.replace(/单|双/g, '');
+    const weeks = new Set();
+    for (const part of text.split(',')) {
+      const match = /^(\d{1,2})(?:-(\d{1,2}))?$/.exec(part);
+      if (!match) fail('周次格式应为 1-16、1,3,5，或 1-16 单周');
+      const first = Number(match[1]), last = Number(match[2] || match[1]);
+      if (first < 1 || last < first || last > totalWeeks) fail('周次须在 1–' + totalWeeks + ' 周之间');
+      for (let week = first; week <= last; week++) if ((!odd || week % 2 === 1) && (!even || week % 2 === 0)) weeks.add(week);
+    }
+    if (!weeks.size) fail('这些周次没有符合单双周的课程');
+    return Array.from(weeks).sort((a, b) => a - b);
+  }
+  function datesFromExpression(expression, day, settings) {
+    if (typeof expression !== 'string' || !expression.trim()) fail('请填写上课日期或周次');
+    let dates;
+    if (/\d{4}-/.test(expression)) {
+      dates = expression.trim().split(/[\s,，、;；]+/).filter(Boolean);
+      if (dates.some(date => !parseISO(date))) fail('日期请使用 YYYY-MM-DD 格式，并用逗号分隔');
+      if (dates.some(date => dayOf(date) !== day)) fail('上课日期与所选星期不一致，请检查日期或星期');
+    } else {
+      if (!settings.startMonday) fail('使用周次前，请先在设置中填写“第一周周一”；也可以直接填写上课日期');
+      dates = parseWeeks(expression, settings.totalWeeks).map(week => addDays(settings.startMonday, (week - 1) * 7 + day - 1));
+    }
+    return Array.from(new Set(dates)).sort();
+  }
+  function knownColor(value) { return typeof value === 'string' && Object.prototype.hasOwnProperty.call(COLORS, value); }
+  function colorHex(value) { return knownColor(value) ? COLORS[value] : (/^#[\da-f]{6}$/i.test(value || '') ? value : COLORS.teal); }
+  function text(value, name, max, required) {
+    if (value == null && !required) return '';
+    if (typeof value !== 'string' || value.length > max || (required && !value.trim())) fail(name + '格式无效');
+    return value.trim();
+  }
+  function integer(value, name, min, max) {
+    if (!Number.isInteger(value) || value < min || value > max) fail(name + '须为 ' + min + '–' + max + ' 的整数');
+    return value;
+  }
+  function validTime(value) { return typeof value === 'string' && /^(?:[01]\d|2[0-3]):[0-5]\d$/.test(value); }
+  function normalizeSourceTime(value) {
+    const normalized = text(value, '上课时间', 40, false).replace(/[–—－~～至]/g, '-').replace(/\s/g, '');
+    if (!normalized) return '';
+    const parts = normalized.split('-');
+    if (parts.length !== 2 || !parts.every(validTime) || parts[0] >= parts[1]) fail('上课时间应为 HH:MM-HH:MM，结束晚于开始');
+    return normalized;
+  }
+  function validateState(input) {
+    if (!input || typeof input !== 'object' || input.schemaVersion !== 1) fail('这不是受支持的随课备份（需版本 1）');
+    const setting = input.settings;
+    if (!setting || typeof setting !== 'object') fail('备份缺少学期设置');
+    const startMonday = setting.startMonday || null;
+    if (startMonday && (!parseISO(startMonday) || dayOf(startMonday) !== 1)) fail('第一周开始日期必须为周一');
+    const coverageStart = setting.coverageStart || null, coverageEnd = setting.coverageEnd || null;
+    if ((coverageStart && !parseISO(coverageStart)) || (coverageEnd && !parseISO(coverageEnd)) || (coverageStart && coverageEnd && coverageEnd < coverageStart)) fail('导入覆盖日期无效');
+    const settings = {
+      startMonday, totalWeeks: integer(setting.totalWeeks, '学期周数', 1, 52),
+      termLabel: text(setting.termLabel || '示例课表', '学期名称', 120, true),
+      coverageStart, coverageEnd, theme: setting.theme || 'auto'
+    };
+    if (!['auto', 'light', 'dark'].includes(settings.theme)) fail('外观设置无效');
+    if (!Array.isArray(input.periods) || input.periods.length < 1 || input.periods.length > 24) fail('每天可设置 1–24 节');
+    const periods = input.periods.map(period => {
+      if (!period || !validTime(period.start) || !validTime(period.end) || period.start >= period.end) fail('课时时间无效');
+      return { start: period.start, end: period.end };
+    });
+    if (!Array.isArray(input.courses) || input.courses.length > 500) fail('课程列表无效或超过 500 条');
+    const ids = new Set();
+    const courses = input.courses.map(course => {
+      if (!course || typeof course !== 'object') fail('课程数据无效');
+      const id = text(course.id, '课程编号', 160, true);
+      if (ids.has(id)) fail('备份中有重复课程编号');
+      ids.add(id);
+      const day = integer(course.day, '星期', 1, 7);
+      const timeMode = course.timeMode === undefined ? 'periods' : course.timeMode;
+      if (!['periods', 'clock', 'pending'].includes(timeMode)) fail('课程时间模式无效');
+      let start, end, timeNote;
+      if (timeMode === 'pending') {
+        if (course.start !== null || course.end !== null) fail('时间待确认课程的开始和结束节次须为空');
+        start = null; end = null; timeNote = text(course.timeNote, '待确认时间说明', 160, true);
+      } else if(timeMode==='clock'&&course.start===null&&course.end===null){
+        start=null;end=null;
+      } else {
+        start = integer(course.start, '开始节次', 1, 24); end = integer(course.end, '结束节次', start, 24);
+      }
+      if (!Array.isArray(course.dates) || !course.dates.length || course.dates.length > 1000) fail('每门课程须包含有效上课日期');
+      if (course.dates.some(date => !parseISO(date) || dayOf(date) !== day)) fail('课程日期无效或与星期不符');
+      const color = course.color || 'teal';
+      if (!knownColor(color) && !(typeof color === 'string' && /^#[\da-f]{6}$/i.test(color))) fail('课程颜色无效');
+      const sourceTime = normalizeSourceTime(course.sourceTime);
+      if(timeMode==='clock'&&!sourceTime)fail('请填写明确的开始和结束时间');
+      const normalized = { id, name: text(course.name, '课程名称', 80, true), day, start, end,
+        room: text(course.room, '教室', 120, false), teacher: text(course.teacher, '教师', 120, false),
+        color, dates: Array.from(new Set(course.dates)).sort(), sourceTime };
+      if(timeMode==='clock')normalized.timeMode='clock';
+      if (timeMode === 'pending') { normalized.timeMode = 'pending'; normalized.timeNote = timeNote; }
+      return normalized;
+    });
+    const updateIds = input.appliedUpdateIds === undefined ? [] : input.appliedUpdateIds;
+    if (!Array.isArray(updateIds) || updateIds.length > 100) fail('更新记录须为不超过 100 项的列表');
+    const appliedUpdateIds = Array.from(new Set(updateIds.map(id => text(id, '更新编号', 160, true))));
+    return { schemaVersion: 1, settings, periods, courses, appliedUpdateIds };
+  }
+  function sameImportedTerm(current, confirmed) {
+    return current.coverageStart !== null && current.coverageEnd !== null &&
+      current.coverageStart === confirmed.coverageStart && current.coverageEnd === confirmed.coverageEnd;
+  }
+  function calibrateStartMonday(input, seed) {
+    const state = validateState(input), initial = validateState(seed);
+    const current = state.settings, confirmed = initial.settings;
+    // Coverage dates identify this imported term. Missing or different coverage
+    // cannot safely inherit a first teaching week from the bundled timetable.
+    const sameTerm = sameImportedTerm(current, confirmed);
+    const changed = sameTerm && current.startMonday === null && confirmed.startMonday !== null;
+    if (changed) current.startMonday = confirmed.startMonday;
+    return { state, changed };
+  }
+  function applySeedUpdates(input, seed) {
+    const calibrated = calibrateStartMonday(input, seed), state = calibrated.state, initial = validateState(seed);
+    if (!sameImportedTerm(state.settings, initial.settings)) return calibrated;
+    let changed = calibrated.changed;
+    const applied = new Set(state.appliedUpdateIds);
+    const equivalentName = name => name.replace(/\s*[(（]\s*1\s*班\s*[)）]\s*$/, '').trim();
+    for (const id of initial.appliedUpdateIds) {
+      if (applied.has(id)) continue;
+      const update = initial.courses.find(course => course.id === id);
+      if (!update) continue;
+      // An existing notice id may contain deliberate edits. Only acknowledge it.
+      if (!state.courses.some(course => course.id === id)) {
+        const coveredDates = new Set(state.courses.filter(course =>
+          equivalentName(course.name) === equivalentName(update.name) &&
+          (course.timeMode === 'pending') === (update.timeMode === 'pending') &&
+          (update.timeMode === 'pending' ? course.timeNote === update.timeNote : course.start === update.start && course.end === update.end)
+        ).flatMap(course => course.dates));
+        const missingDates = update.dates.filter(date => !coveredDates.has(date));
+        if (missingDates.length) state.courses.push({ ...update, dates: missingDates });
+      }
+      // Keep the acknowledgement even when all dates were already present, so a
+      // user's later deletion or rescheduling will not be reversed on reload.
+      applied.add(id); changed = true;
+    }
+    state.appliedUpdateIds = Array.from(applied);
+    return { state: validateState(state), changed };
+  }
+  function coursesOn(courses, date, periods) {
+    return courses.filter(course => course.dates.includes(date)).sort((a,b)=>{
+      const ap=a.timeMode==='pending',bp=b.timeMode==='pending';
+      if(ap!==bp)return ap?1:-1;
+      if(ap)return a.name.localeCompare(b.name,'zh-CN');
+      const x=timeRange(a,periods||DEFAULT_PERIODS),y=timeRange(b,periods||DEFAULT_PERIODS);
+      return String(x.start||'24:00').localeCompare(y.start||'24:00')||String(x.end||'24:00').localeCompare(y.end||'24:00')||a.name.localeCompare(b.name,'zh-CN');
+    });
+  }
+  function timeSegments(course,periods){
+    periods=periods||DEFAULT_PERIODS;const range=timeRange(course,periods);
+    if(!range.exact)return [];
+    const first=periods[course.start-1],last=periods[course.end-1];
+    if(course.timeMode==='clock'||!first||!last)return [range];
+    return periods.slice(course.start-1,course.end).map(p=>({start:p.start,end:p.end}));
+  }
+  function conflictsFor(courses, course, periods) {
+    if(course.timeMode==='pending')return [];
+    const dates=new Set(course.dates),range=timeRange(course,periods||DEFAULT_PERIODS);
+    return courses.filter(other=>{
+      if(other.timeMode==='pending'||other.id===course.id||other.day!==course.day||!other.dates.some(date=>dates.has(date)))return false;
+      const time=timeRange(other,periods||DEFAULT_PERIODS);
+      if(range.exact&&time.exact)return timeSegments(course,periods).some(a=>timeSegments(other,periods).some(b=>a.start<b.end&&b.start<a.end));
+      return course.start!==null&&other.start!==null&&other.start<=course.end&&other.end>=course.start;
+    });
+  }
+  function timeRange(course, periods) {
+    if (course.timeMode === 'pending') return { start: null, end: null, text: course.timeNote, exact: false };
+    if((course.timeMode==='clock'||(!periods[course.start-1]||!periods[course.end-1])&&course.end>8)&&course.sourceTime){const parts=course.sourceTime.split('-');return {start:parts[0],end:parts[1],text:parts.join('–'),exact:true};}
+    if(course.end>8&&!periods[course.end-1]&&!course.sourceTime)return {start:'',end:'',text:'晚间时间待确认',exact:false};
+    const first = periods[course.start - 1], last = periods[course.end - 1];
+    if(!first||!last)return {start:'',end:'',text:'上课时间待确认',exact:false};
+    return { start: first.start, end: last.end, text: first.start + '–' + last.end, exact: true };
+  }
+  return { COLORS, DEFAULT_PERIODS, parseISO, iso, addDays, dayOf, mondayOf, weekNumber, parseWeeks, datesFromExpression, colorHex, validateState, calibrateStartMonday, applySeedUpdates, coursesOn, conflictsFor, timeRange, timeSegments, normalizeSourceTime };
+});
+</script>
+<script>/* 随课：无账号、无第三方依赖，所有编辑与备份均留在用户设备。 */
+(function () {
+  'use strict';
+  const M = window.TimetableModel;
+  const $ = id => document.getElementById(id);
+  const STORAGE_KEY = 'suike.timetable.v1';
+  const WEEKDAYS = ['一', '二', '三', '四', '五', '六', '日'];
+  const DOW_LETTERS = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+  const DOW_EN = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
+  let state, original, storageAvailable = true, detailId = null, detailDate = null, undoState = null, toastTimer = null, deferredInstall = null;
+  let selectedDate = chinaToday(), weekMonday, activeView = 'today';
+  function chinaNow() {
+    const parts = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).formatToParts(new Date());
+    return Object.fromEntries(parts.map(part => [part.type, part.value]));
+  }
+  function chinaToday() { const p = chinaNow(); return p.year + '-' + p.month + '-' + p.day; }
+  function minutes(value) { if (!value) return null; const p = value.split(':').map(Number); return p[0] * 60 + p[1]; }
+  function dateText(value, year) { const parts = value.split('-').map(Number); return (year ? parts[0] + '年' : '') + parts[1] + '月' + parts[2] + '日'; }
+  function isPending(course) { return course.timeMode === 'pending'; }
+  function periodText(course) { return isPending(course) ? '时间待确认' : course.timeMode==='clock' ? (minutes(course.sourceTime.split('-')[1])-minutes(course.sourceTime.split('-')[0]))+' 分钟' : '第 ' + course.start + (course.start === course.end ? '' : '–' + course.end) + ' 节'; }
+  function clone(value) { return JSON.parse(JSON.stringify(value)); }
+  function node(tag, className, text) { const result = document.createElement(tag); if (className) result.className = className; if (text != null) result.textContent = text; return result; }
+  function button(className, text, handler) { const result = node('button', className, text); result.type = 'button'; if (handler) result.addEventListener('click', handler); return result; }
+  function setChildren(target, children) { target.replaceChildren(...children); }
+  function showToast(message, canUndo) {
+    clearTimeout(toastTimer);
+    const toast = $('toast'); toast.replaceChildren(node('span', '', message));
+    if (canUndo && undoState) {
+      const undoButton = button('toast-undo', '撤销', () => {
+        if (!undoState) return;
+        state = undoState; undoState = null; save(); render(); showToast('已撤销刚才的修改');
+      });
+      undoButton.style.cssText = 'margin-left:12px;border:1px solid currentColor;border-radius:4px;padding:4px 10px;background:transparent;color:inherit';
+      toast.append(undoButton);
+    }
+    toast.hidden = false;
+    toastTimer = setTimeout(() => { toast.hidden = true; }, canUndo ? 14000 : 6000);
+  }
+  function save() {
+    try {
+      // A restored/undone initial timetable follows later bundled seed updates.
+      // Customized timetables keep their own copy and are never silently replaced.
+      if (JSON.stringify(state) === JSON.stringify(original)) localStorage.removeItem(STORAGE_KEY);
+      else localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      storageAvailable = true;
+    }
+    catch (_) { storageAvailable = false; }
+  }
+  function commit(next, message) {
+    const validated = M.validateState(next);
+    undoState = clone(state); state = validated; save(); render();
+    showToast(message + (storageAvailable ? '' : '；浏览器无法保存，请导出备份'), true);
+  }
+  try {
+    if (!M) throw new Error('课表组件未载入');
+    weekMonday = M.mondayOf(selectedDate);
+    original = M.validateState(window.TIMETABLE_SEED);
+    state = clone(original);
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored) {
+        try {
+          const loaded = M.applySeedUpdates(JSON.parse(stored), original);
+          state = loaded.state;
+          if (loaded.changed) save();
+        }
+        catch (_) { setTimeout(() => showToast('已有本地数据无法读取，当前显示初始课表；原数据未覆盖'), 400); }
+      }
+    } catch (_) { storageAvailable = false; }
+  } catch (error) {
+    $('agenda').textContent = '课表载入失败：' + error.message + '。请保留完整课表文件后重试。';
+    $('statusLine').textContent = '未修改任何本地数据';
+    return;
+  }
+  function weekDescription(monday) {
+    const week = M.weekNumber(monday, state.settings.startMonday);
+    return week && week > 0 && week <= state.settings.totalWeeks ? '第 ' + week + ' 周' : dateText(monday) + '这一周';
+  }
+  function selectedCourses() { return M.coursesOn(state.courses, selectedDate, state.periods); }
+  function courseConflictOn(course, date) { return M.conflictsFor(state.courses, course, state.periods).filter(other => other.dates.includes(date)); }
+  function two(value) { return String(value).padStart(2, '0'); }
+
+  function renderHeader() {
+    const p = chinaNow(), today = chinaToday(), dow = M.dayOf(today);
+    $('clock').textContent = p.hour + ':' + p.minute;
+    $('headDate').textContent = p.year + '.' + p.month + '.' + p.day + ' ' + DOW_EN[dow - 1] + ' · UTC+8';
+    const week = M.weekNumber(today, state.settings.startMonday);
+    $('headWeek').textContent = (week && week > 0 && week <= state.settings.totalWeeks ? 'W' + two(week) : 'W--') + ' · ' + DOW_EN[dow - 1];
+    const now = Number(p.hour) * 60 + Number(p.minute), periods = state.periods;
+    let current = -1, upcoming = -1;
+    for (let index = 0; index < periods.length; index++) {
+      const start = minutes(periods[index].start), end = minutes(periods[index].end);
+      if (now >= start && now < end) { current = index; break; }
+      if (now < start) { upcoming = index; break; }
+    }
+    if (current >= 0) {
+      $('headPeriod').textContent = 'PERIOD ' + two(current + 1);
+      $('headPhase').textContent = '进行中 · 剩 ' + (minutes(periods[current].end) - now) + ' MIN';
+    } else if (upcoming >= 0) {
+      $('headPeriod').textContent = 'PERIOD ' + two(upcoming + 1);
+      $('headPhase').textContent = (upcoming === 0 ? '课前 ' : 'BREAK ') + (minutes(periods[upcoming].start) - now) + ' MIN';
+    } else {
+      $('headPeriod').textContent = 'PERIOD --';
+      $('headPhase').textContent = '今日课程已结束';
+    }
+  }
+  function applyColor(element, color) {
+    const hex = M.colorHex(color);
+    const rgb = [1, 3, 5].map(offset => parseInt(hex.slice(offset, offset + 2), 16));
+    element.style.setProperty('--course-color', hex);
+    element.style.setProperty('--course-bg', 'rgba(' + rgb.join(',') + ', .15)');
+    element.style.setProperty('--course-ink', 'var(--text)');
+  }
+  function renderWeekPicker() {
+    const current = chinaToday(), dates = state.courses.flatMap(course => course.dates);
+    const bounds = [current, weekMonday, state.settings.coverageStart, state.settings.coverageEnd, state.settings.startMonday, ...dates].filter(Boolean).sort();
+    if (state.settings.startMonday) bounds.push(M.addDays(state.settings.startMonday, (state.settings.totalWeeks - 1) * 7));
+    bounds.sort();
+    const first = M.mondayOf(bounds[0]), last = M.mondayOf(bounds[bounds.length - 1]);
+    const fragment = document.createDocumentFragment();
+    let count = 0;
+    for (let monday = first; monday <= last && count < 1600; monday = M.addDays(monday, 7), count++) {
+      const option = node('option', '', weekDescription(monday)); option.value = monday; option.selected = monday === weekMonday; fragment.append(option);
+    }
+    $('weekSelect').replaceChildren(fragment);
+    // A very distant imported date must not make the currently selected week disappear.
+    if (!$('weekSelect').value || $('weekSelect').value !== weekMonday) {
+      const option = node('option', '', weekDescription(weekMonday)); option.value = weekMonday; option.selected = true; $('weekSelect').append(option);
+    }
+    $('weekLabel').textContent = weekDescription(weekMonday);
+    $('weekRange').textContent = dateText(weekMonday, true) + ' — ' + dateText(M.addDays(weekMonday, 6));
+  }
+  function renderDayStrip() {
+    const today = chinaToday();
+    const buttons = WEEKDAYS.map((name, index) => {
+      const date = M.addDays(weekMonday, index), count = M.coursesOn(state.courses, date, state.periods).length;
+      const item = button('day-btn' + (date === selectedDate ? ' active' : '') + (date === today ? ' is-today' : ''), '', () => { selectedDate = date; render(); });
+      item.setAttribute('aria-label', dateText(date) + '星期' + name + '，' + count + ' 门课程');
+      item.setAttribute('aria-pressed', String(date === selectedDate));
+      item.append(node('span', 'day-name', DOW_LETTERS[index]));
+      const pips = node('span', 'day-pips'); pips.setAttribute('aria-hidden', 'true');
+      for (let pip = 0; pip < Math.min(count, 5); pip++) pips.append(node('i'));
+      item.append(pips);
+      return item;
+    });
+    setChildren($('dayStrip'), buttons);
+  }
+  function courseStatus(course, date) {
+    if (isPending(course)) return { label: '时间待确认', className: '' };
+    const today = chinaToday(), range = M.timeRange(course, state.periods), p = chinaNow(), now = Number(p.hour) * 60 + Number(p.minute);
+    if (date < today) return { label: '已结束', className: 'done' };
+    if (date > today || !range.exact) return { label: '待上课', className: '' };
+    if (now >= minutes(range.end)) return { label: '已结束', className: 'done' };
+    if (now >= minutes(range.start)) return { label: '进行中', className: 'current' };
+    return { label: '待上课', className: '' };
+  }
+  function currentArrangement(date,now){
+    const active=M.coursesOn(state.courses,date,state.periods).filter(c=>{const t=M.timeRange(c,state.periods);return t.exact&&now>=minutes(t.start)&&now<minutes(t.end);});
+    return active.find(c=>c.timeMode==='clock')||active[0];
+  }
+  function renderNext() {
+    const target = $('nextCourse'), today = chinaToday(), p = chinaNow(), now = Number(p.hour) * 60 + Number(p.minute);
+    const cards = [];
+    let upcoming;
+    if (selectedDate === today) {
+      const current=currentArrangement(today,now);
+      if (current) {
+        const time = M.timeRange(current, state.periods);
+        const card = button('now-card', '', () => openDetail(current.id, today));
+        const label = node('p', 'nc-label');
+        label.append(node('i', 'nc-dot'), document.createTextNode(current.timeMode==='clock'?'NOW · 进行中':'NOW · 第 ' + current.start + (current.start === current.end ? '' : '–' + current.end) + ' 节进行中'));
+        const row = node('div', 'nc-row');
+        row.append(node('h3', 'nc-name', current.name), node('span', 'nc-time', time.start + '–' + time.end));
+        const meta = node('p', 'nc-meta', (current.room || '地点待补充') + (current.teacher ? ' · ' + current.teacher : ''));
+        const progress = node('span', 'nc-progress'); progress.setAttribute('aria-hidden', 'true');
+        const bar = node('i');
+        bar.style.width = Math.min(100, Math.max(0, (now - minutes(time.start)) / (minutes(time.end) - minutes(time.start)) * 100)) + '%';
+        progress.append(bar);
+        card.append(label, row, meta, progress);
+        cards.push(card);
+      }
+      const candidates = state.courses.filter(course => !isPending(course)).flatMap(course => course.dates.filter(date => date >= today).map(date => ({ course, date, time: M.timeRange(course, state.periods) })))
+        .filter(item => item.date !== today || !item.time.exact || minutes(item.time.start) > now)
+        .filter(item => !current || item.course !== current)
+        .sort((a, b) => a.date.localeCompare(b.date) || a.course.start - b.course.start);
+      upcoming = candidates[0];
+    } else {
+      const first = selectedCourses().find(course => !isPending(course));
+      if (first) upcoming = { course: first, date: selectedDate, time: M.timeRange(first, state.periods) };
+    }
+    if (upcoming) {
+      const { course, date, time } = upcoming;
+      const card = button('next-card', '', () => openDetail(course.id, date));
+      card.append(node('p', 'nc-label', 'NEXT UP' + (date !== today ? ' · ' + dateText(date) : '')));
+      const row = node('div', 'nc-row');
+      const info = node('div', 'nc-info');
+      info.append(node('h3', 'nc-name', course.name), node('p', 'nc-meta', (course.room || '地点待补充') + (course.teacher ? ' · ' + course.teacher : '') + ' · ' + periodText(course)));
+      const bigEl = node('span', 'nc-big', time.start || '晚课');
+      row.append(bigEl, info);
+      if (course.name.length > 11) { info.style.flex = '1 1 100%'; bigEl.style.marginTop = '8px'; row.style.flexWrap = 'wrap'; }
+      card.append(row);
+      cards.push(card);
+    }
+    target.replaceChildren(...cards);
+  }
+  function renderWeekLoad() {
+    const target = $('weekLoad'); if (!target) return;
+    const counts = WEEKDAYS.map((_, index) => M.coursesOn(state.courses, M.addDays(weekMonday, index), state.periods).length);
+    const total = counts.reduce((sum, count) => sum + count, 0);
+    const wrap = node('div');
+    wrap.append(node('p', 'micro wl-title', 'WEEK LOAD · ' + total + ' 节'));
+    const bars = node('div', 'wl-bars'); bars.setAttribute('aria-hidden', 'true');
+    counts.forEach((count, index) => {
+      const col = node('span', 'wl-col');
+      const bar = node('i', 'wl-bar' + (count ? '' : ' empty'));
+      bar.style.height = count ? Math.max(10, count * 8) + 'px' : '2px';
+      col.append(bar, node('span', 'wl-label', DOW_LETTERS[index]));
+      bars.append(col);
+    });
+    wrap.append(bars);
+    target.replaceChildren(wrap);
+  }
+  function pendingCard(course, date, showDate) {
+    const item = button('pending-course', '', () => openDetail(course.id, date)); applyColor(item, course.color);
+    if (showDate) item.append(node('p', 'pending-date', dateText(date) + ' · 周' + WEEKDAYS[M.dayOf(date) - 1]));
+    item.append(node('h3', 'course-name', course.name), node('p', 'pending-time-note', M.timeRange(course, state.periods).text));
+    const meta = node('div', 'course-meta'); meta.append(node('span', '', course.room || '地点待补充'));
+    if (course.teacher) meta.append(node('span', '', course.teacher));
+    item.append(meta);
+    item.setAttribute('aria-label', dateText(date) + '，' + course.name + '，时间待确认，' + course.timeNote + '，' + (course.room || '地点待补充'));
+    return item;
+  }
+  function renderAgenda() {
+    const allCourses = selectedCourses(), courses = allCourses.filter(course => !isPending(course)), pending = allCourses.filter(isPending), today = chinaToday();
+    $('selectedDayLabel').textContent = (selectedDate === today ? '今天 · ' : '') + dateText(selectedDate) + ' 周' + WEEKDAYS[M.dayOf(selectedDate) - 1];
+    $('agendaCount').textContent = pending.length ? allCourses.length + ' 项安排 · ' + pending.length + ' 项时间待确认' : courses.length ? courses.length + (courses.some(c=>c.timeMode==='clock')?' 项安排':' 门课程') : '自由安排';
+    $('agendaPendingSection').hidden = !pending.length;
+    setChildren($('agendaPending'), pending.map(course => pendingCard(course, selectedDate, false)));
+    $('agenda').hidden = !courses.length && !!pending.length;
+    if (!courses.length) {
+      if (pending.length) { $('agenda').replaceChildren(); return; }
+      const empty = node('div', 'empty-state');
+      const outOfRange = (state.settings.coverageStart && selectedDate < state.settings.coverageStart) || (state.settings.coverageEnd && selectedDate > state.settings.coverageEnd);
+      empty.append(node('h3', '', outOfRange ? '这一天尚未导入课程' : '这一天没有课程安排'), node('p', '', outOfRange ? '已导入范围见页面下方；新日期不会自动重复旧课表。' : '享受自由时间，也可以在这里添加一项安排。'), button('button button-outline', '添加课程', () => openEdit()));
+      $('agenda').replaceChildren(empty); return;
+    }
+    const cards = courses.map(course => {
+      const status = courseStatus(course, selectedDate), range = M.timeRange(course, state.periods), conflicts = courseConflictOn(course, selectedDate);
+      const item = button('agenda-card' + (status.className === 'done' ? ' is-past' : ''), '', () => openDetail(course.id, selectedDate)); applyColor(item, course.color);
+      const time = node('div', 'course-time');
+      if (range.exact) time.append(node('strong', '', range.start), node('strong', '', range.end)); else time.append(node('strong', '', '晚间课程'));
+      time.append(node('small', 'period', periodText(course)));
+      const info = node('div', 'course-info'); info.append(node('h3', 'course-name', course.name));
+      const meta = node('div', 'course-meta'); meta.append(node('span', '', course.room || '地点待补充')); if (course.teacher) meta.append(node('span', '', course.teacher)); info.append(meta);
+      const tag = node('span', 'course-tag ' + status.className, conflicts.length ? '时间冲突' : status.label);
+      if (conflicts.length) { tag.style.color = 'var(--danger)'; tag.title = '与 ' + conflicts.map(other => other.name).join('、') + ' 同时上课'; }
+      item.append(time, node('span', 'course-line'), info, tag); return item;
+    });
+    setChildren($('agenda'), cards);
+  }
+  function renderGrid() {
+    const grid = $('weekGrid'), today = chinaToday();
+    const maxPeriod = Math.max(state.periods.length, ...state.courses.filter(course => !isPending(course)).flatMap(course => course.dates.some(date => date >= weekMonday && date <= M.addDays(weekMonday, 6)) ? [course.end] : []));
+    grid.style.gridTemplateRows = '48px repeat(' + maxPeriod + ',76px)';
+    const children = [], corner = node('div', 'grid-corner', '节次'); corner.style.gridArea = '1 / 1'; children.push(corner);
+    WEEKDAYS.forEach((name, index) => {
+      const date = M.addDays(weekMonday, index), head = node('div', 'grid-day' + (date === today ? ' is-today' : ''));
+      head.style.gridArea = '1 / ' + (index + 2); head.append(node('span', '', '周' + name), node('small', '', Number(date.slice(5, 7)) + '/' + Number(date.slice(8)))); children.push(head);
+    });
+    for (let period = 1; period <= maxPeriod; period++) {
+      const time = node('div', 'grid-time' + (period === 5 ? ' afternoon' : ''));
+      time.style.gridArea = (period + 1) + ' / 1'; time.append(node('strong', 'period-number', period));
+      time.append(node('small', 'period-time', state.periods[period - 1].start + '\n' + state.periods[period - 1].end));
+      children.push(time);
+      for (let day = 1; day <= 7; day++) { const slot = node('div', 'grid-slot' + (period === 5 ? ' afternoon' : '')); slot.style.gridArea = (period + 1) + ' / ' + (day + 1); slot.setAttribute('aria-hidden', 'true'); children.push(slot); }
+    }
+    for (let day = 1; day <= 7; day++) {
+      const date = M.addDays(weekMonday, day - 1), courses = M.coursesOn(state.courses, date, state.periods).filter(course => !isPending(course)&&course.timeMode!=='clock'), laneEnds = [], assignments = [];
+      courses.forEach(course => { let lane = laneEnds.findIndex(end => end < course.start); if (lane < 0) lane = laneEnds.length; laneEnds[lane] = course.end; assignments.push({ course, lane }); });
+      assignments.forEach(({ course, lane }) => {
+        const conflicts = courseConflictOn(course, date), item = button('week-course' + (conflicts.length ? ' conflict' : ''), '', () => openDetail(course.id, date));
+        applyColor(item, course.color); item.dataset.weekCourseId=course.id; if(/^#[\da-f]{6}$/i.test(course.color))item.style.borderLeftColor=course.color; item.style.gridArea = (course.start + 1) + ' / ' + (day + 1) + ' / ' + (course.end + 2) + ' / ' + (day + 2);
+        if (laneEnds.length > 1) { item.style.width = 'calc(' + (100 / laneEnds.length) + '% - 6px)'; item.style.marginLeft = 'calc(' + (lane * 100 / laneEnds.length) + '% + 3px)'; item.style.justifySelf = 'start'; }
+        const label = course.name + '，' + (course.room || '地点待补充') + '，' + M.timeRange(course, state.periods).text + (conflicts.length ? '，时间冲突' : '');
+        item.setAttribute('aria-label', label); item.title = label;
+        item.append(node('strong', 'course-name', course.name), node('small', 'course-room', course.room || '地点待补充'));
+        if (course.teacher) item.append(node('small', 'course-teacher', course.teacher));
+        item.append(node('small', 'course-weeks', periodText(course)));
+        children.push(item);
+      });
+    }
+    setChildren(grid, children);
+    const pending = WEEKDAYS.flatMap((_, index) => {
+      const date = M.addDays(weekMonday, index);
+      return M.coursesOn(state.courses, date, state.periods).filter(isPending).map(course => pendingCard(course, date, true));
+    });
+    $('weekPendingSection').hidden = !pending.length;
+    setChildren($('weekPending'), pending);
+  }
+  function renderSettings() {
+    $('startMonday').value = state.settings.startMonday || '';
+    $('totalWeeks').value = state.settings.totalWeeks;
+    $('theme').value = state.settings.theme;
+    document.documentElement.dataset.theme = state.settings.theme;
+    $('installApp').textContent = window.matchMedia('(display-mode: standalone)').matches ? '已添加到桌面' : deferredInstall ? '安装随课' : '查看添加方法';
+    const periodList = document.querySelector('.period-list');
+    if (periodList) {
+      const rows = state.periods.map((period, index) => { const row = node('div'); row.append(node('span', '', '第 ' + (index + 1) + ' 节'), node('strong', '', period.start + '–' + period.end)); return row; });
+      periodList.replaceChildren(...rows);
+    }
+  }
+  function renderStatus() {
+    let text = storageAvailable ? '课程与修改保存在当前设备' : '当前浏览器无法保存修改，请及时导出备份';
+    if (state.settings.coverageStart && state.settings.coverageEnd) text += ' · 官网读取范围 ' + dateText(state.settings.coverageStart, true) + '—' + dateText(state.settings.coverageEnd, true);
+    text += ' · 只按已读取的具体日期显示';
+    if (!state.settings.startMonday) text += ' · 第一周周一待确认，暂不推测教学周次';
+    $('statusLine').textContent = text;
+  }
+  function render() {
+    $('termLabel').textContent = state.settings.termLabel;
+    renderHeader(); renderWeekPicker(); renderDayStrip(); renderNext(); renderAgenda(); renderGrid(); renderWeekLoad(); renderSettings(); renderStatus();
+    document.querySelectorAll('[data-view]').forEach(item => { const selected = item.dataset.view === activeView; item.classList.toggle('active', selected); if (selected) item.setAttribute('aria-current', 'page'); else item.removeAttribute('aria-current'); });
+    ['today', 'week', 'settings'].forEach(view => { $(view + 'View').hidden = view !== activeView; });
+  }
+  function navigateWeek(monday) { weekMonday = monday; selectedDate = M.addDays(monday, M.dayOf(selectedDate) - 1); render(); }
+  function showDialog(dialog) { if (typeof dialog.showModal === 'function') dialog.showModal(); else { dialog.setAttribute('open', ''); dialog.scrollIntoView({ block: 'start' }); } }
+  function closeDialog(dialog) {
+    if (typeof dialog.close === 'function') {
+      const still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (still || !dialog.open) { dialog.close(); return; }
+      dialog.classList.add('closing');
+      setTimeout(() => { dialog.classList.remove('closing'); dialog.close(); }, 170);
+    } else dialog.removeAttribute('open');
+  }
+  function armDialogCancel(dialog) {
+    dialog.addEventListener('cancel', event => {
+      if (dialog.classList.contains('closing')) return;
+      event.preventDefault();
+      closeDialog(dialog);
+    });
+  }
+  function detailRow(label, text) { const row = node('div', 'detail-row'); row.append(node('span', 'detail-label', label), node('span', '', text)); return row; }
+  function openDetail(id, date) {
+    const course = state.courses.find(item => item.id === id); if (!course) return;
+    detailId = id; detailDate = date;
+    const target = $('courseDetail'), dates = course.dates.map(item => {
+      const week = M.weekNumber(item, state.settings.startMonday);
+      return dateText(item, true) + (week && week > 0 && week <= state.settings.totalWeeks ? '（第' + week + '周）' : '');
+    });
+    const content = [node('h2', 'detail-title', course.name), node('p', 'detail-subtitle', '星期' + WEEKDAYS[course.day - 1] + ' · ' + periodText(course)), detailRow(isPending(course) ? '时间说明' : '上课时间', M.timeRange(course, state.periods).text), detailRow('教室', course.room || '待补充'), detailRow('教师', course.teacher || '未提供'), detailRow('上课日期', dates.join('、'))];
+    const conflicts = M.conflictsFor(state.courses, course, state.periods);
+    if (conflicts.length) { const row = detailRow('时间冲突', conflicts.map(other => other.name).join('、') + '：存在时间重叠，请核实。'); row.style.color = 'var(--danger)'; content.push(row); }
+    content.push(detailRow('保存方式', '编辑或删除仅影响这台设备上的私人课表。'));
+    target.replaceChildren(...content); showDialog($('courseDialog'));
+  }
+  function syncTimeMode() {
+    const form=$('courseForm'),pending=$('pendingTime').checked;
+    ['confirmedStartField','confirmedEndField'].forEach(id=>{$(id).hidden=pending;});
+    ['start','end'].forEach(name=>{form.elements.namedItem(name).disabled=pending;form.elements.namedItem(name).required=false;});
+    $('timeNoteField').hidden=true;$('timeNote').disabled=false;$('timeNote').required=false;
+    $('sourceTimeField').hidden=true;form.elements.namedItem('sourceTime').disabled=false;
+  }
+  function openEdit(course) {
+    const form = $('courseForm'); form.reset(); $('formError').hidden = true;
+    $('formTitle').textContent = course ? '编辑课程' : '添加课程';
+    const values = course ? { ...course, start: course.start ?? '', end: course.end ?? '', weeks: course.dates.join(', '), color: M.colorHex(course.color) } : { id: '', name: '', day: M.dayOf(selectedDate), start: 1, end: 2, room: '', teacher: '', weeks: selectedDate, color: M.COLORS.teal, sourceTime: '' };
+    Object.entries(values).forEach(([name, value]) => { const field = form.elements.namedItem(name); if (field && name !== 'dates') field.value = value; });
+    ['start','end'].forEach(name=>{
+      const select=form.elements.namedItem(name),chosen=values[name];select.replaceChildren();
+      const empty=node('option','','选择节次');empty.value='';select.append(empty);
+      state.periods.forEach((period,index)=>{const option=node('option','','第 '+(index+1)+' 节 · '+(name==='start'?period.start:period.end));option.value=String(index+1);select.append(option);});select.value=chosen;
+    });
+    const clocks=window.SuikeCourseTime.initial(course,state.periods);$('courseBegin').value=clocks.begin;$('courseFinish').value=clocks.finish;
+    $('pendingTime').checked=!!course&&isPending(course);syncTimeMode();
+    showDialog($('editDialog')); setTimeout(() => form.elements.namedItem('name').focus(), 30);
+  }
+  $('addCourse').addEventListener('click', () => openEdit());
+  $('addCourseWeek').addEventListener('click', () => openEdit());
+  $('prevWeek').addEventListener('click', () => navigateWeek(M.addDays(weekMonday, -7)));
+  $('nextWeek').addEventListener('click', () => navigateWeek(M.addDays(weekMonday, 7)));
+  $('thisWeek').addEventListener('click', () => { selectedDate = chinaToday(); weekMonday = M.mondayOf(selectedDate); render(); });
+  $('weekSelect').addEventListener('change', event => navigateWeek(event.target.value));
+  document.querySelectorAll('[data-view]').forEach(item => item.addEventListener('click', () => { activeView = item.dataset.view; render(); }));
+  $('closeDetail').addEventListener('click', () => closeDialog($('courseDialog')));
+  $('cancelEdit').addEventListener('click', () => closeDialog($('editDialog')));
+  armDialogCancel($('courseDialog'));
+  armDialogCancel($('editDialog'));
+  $('pendingTime').addEventListener('change', syncTimeMode);
+  ['courseBegin','courseFinish'].forEach(id=>$(id).addEventListener('change',()=>{
+    const mapped=window.SuikeCourseTime.infer(state.periods,$('courseBegin').value,$('courseFinish').value);
+    $('courseForm').elements.namedItem('start').value=mapped?mapped.start:'';$('courseForm').elements.namedItem('end').value=mapped?mapped.end:'';
+    if($('courseBegin').value&&$('courseFinish').value)$('pendingTime').checked=false;syncTimeMode();
+  }));
+  ['start','end'].forEach(name=>$('courseForm').elements.namedItem(name).addEventListener('change',()=>{
+    const form=$('courseForm'),a=Number(form.elements.namedItem('start').value),b=Number(form.elements.namedItem('end').value);
+    if(a&&b&&a<=b){$('courseBegin').value=state.periods[a-1].start;$('courseFinish').value=state.periods[b-1].end;}
+  }));
+  $('editCourse').addEventListener('click', () => { const course = state.courses.find(item => item.id === detailId); closeDialog($('courseDialog')); if (course) openEdit(course); });
+  $('deleteCourse').addEventListener('click', () => {
+    if (!detailId) return;
+    const next = clone(state); next.courses = next.courses.filter(course => course.id !== detailId);
+    closeDialog($('courseDialog')); commit(next, '已删除课程'); detailId = null;
+  });
+  $('courseForm').addEventListener('submit', event => {
+    event.preventDefault(); const form = event.currentTarget, data = new FormData(form);
+    try {
+      const day=Number(data.get('day'));
+      const timing=window.SuikeCourseTime.resolve(state.periods,$('courseBegin').value,$('courseFinish').value,Number(data.get('start'))||null,Number(data.get('end'))||null,$('pendingTime').checked,$('timeNote').value);
+      const course=Object.assign({id:String(data.get('id')||'local-'+Date.now()+'-'+Math.random().toString(36).slice(2)),name:String(data.get('name')).trim(),day,room:String(data.get('room')).trim(),teacher:String(data.get('teacher')).trim(),color:weekLineFormColor(String(data.get('color'))),dates:M.datesFromExpression(String(data.get('weeks')),day,state.settings)},timing);
+      const next = clone(state), index = next.courses.findIndex(item => item.id === course.id);
+      if (index >= 0) next.courses[index] = course; else next.courses.push(course);
+      M.validateState(next);
+      const conflicts = M.conflictsFor(next.courses, course, next.periods);
+      commit(next, conflicts.length ? '已保存；存在课程时间冲突，请查看详情' : '课程已保存'); closeDialog($('editDialog'));
+    } catch (error) { $('formError').textContent = error.message; $('formError').hidden = false; }
+  });
+  $('settingsForm').addEventListener('submit', event => {
+    event.preventDefault();
+    try {
+      const next = clone(state); next.settings.startMonday = $('startMonday').value || null; next.settings.totalWeeks = Number($('totalWeeks').value); next.settings.theme = $('theme').value === 'custom' ? state.settings.theme : $('theme').value;
+      commit(next, '设置已保存；已有课程的具体日期保持不变');
+    } catch (error) { showToast(error.message); }
+  });
+  $('exportData').addEventListener('click', () => {
+    const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json;charset=utf-8' }), url = URL.createObjectURL(blob), link = node('a');
+    link.href = url; link.download = '随课备份-' + chinaToday() + '.json'; document.body.append(link); link.click(); link.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000); showToast('已导出备份，换设备时可导入');
+  });
+  $('restoreData').addEventListener('click', () => $('importFile').click());
+  $('importFile').addEventListener('change', async event => {
+    const file = event.target.files[0]; if (!file) return;
+    try {
+      if (file.size > 5 * 1024 * 1024) throw new Error('备份文件超过 5 MB，请检查文件');
+      const next = M.applySeedUpdates(JSON.parse(await file.text()), original).state;
+      commit(next, '已导入 ' + next.courses.length + ' 条课程；可撤销恢复刚才的课表');
+    } catch (error) { showToast('导入失败，原课表未改动：' + error.message); }
+    event.target.value = '';
+  });
+  $('resetData').addEventListener('click', () => commit(clone(original), '已恢复官网初始课表；可撤销'));
+  window.addEventListener('beforeinstallprompt', event => { event.preventDefault(); deferredInstall = event; renderSettings(); });
+  window.addEventListener('appinstalled', () => { deferredInstall = null; renderSettings(); showToast('随课已添加到桌面'); });
+  $('installApp').addEventListener('click', async () => {
+    if (deferredInstall) { const prompt = deferredInstall; deferredInstall = null; await prompt.prompt(); await prompt.userChoice; renderSettings(); }
+    else { $('installHelp').open = true; $('installHelp').scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+  });
+  ['courseDialog', 'editDialog'].forEach(id => $(id).addEventListener('click', event => { if (event.target === $(id)) { const rect = $(id).getBoundingClientRect(); if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) closeDialog($(id)); } }));
+  if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) navigator.serviceWorker.register('./sw.js').catch(() => { /* The timetable still works without offline installation. */ });
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) render(); });
+  setInterval(() => { if (!document.hidden) { renderHeader(); if (activeView === 'today') { renderNext(); renderAgenda(); } } }, 15000);
+  // Daily periods come from school import or the saved user setting.
+  render();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+* text=auto eol=lf
+*.webp binary
+*.png binary
+*.gif binary
+*.woff2 binary
+*.ttf binary
+*.aar binary
+*.jar binary
+*.traineddata binary

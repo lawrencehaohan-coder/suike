@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cn.suike.timetable.featuretests" android:versionCode="1" android:versionName="1">
+    <uses-sdk android:minSdkVersion="26" android:targetSdkVersion="35" />
+    <application android:label="Suike native feature QA" android:allowBackup="false" android:usesCleartextTraffic="false">
+        <!-- Only a fixed synthetic image is exposed; this provider cannot read arbitrary paths. -->
+        <provider android:name=".SyntheticNoticeProvider" android:authorities="cn.suike.timetable.featuretests.notice"
+            android:exported="true" android:grantUriPermissions="false" />
+    </application>
+    <instrumentation android:name=".FeatureInstrumentation" android:targetPackage="cn.suike.timetable"
+        android:functionalTest="true" android:handleProfiling="false" android:label="Local native feature QA" />
+<instrumentation android:name=".ScrollInstrumentation" android:targetPackage="cn.suike.timetable" android:functionalTest="true" android:handleProfiling="false" android:label="Local scroll profiling" /><instrumentation android:name=".MinuteWeekInstrumentation" android:targetPackage="cn.suike.timetable" android:functionalTest="true" android:handleProfiling="false" android:label="Local minute affair QA" /><instrumentation android:name=".VideoScrollInstrumentation" android:targetPackage="cn.suike.timetable" android:functionalTest="true" android:handleProfiling="false" android:label="Local HD video profiling" /><instrumentation android:name=".CoursePixelsInstrumentation" android:targetPackage="cn.suike.timetable" android:functionalTest="true" android:handleProfiling="false" android:label="Local course progress and scene QA" /><instrumentation android:name=".FoldedAffairsInstrumentation" android:targetPackage="cn.suike.timetable" android:functionalTest="true" android:handleProfiling="false" android:label="Local folded affairs QA" /><instrumentation android:name=".CampusPlanInstrumentation" android:targetPackage="cn.suike.timetable" android:functionalTest="true" android:handleProfiling="false" android:label="Local campus layout preview QA" /><instrumentation android:name=".CampusIntegrationInstrumentation" android:targetPackage="cn.suike.timetable" android:functionalTest="true" android:handleProfiling="false" android:label="Integrated campus map QA" /></manifest>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="6dp" android:layout_height="6dp">
+    <ImageView android:layout_width="6dp" android:layout_height="6dp" android:src="@drawable/widget_lamp_dim" android:contentDescription="@null" />
+    <ViewFlipper android:id="@+id/widget_breathe" android:layout_width="6dp" android:layout_height="6dp" android:autoStart="true" android:flipInterval="1900" android:inAnimation="@anim/widget_breathe_in" android:outAnimation="@anim/widget_breathe_out">
+        <ImageView android:layout_width="6dp" android:layout_height="6dp" android:src="@drawable/widget_lamp_green" android:contentDescription="@null" />
+        <ImageView android:layout_width="6dp" android:layout_height="6dp" android:contentDescription="@null" />
+    </ViewFlipper>
+</FrameLayout>

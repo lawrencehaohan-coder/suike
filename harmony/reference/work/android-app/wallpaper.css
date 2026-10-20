@@ -1,0 +1,11 @@
+/* The existing geometry and black/white type stay intact over local media. */
+.suike-wallpaper{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:var(--paper)}
+.suike-wallpaper:empty{display:none}.suike-wallpaper img,.suike-wallpaper video{width:100%;height:100%;object-fit:cover;display:block}
+html[data-wallpaper="on"] .app-shell{position:relative;z-index:1;background:transparent}
+html[data-wallpaper="on"] body{background:var(--paper)}
+html[data-wallpaper="on"] .app-header{background:transparent}
+html[data-wallpaper="on"] .app-header,html[data-wallpaper="on"] .day-strip{ text-shadow:0 1px 2px var(--paper)}
+/* Display glass material is shared with liquid-ui.css, including its frost curve. */
+html[data-wallpaper="on"][data-glass="off"] .app-shell{background:var(--paper)}
+.wallpaper-settings{padding-top:16px;margin-top:16px;border-top:1px solid var(--line)}.wallpaper-settings>strong{font-size:13px}.wallpaper-settings .ai-message{display:block;margin-top:10px}
+#addPeriod{margin-top:14px;width:100%}

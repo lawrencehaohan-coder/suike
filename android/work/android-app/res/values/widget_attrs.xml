@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Optional One UI Home integration; ignored by other launchers. -->
+    <attr name="widgetStyle" format="integer"><flag name="colorful" value="1"/></attr>
+    <attr name="widgetSize" format="integer"><flag name="wideSmall" value="4"/><flag name="medium" value="8"/><flag name="large" value="16"/></attr>
+</resources>

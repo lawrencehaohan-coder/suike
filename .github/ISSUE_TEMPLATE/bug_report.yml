@@ -1,0 +1,28 @@
+name: 问题反馈
+description: 报告异常、界面或导入问题
+title: "[问题] "
+body:
+  - type: input
+    id: version
+    attributes:
+      label: 应用版本
+      placeholder: 例如 Android 1.6.0-beta.28
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: 机型与系统
+      placeholder: 机型、Android / HarmonyOS 版本
+  - type: textarea
+    id: steps
+    attributes:
+      label: 怎样复现
+      description: 说明操作步骤、预期结果和实际结果。截图请先遮盖个人信息。
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: 补充信息
+      description: 可附匿名样本。不要上传密码、API Key 或登录 Cookie。

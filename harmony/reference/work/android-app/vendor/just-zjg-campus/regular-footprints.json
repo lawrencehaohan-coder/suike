@@ -1,0 +1,350 @@
+{
+  "rules": [
+    {
+      "id": "plan-teaching-E",
+      "name": "教学楼 E",
+      "shape": {
+        "type": "rectangle"
+      }
+    },
+    {
+      "id": "plan-teaching-F",
+      "name": "教学楼 F",
+      "shape": {
+        "type": "rectangle"
+      }
+    },
+    {
+      "id": "plan-teaching-G",
+      "name": "教学楼 G",
+      "shape": {
+        "type": "rectangle"
+      }
+    },
+    {
+      "id": "plan-teaching-H",
+      "name": "教学楼 H",
+      "shape": {
+        "type": "L"
+      }
+    },
+    {
+      "id": "osm-262554891",
+      "name": "教学楼 B",
+      "shape": {
+        "type": "rectangle"
+      }
+    },
+    {
+      "id": "osm-262554957",
+      "name": "教学楼 A",
+      "shape": {
+        "type": "L",
+        "basis": "User correction: orthogonal teaching wing set back east of the library ring road; never merged with the library."
+      }
+    },
+    {
+      "id": "osm-262555111",
+      "name": "教学楼 C",
+      "shape": {
+        "type": "rectangle"
+      }
+    },
+    {
+      "id": "osm-262555479",
+      "name": "教学楼 D",
+      "shape": {
+        "type": "rectangle"
+      }
+    },
+    {
+      "id": "osm-262555503",
+      "name": "外语楼",
+      "shape": {
+        "type": "C"
+      }
+    },
+    {
+      "id": "library",
+      "name": "图书馆",
+      "shape": {
+        "type": "ellipse",
+        "center": [
+          514,
+          312
+        ],
+        "radii": [
+          66,
+          48
+        ],
+        "symmetryAxes": [
+          "x",
+          "y"
+        ]
+      }
+    },
+    {
+      "id": "osm-260623895",
+      "name": "体育馆",
+      "shape": {
+        "type": "symmetric-trapezoid",
+        "symmetryAxes": [
+          "y"
+        ]
+      }
+    },
+    {
+      "id": "osm-260621106",
+      "name": "一食堂",
+      "shape": {
+        "type": "rectangle"
+      }
+    },
+    {
+      "id": "osm-260621060",
+      "name": "华诚餐饮",
+      "shape": {
+        "type": "rectangle"
+      }
+    },
+    {
+      "id": "plan-dorm-1",
+      "name": "1 号宿舍",
+      "shape": {
+        "type": "rectangle"
+      }
+    },
+    {
+      "id": "plan-dorm-2",
+      "name": "2 号宿舍",
+      "shape": {
+        "type": "rectangle"
+      }
+    },
+    {
+      "id": "plan-dorm-3",
+      "name": "3 号宿舍",
+      "shape": {
+        "type": "rectangle"
+      }
+    },
+    {
+      "id": "plan-dorm-4",
+      "name": "4 号宿舍",
+      "shape": {
+        "type": "rectangle"
+      }
+    },
+    {
+      "id": "plan-dorm-5",
+      "name": "5 号宿舍",
+      "shape": {
+        "type": "rectangle"
+      }
+    },
+    {
+      "id": "plan-dorm-6",
+      "name": "6 号宿舍",
+      "shape": {
+        "type": "rectangle"
+      }
+    },
+    {
+      "id": "plan-dorm-7",
+      "name": "7 号宿舍",
+      "shape": {
+        "type": "rectangle"
+      }
+    },
+    {
+      "id": "plan-dorm-8",
+      "name": "8 号宿舍",
+      "shape": {
+        "type": "rectangle"
+      }
+    },
+    {
+      "id": "plan-dorm-9",
+      "name": "9 号宿舍",
+      "shape": {
+        "type": "rectangle"
+      }
+    },
+    {
+      "id": "plan-dorm-10",
+      "name": "10 号宿舍",
+      "shape": {
+        "type": "rectangle"
+      }
+    },
+    {
+      "id": "plan-dorm-11",
+      "name": "11 号宿舍",
+      "shape": {
+        "type": "rectangle"
+      }
+    },
+    {
+      "id": "plan-dorm-12",
+      "name": "12 号宿舍",
+      "shape": {
+        "type": "rectangle"
+      }
+    },
+    {
+      "id": "plan-dorm-13",
+      "name": "13 号宿舍",
+      "shape": {
+        "type": "rectangle"
+      }
+    },
+    {
+      "id": "plan-teachers",
+      "name": "教师公寓",
+      "shape": {
+        "type": "rectangle"
+      }
+    },
+    {
+      "id": "plan-service-1",
+      "name": "电信服务",
+      "shape": {
+        "type": "rectangle"
+      }
+    },
+    {
+      "id": "plan-service-2",
+      "name": "联通营业厅",
+      "shape": {
+        "type": "rectangle"
+      }
+    },
+    {
+      "id": "plan-service-3",
+      "name": "移动营业厅",
+      "shape": {
+        "type": "rectangle"
+      }
+    },
+    {
+      "id": "business",
+      "name": "商学院",
+      "shape": {
+        "type": "rectangle"
+      }
+    },
+    {
+      "id": "career",
+      "name": "招生就业指导中心",
+      "shape": {
+        "type": "L"
+      }
+    },
+    {
+      "id": "backup-b",
+      "name": "备用教学楼 B",
+      "shape": {
+        "type": "rectangle"
+      }
+    },
+    {
+      "id": "backup-c",
+      "name": "备用教学楼 C",
+      "shape": {
+        "type": "rectangle"
+      }
+    },
+    {
+      "id": "telecom-college",
+      "name": "电信学院",
+      "shape": {
+        "type": "rectangle"
+      }
+    },
+    {
+      "id": "power-institute",
+      "name": "智能电力研究院",
+      "shape": {
+        "type": "rectangle"
+      }
+    },
+    {
+      "id": "server-room",
+      "name": "机房",
+      "shape": {
+        "type": "rectangle"
+      }
+    },
+    {
+      "id": "metallurgy",
+      "name": "冶金材料楼",
+      "shape": {
+        "type": "C"
+      }
+    },
+    {
+      "id": "ship-civil",
+      "name": "船海土木楼",
+      "shape": {
+        "type": "rectangle"
+      }
+    },
+    {
+      "id": "mechanical",
+      "name": "机动学院",
+      "shape": {
+        "type": "L"
+      }
+    },
+    {
+      "id": "training-center",
+      "name": "工程实训中心",
+      "shape": {
+        "type": "C"
+      }
+    },
+    {
+      "id": "osm-260623023",
+      "name": "行政楼",
+      "shape": {
+        "type": "rectangle"
+      }
+    },
+    {
+      "id": "osm-260623230",
+      "name": "报告厅",
+      "shape": {
+        "type": "ellipse",
+        "center": [
+          318,
+          112
+        ],
+        "radii": [
+          34,
+          22
+        ],
+        "symmetryAxes": [
+          "x",
+          "y"
+        ]
+      }
+    },
+    {
+      "id": "context-student-center",
+      "name": "大学生活动中心",
+      "shape": {
+        "type": "rectangle"
+      }
+    },
+    {
+      "id": "plan-sport-stand",
+      "name": "运动场附属建筑",
+      "shape": {
+        "type": "rectangle"
+      }
+    }
+  ],
+  "libraryRule": "128 equally spaced ellipse points; centre and radii aligned to the dense raster for mirror symmetry",
+  "photoLayoutPreserved": true,
+  "groundZoneRule": "Commercial regions are dashed ground outlines, with no building volume or height estimate."
+}

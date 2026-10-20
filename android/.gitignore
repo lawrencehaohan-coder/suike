@@ -1,0 +1,14 @@
+node_modules/
+**/tools/node_modules/
+**/build/
+**/__pycache__/
+**/android-tools/
+**/private-signing*
+*.p12
+*.jks
+*.keystore
+*.apk
+*.log
+**/reports/
+**/diagnostics/
+**/.env*
